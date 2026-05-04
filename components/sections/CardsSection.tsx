@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Room } from '@/data/homeData';
@@ -11,8 +12,10 @@ interface CardsSectionProps {
 }
 
 export default function CardsSection({ rooms, activeIndex, onRoomChange }: CardsSectionProps) {
-  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const rafRef = useRef<number | null>(null);
+  const detailTriggerIndex = rooms.findIndex((room) => room.id === 'gathering-grove');
+  const shouldShowDetails = detailTriggerIndex >= 0 && activeIndex >= detailTriggerIndex;
 
   useEffect(() => {
     const onScroll = () => {
@@ -42,72 +45,71 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   }, [onRoomChange]);
 
   return (
-    <section id="the-stay" className="bg-cream">
-      <div className="flex flex-col lg:flex-row">
-        {/* Sticky image panel — desktop only */}
-        <div className="hidden lg:block sticky top-0 h-screen w-1/2 overflow-hidden">
+    <section id="the-stay" className="w-full bg-[#f5f3ed] px-5 pb-14 pt-10 md:px-0 md:pb-[12rem] md:pt-[10rem]">
+      <div className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-8 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
+        <div className="md:sticky md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem] md:overflow-hidden md:rounded-xl">
           <AnimatePresence mode="wait">
-            <motion.img
+            <motion.div
               key={rooms[activeIndex]?.id}
-              src={rooms[activeIndex]?.image}
-              alt={rooms[activeIndex]?.name}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="w-full h-full object-cover"
-            />
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.32, 1] }}
+              className="relative aspect-[394/451] w-full overflow-hidden rounded-xl md:h-full md:aspect-auto"
+            >
+              <Image src={rooms[activeIndex]?.image ?? ''} alt={rooms[activeIndex]?.name ?? ''} fill sizes="(max-width: 48em) 100vw, 394px" className="object-cover" />
+            </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Scroll list */}
-        <div className="lg:w-1/2 py-10 sm:py-14 md:py-20">
-          {rooms.map((room, i) => (
-            <button
-              key={room.id}
-              ref={(el) => { itemRefs.current[i] = el; }}
-              onClick={() => onRoomChange(i)}
-              className={`w-full text-left px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 md:py-10 border-b border-sage/10 transition-colors duration-300 ${
-                activeIndex === i ? 'bg-sage/5' : 'hover:bg-sage/5'
-              }`}
-            >
-              {/* Mobile image */}
-              <div className="lg:hidden mb-4 aspect-video overflow-hidden rounded-sm">
-                <img
-                  src={room.image}
-                  alt={room.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <span
-                className={`block text-xs tracking-[0.2em] uppercase mb-2 transition-colors ${
-                  activeIndex === i ? 'text-sage' : 'text-forest/30'
-                }`}
+        <div className="min-w-0">
+          <ul className="flex flex-col">
+            {rooms.map((room, index) => {
+              const isActive = index === activeIndex;
+              const isVisited = index < activeIndex;
+              return (
+                <li
+                  key={room.id}
+                  ref={(element) => {
+                    itemRefs.current[index] = element;
+                  }}
+                  className={`flex min-h-[4.25rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[1.25rem] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
+                    isActive
+                      ? 'font-[200] text-[#697a61] opacity-100'
+                      : isVisited
+                      ? 'font-[200] text-[#697a61] opacity-40'
+                      : 'font-[200] text-[#697a61] opacity-10'
+                  }`}
+                  onClick={() => onRoomChange(index)}
+                >
+                  {room.name}
+                </li>
+              );
+            })}
+          </ul>
+          <AnimatePresence>
+            {shouldShowDetails ? (
+              <motion.div
+                key="stay-details"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.4, ease: [0.33, 1, 0.32, 1] }}
+                className="mt-7 max-w-[40.875rem]"
               >
-                0{i + 1}
-              </span>
-              <h3
-                className={`text-lg sm:text-xl md:text-2xl font-light mb-3 transition-colors ${
-                  activeIndex === i ? 'text-forest' : 'text-forest/50'
-                }`}
-              >
-                {room.name}
-              </h3>
-              <AnimatePresence>
-                {activeIndex === i && (
-                  <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-sm text-forest/60 leading-relaxed overflow-hidden"
-                  >
-                    {room.description}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </button>
-          ))}
+                <p className="font-poppins text-[0.75rem] font-[200] leading-[1.6] text-[rgba(105,122,97,0.86)] md:text-[1.25rem] md:leading-[1.22]">
+                  A refined collection of rooms and private
+                  <br />
+                  pool villas, crafted for elevated comfort,
+                  <br />
+                  privacy, and immersive nature.
+                </p>
+                <a href="#faq" className="mt-5 inline-block border-b border-b-[rgba(101,120,94,0.55)] font-[Pilcrow_Rounded] text-[0.875rem] uppercase text-[#65785e] md:text-[1.25rem]">
+                  EXPLORE MORE
+                </a>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
       </div>
     </section>

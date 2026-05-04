@@ -86,7 +86,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="relative w-full bg-[var(--sage-hero)]">
       <Navbar
         navLinks={navLinks}
         menuLinks={menuLinks}
@@ -99,25 +99,28 @@ export default function Home() {
         navLinks={navLinks}
         onMenuOpen={() => setMenuOpen(true)}
         heading="Where The West Wild Stays"
-        subheadingDesktop="Sasan Gir · Gujarat · India"
+        subheadingDesktop="Wild Calm retreat near Sasan Gir offers a refined nature experience, surrounded by forest and countryside. It blends peaceful stays with immersive moments & quiet luxury escapes in serene surroundings."
         subheadingMobile="Sasan Gir · Gujarat"
-        videoSrcDesktop="/design/Home Page/Section 1 - Hero/Hero_Desktop.mp4"
-        videoSrcMobile="/design/Home Page/Section 1 - Hero/Hero_Mobile.mp4"
+        videoSrcDesktop="/design/Home Page/Section 1 - Banner/Desktop/Banner Video.mp4"
+        videoSrcMobile="/design/Home%20Page/Section%201%20-%20Banner/Mobile%20Version/front%20banner%20video_phone%20version.mp4"
       />
 
+      {/* Spacer so scrollable content sits below the fixed desktop hero */}
+      <div className="hidden md:block md:h-[100dvh]" aria-hidden="true" />
+
       <About
-        imageSrc="/design/Home Page/Section 2 - About/About.webp"
+        imageSrc="/design/Home Page/Section 2 - Lion/Sasan Gir_Lion-converted-from-png.webp"
         location="Sasan Gir · Gujarat · India"
-        heading="A sanctuary where the wild and the refined exist as one"
-        body="Nestled near the buffer zone of Gir National Park, WildCalm is a luxury experiential resort designed for those who seek the extraordinary. Where nature's raw beauty meets considered comfort."
+        heading="Asiatic Lion at Sasan Gir"
+        body="Wildlife Sasan Gir Forest Gir National Park WildCalm Retreat Nature Safari Asiatic Lion Forest Gujarat India."
       />
 
       <Accommodation
         roomCount={30}
         courtyardCount={15}
-        heading="Rooms crafted for the discerning traveller"
-        body="Each space at WildCalm is a deliberate composition — materials drawn from the land, forms inspired by the forest, and service attuned to the unhurried pace of nature."
-        badgeText="Experiential stays · Sasan Gir"
+        heading="WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay."
+        body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
+        badgeText="ACCOMODATION"
       />
 
       <CardsSection
@@ -178,8 +181,7 @@ export default function Home() {
       />
 
       <CTA
-        quote="In every walk with nature, one receives far more than he seeks."
-        quoteAuthor="John Muir"
+        quote="Raw wilderness and refined luxury meet in a state of intentional stillness."
         imageSrc="/design/Home Page/Section 10 - CTA/CTA.webp"
         ctaHref="#faq"
       />

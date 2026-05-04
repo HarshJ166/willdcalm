@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { NavLink } from '@/data/homeData';
 
@@ -24,49 +25,80 @@ export default function Hero({
   videoSrcDesktop,
   videoSrcMobile,
 }: HeroProps) {
+  const headingWords = heading.split(' ');
+
   return (
-    <section id="home" className="relative w-full h-screen overflow-hidden">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover hidden md:block"
+    <section id="home" className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden bg-[#5a6b53] bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center md:fixed md:inset-x-0 md:top-0 md:z-0 md:overflow-visible">
+      {/* Desktop video wrapper — lion positioned separately on section */}
+      <div className="absolute left-0 top-[15rem] z-[2] hidden h-[37.25rem] w-[44.625rem] overflow-hidden md:block">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover object-[34%_50%] grayscale"
+        >
+          <source src={videoSrcDesktop} type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Desktop lion — exact Figma position: left 597px / top 705px */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5, ease }}
+        className="absolute left-[42.3125rem] top-[90dvh] z-[4] hidden h-[64.12px] w-[101.45px] md:block"
       >
-        <source src={videoSrcDesktop} type="video/mp4" />
-      </video>
+        <Image
+          src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
+          alt=""
+          fill
+          sizes="172px"
+          className="object-contain object-left-bottom"
+        />
+      </motion.div>
+
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover md:hidden"
+        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[4.5625rem] z-[2] h-[32rem] w-[calc(100%-3.875rem)] object-cover object-[54%_50%] grayscale md:hidden"
       >
         <source src={videoSrcMobile} type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-forest/30" />
-
       {/* Top bar */}
-      <div className="absolute top-0 inset-x-0 z-10 flex items-center justify-between px-4 sm:px-6 md:px-12 h-14 sm:h-16">
+      <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] md:h-[6.511375rem] md:px-[var(--wc-page-gutter)]">
         <button
           onClick={onMenuOpen}
-          className="text-xs tracking-widest uppercase text-cream/80 hover:text-cream transition-colors"
+          className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] md:text-[1.25rem]"
           aria-label="Open menu"
         >
+          <span className="inline-flex items-center" aria-hidden="true">
+            <svg width="16" height="14" viewBox="0 0 16 14" fill="none">
+              <line x1="0" y1="1" x2="16" y2="1" stroke="currentColor" strokeWidth="1.1" />
+              <line x1="0" y1="7" x2="16" y2="7" stroke="currentColor" strokeWidth="1.1" />
+              <line x1="0" y1="13" x2="16" y2="13" stroke="currentColor" strokeWidth="1.1" />
+            </svg>
+          </span>
           Menu
         </button>
-        <span className="text-cream text-sm tracking-[0.2em] uppercase font-light">WildCalm</span>
+        <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] md:text-[2.625rem]">
+          WildCalm
+        </span>
         <a
-          href="#faq"
-          className="text-xs tracking-widest uppercase text-cream/80 hover:text-cream transition-colors"
+          href="https://bookings.wildcalm.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] md:text-[1.25rem]"
         >
           Book Now
         </a>
       </div>
 
       {/* Bottom nav links — desktop only */}
-      <div className="absolute bottom-10 inset-x-0 z-10 hidden md:flex justify-center gap-8 lg:gap-12">
+      <div className="absolute left-0 right-0 top-[6.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center gap-[5.125rem] border-y border-y-[rgba(245,241,232,0.24)] md:flex">
         {navLinks.map((link, i) => (
           <motion.a
             key={link.href}
@@ -74,40 +106,90 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: i * 0.1 }}
-            className="text-xs tracking-widest uppercase text-cream/70 hover:text-cream transition-colors"
+            className="font-[Pilcrow_Rounded] text-[1.125rem] uppercase text-[var(--text-cream)] underline decoration-transparent decoration-[0.0625rem] underline-offset-[0.22em] transition-colors duration-200 hover:decoration-[rgba(245,241,232,0.95)]"
           >
-            {link.label}
+            {link.label.toUpperCase()}
           </motion.a>
         ))}
       </div>
 
-      {/* Heading */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6 text-center">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[43.45%] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat" />
+
+      <div className="absolute left-[calc(47%-7.6875rem)] top-[38.034375rem] z-[3] w-[min(30.172125rem,calc(100vw-2rem))] -translate-y-1/2 px-0 md:top-[49dvh] md:w-[30.172125rem]">
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease, delay: 0.2 }}
-          className="text-cream text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-wide max-w-3xl"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+          }}
+          className="font-poppins text-[1.75rem] font-[200] leading-[2rem] text-[var(--text-cream)] md:text-[3.5rem] md:leading-[4.1875rem]"
         >
-          {heading}
+          {headingWords.map((word) => (
+            <motion.span
+              key={word}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+              }}
+              className="mr-[0.35ch] inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="hidden md:block mt-4 text-cream/70 text-xs sm:text-sm tracking-widest uppercase"
-        >
-          {subheadingDesktop}
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="md:hidden mt-3 text-cream/70 text-xs tracking-widest uppercase"
-        >
-          {subheadingMobile}
-        </motion.p>
       </div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7, ease }}
+        className="absolute left-[calc(50%+5.25rem)] top-[62dvh] z-[3] hidden w-[35.4375rem] font-poppins text-[1.5rem] font-[100] leading-[2.75rem] text-[var(--text-cream)] md:block"
+      >
+        {subheadingDesktop}
+      </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7, ease }}
+        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[calc(4.5625rem+32rem+6rem)] z-[3] w-[calc(100%-3.875rem)] font-poppins text-[1rem] font-[100] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
+      >
+        {subheadingMobile}
+      </motion.p>
+
+      {/* Mobile lion only */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5, ease }}
+        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[calc(4.5625rem+32rem-2.875rem)] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
+      >
+        <Image
+          src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
+          alt=""
+          fill
+          sizes="(max-width: 64em) 71px, 102px"
+          className="object-contain object-left-bottom"
+        />
+      </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.8 }}
+        className="sr-only"
+      >
+        {subheadingDesktop}
+      </motion.p>
+
+      <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="hidden"
+        >
+        {subheadingMobile}
+      </motion.p>
     </section>
   );
 }

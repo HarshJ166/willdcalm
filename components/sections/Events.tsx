@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface EventBlock {
@@ -17,74 +18,86 @@ interface EventsProps {
   blocks: [EventBlock, EventBlock];
 }
 
-const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
 export default function Events({ label, sectionHeading, blocks }: EventsProps) {
+  const [firstBlock, secondBlock] = blocks;
+
   return (
-    <section id="events" className="bg-cream py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-3 sm:space-y-4 mb-10 sm:mb-14 md:mb-16">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="block text-xs tracking-[0.3em] uppercase text-sage font-medium"
-        >
+    <section id="events" className="relative w-full overflow-hidden bg-[#fcfaf4]">
+      <div className="flex flex-col px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.75rem,8vw,4rem)] md:hidden">
+        <span className="mb-[clamp(1.5rem,5vw,2.25rem)] font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.14em] text-[#697a61]">
           {label}
-        </motion.span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease, delay: 0.08 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light text-forest"
-        >
+        </span>
+        <h2 className="m-0 max-w-[19rem] font-poppins text-[clamp(1.5rem,7.5vw,1.75rem)] font-[200] leading-[clamp(2rem,10vw,2.375rem)] text-[#697a61]">
           {sectionHeading}
-        </motion.h2>
+        </h2>
+        <div className="mt-[clamp(2rem,6vw,3rem)] space-y-[clamp(0.875rem,3vw,1.125rem)]">
+          {blocks.map((block) => (
+            <div key={block.heading} className="relative h-[clamp(14.25rem,58vw,15.75rem)] w-full overflow-hidden rounded-[clamp(1.5rem,5vw,2rem)]">
+              <Image src={block.imageSrc} alt={block.imageAlt} fill sizes="100vw" className="object-cover" />
+            </div>
+          ))}
+        </div>
+        <p className="mb-[clamp(1rem,3vw,1.25rem)] mt-[clamp(1.5rem,5vw,2rem)] max-w-[18.75rem] font-poppins text-[0.75rem] font-[200] leading-[1rem] text-[#697a61]">
+          {firstBlock.body}
+        </p>
+        <a href={firstBlock.ctaHref ?? '#faq'} className="inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.875rem] tracking-[0.06em] text-[#65785e]">
+          {firstBlock.ctaLabel ?? 'MORE ABOUT US'}
+          <span className="mt-[0.125rem] h-px w-full bg-[#6b7c6a]/60" />
+        </a>
       </div>
 
-      <div className="max-w-7xl mx-auto space-y-14 sm:space-y-20 md:space-y-24">
-        {blocks.map((block, i) => (
-          <div
-            key={block.heading}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center"
-          >
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease }}
-              className={`aspect-4/3 overflow-hidden rounded-sm ${i % 2 !== 0 ? 'lg:order-2' : ''}`}
-            >
-              <img
-                src={block.imageSrc}
-                alt={block.imageAlt}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-
-            {/* Text */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease, delay: 0.15 }}
-              className={`space-y-4 sm:space-y-5 ${i % 2 !== 0 ? 'lg:order-1' : ''}`}
-            >
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-forest leading-snug">
-                {block.heading}
-              </h3>
-              <p className="text-sm text-forest/60 leading-relaxed">{block.body}</p>
-              <a
-                href={block.ctaHref ?? '#faq'}
-                className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-sage hover:text-forest transition-colors border-b border-sage hover:border-forest pb-0.5"
-              >
-                {block.ctaLabel ?? 'More About Us'}
-              </a>
-            </motion.div>
+      <div className="relative hidden md:block">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex h-[42.625rem] items-center justify-center"
+        >
+          <div className="w-full max-w-[45.9375rem] text-center">
+            <span className="mb-7 block font-poppins text-[0.75rem] uppercase tracking-[0.32em] text-[rgba(59,77,56,0.45)]">
+              {label}
+            </span>
+            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.0125rem] text-[#697a61]">
+              {firstBlock.heading}
+            </h2>
+            <p className="mx-auto mb-[2.1875rem] max-w-[22.725rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
+              {firstBlock.body}
+            </p>
+            <a href={firstBlock.ctaHref ?? '#faq'} className="inline-flex flex-col font-[Pilcrow_Rounded] text-[1.25rem] uppercase text-[#65785e]">
+              {firstBlock.ctaLabel ?? 'MORE ABOUT US'}
+              <span className="mt-[0.375rem] h-px w-full bg-[#6b7c6a]/60" />
+            </a>
           </div>
-        ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+          className="flex h-[42.625rem] items-center justify-center"
+        >
+          <div className="w-full max-w-[45.9375rem] text-center">
+            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.0125rem] text-[#697a61]">
+              {secondBlock.heading}
+            </h2>
+            <p className="mx-auto mb-[2.1875rem] max-w-[22.725rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
+              {secondBlock.body}
+            </p>
+            <a href={secondBlock.ctaHref ?? '#faq'} className="inline-flex flex-col font-[Pilcrow_Rounded] text-[1.25rem] uppercase text-[#65785e]">
+              {secondBlock.ctaLabel ?? 'MORE ABOUT US'}
+              <span className="mt-[0.375rem] h-px w-full bg-[#6b7c6a]/60" />
+            </a>
+          </div>
+        </motion.div>
+
+        <div className="pointer-events-none absolute left-[var(--wc-page-gutter)] top-[33.05%] z-[1] h-[22.5625rem] w-[18rem] overflow-hidden rounded-[1.125rem]">
+          <Image src={firstBlock.imageSrc} alt="" fill sizes="288px" className="object-cover" />
+        </div>
+        <div className="pointer-events-none absolute right-[var(--wc-page-gutter)] top-[51.75%] z-[1] h-[22.5625rem] w-[18rem] overflow-hidden rounded-[1.125rem]">
+          <Image src={secondBlock.imageSrc} alt="" fill sizes="288px" className="object-cover" />
+        </div>
       </div>
     </section>
   );
