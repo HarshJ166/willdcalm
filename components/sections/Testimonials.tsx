@@ -39,7 +39,6 @@ export default function Testimonials({
       return;
     }
 
-    // Pause all others
     Object.entries(videoRefs.current).forEach(([vid, el]) => {
       if (el && vid !== id) {
         el.pause();
@@ -62,36 +61,36 @@ export default function Testimonials({
   const [quoteTop, quoteBottom] = quotes;
 
   return (
-    <section id="testimonials" className="bg-forest py-20 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <section id="testimonials" className="bg-forest py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-16">
+      <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
         <div className="space-y-3">
           <span className="text-xs tracking-[0.3em] uppercase text-cream/40 font-medium">
             Testimonials
           </span>
-          <p className="hidden md:block text-xl md:text-2xl font-light text-cream/80 max-w-2xl leading-relaxed">
+          <p className="hidden md:block text-lg md:text-xl lg:text-2xl font-light text-cream/80 max-w-2xl leading-relaxed">
             Discover authentic guest experiences that reflect the refined hospitality and distinctive
             character of WildCalm, creating lasting impressions.
           </p>
-          <p className="md:hidden text-lg font-light text-cream/80 leading-relaxed">
+          <p className="md:hidden text-base font-light text-cream/80 leading-relaxed">
             WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a
             truly refined stay.
           </p>
         </div>
 
-        {/* Grid: tall left | center col | right col */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+        {/* Mobile: single column stack. md+: 3-col masonry-style grid */}
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:items-start">
           {/* Tall video */}
           <VideoCard
             video={tallVideo}
             isPlaying={playingId === tallVideo.id}
             videoRef={(el) => { videoRefs.current[tallVideo.id] = el; }}
             onToggle={() => handleToggle(tallVideo.id)}
-            className="md:row-span-2 aspect-3/5"
+            className="aspect-video md:aspect-3/5 md:row-span-2"
           />
 
           {/* Center column */}
           <div className="flex flex-col gap-4">
-            <div className="bg-cream/10 p-6 rounded-sm space-y-3">
+            <div className="bg-cream/10 p-4 sm:p-6 rounded-sm space-y-2 sm:space-y-3">
               <p className="text-cream/80 text-sm leading-relaxed italic">
                 &ldquo;{quoteTop.text}&rdquo;
               </p>
@@ -115,7 +114,7 @@ export default function Testimonials({
               onToggle={() => handleToggle(sideVideo.id)}
               className="aspect-video"
             />
-            <div className="bg-cream/10 p-6 rounded-sm space-y-3">
+            <div className="bg-cream/10 p-4 sm:p-6 rounded-sm space-y-2 sm:space-y-3">
               <p className="text-cream/80 text-sm leading-relaxed italic">
                 &ldquo;{quoteBottom.text}&rdquo;
               </p>
@@ -158,8 +157,8 @@ function VideoCard({ video, isPlaying, videoRef, onToggle, className = '' }: Vid
         className="absolute inset-0 flex items-center justify-center group"
       >
         {!isPlaying && (
-          <span className="w-12 h-12 rounded-full bg-cream/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-cream/30 transition-colors">
-            <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+          <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cream/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-cream/30 transition-colors">
+            <svg width="14" height="16" viewBox="0 0 16 18" fill="none">
               <path d="M1 1L15 9L1 17V1Z" fill="white" />
             </svg>
           </span>

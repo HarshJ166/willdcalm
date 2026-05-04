@@ -21,8 +21,8 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Events({ label, sectionHeading, blocks }: EventsProps) {
   return (
-    <section id="events" className="bg-cream py-20 px-6 md:px-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-4 mb-16">
+    <section id="events" className="bg-cream py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto space-y-3 sm:space-y-4 mb-10 sm:mb-14 md:mb-16">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,17 +37,17 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease, delay: 0.08 }}
-          className="text-3xl md:text-4xl font-light text-forest"
+          className="text-2xl sm:text-3xl md:text-4xl font-light text-forest"
         >
           {sectionHeading}
         </motion.h2>
       </div>
 
-      <div className="max-w-7xl mx-auto space-y-24">
+      <div className="max-w-7xl mx-auto space-y-14 sm:space-y-20 md:space-y-24">
         {blocks.map((block, i) => (
           <div
             key={block.heading}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center"
           >
             {/* Image */}
             <motion.div
@@ -70,9 +70,9 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease, delay: 0.15 }}
-              className={`space-y-5 ${i % 2 !== 0 ? 'lg:order-1' : ''}`}
+              className={`space-y-4 sm:space-y-5 ${i % 2 !== 0 ? 'lg:order-1' : ''}`}
             >
-              <h3 className="text-2xl md:text-3xl font-light text-forest leading-snug">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-forest leading-snug">
                 {block.heading}
               </h3>
               <p className="text-sm text-forest/60 leading-relaxed">{block.body}</p>

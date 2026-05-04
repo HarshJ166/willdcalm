@@ -23,18 +23,18 @@ export default function Footer({ col1Links, col2Links, contact, socials }: Foote
   return (
     <footer
       id="footer"
-      className="bg-forest text-cream/80 pt-16 pb-8 px-6 md:px-16"
+      className="bg-forest text-cream/80 pt-12 sm:pt-14 md:pt-16 pb-8 px-4 sm:px-6 md:px-16"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-cream/10">
-        {/* Brand */}
-        <div className="md:col-span-1 space-y-4">
-          <span className="text-cream text-xl tracking-widest uppercase font-light">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 pb-10 sm:pb-12 border-b border-cream/10">
+        {/* Brand — full width on the smallest breakpoint */}
+        <div className="col-span-2 sm:col-span-2 md:col-span-1 space-y-3 sm:space-y-4">
+          <span className="block text-cream text-base sm:text-xl tracking-widest uppercase font-light">
             WildCalm
           </span>
-          <p className="text-sm leading-relaxed text-cream/60 max-w-xs">
+          <p className="text-sm leading-relaxed text-cream/60">
             A luxury nature retreat near Sasan Gir, Gujarat.
           </p>
-          <div className="flex gap-4 pt-2">
+          <div className="flex gap-4 pt-1">
             {socials.map((s) => (
               <a
                 key={s.label}
@@ -51,8 +51,8 @@ export default function Footer({ col1Links, col2Links, contact, socials }: Foote
         </div>
 
         {/* Nav col 1 */}
-        <nav className="space-y-3">
-          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-4">Explore</p>
+        <nav className="space-y-2 sm:space-y-3">
+          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-3 sm:mb-4">Explore</p>
           {col1Links.map((link) => (
             <a
               key={link.href}
@@ -65,8 +65,8 @@ export default function Footer({ col1Links, col2Links, contact, socials }: Foote
         </nav>
 
         {/* Nav col 2 */}
-        <nav className="space-y-3">
-          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-4">Info</p>
+        <nav className="space-y-2 sm:space-y-3">
+          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-3 sm:mb-4">Info</p>
           {col2Links.map((link) => (
             <a
               key={link.href}
@@ -79,19 +79,19 @@ export default function Footer({ col1Links, col2Links, contact, socials }: Foote
         </nav>
 
         {/* Contact */}
-        <address className="not-italic space-y-3 text-sm text-cream/70">
-          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-4">Contact</p>
+        <address className="col-span-2 sm:col-span-1 not-italic space-y-2 sm:space-y-3 text-sm text-cream/70">
+          <p className="text-xs tracking-[0.2em] uppercase text-cream/40 mb-3 sm:mb-4">Contact</p>
           <p className="leading-relaxed">{contact.address}</p>
           <a href={`tel:${contact.phone}`} className="block hover:text-cream transition-colors">
             {contact.phone}
           </a>
-          <a href={`mailto:${contact.email}`} className="block hover:text-cream transition-colors">
+          <a href={`mailto:${contact.email}`} className="block hover:text-cream transition-colors break-all">
             {contact.email}
           </a>
         </address>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 pt-8 text-xs text-cream/40">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 pt-6 sm:pt-8 text-xs text-cream/40">
         <span>&copy; {new Date().getFullYear()} WildCalm. All rights reserved.</span>
         <span>Designed by Netglobes</span>
       </div>

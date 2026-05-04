@@ -70,11 +70,11 @@ function ExperiencePanel({ exp, index, total, scrollYProgress }: PanelProps) {
       }}
       className={isFirst ? 'opacity-100' : ''}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-forest/70 to-transparent" />
+      {/* Gradient overlay — stronger on mobile so text is always readable */}
+      <div className="absolute inset-0 bg-linear-to-t from-forest/80 via-forest/40 to-transparent md:bg-linear-to-r md:from-forest/70 md:to-transparent" />
 
-      {/* Card */}
-      <div className="absolute left-8 md:left-16 bottom-16 md:bottom-20 max-w-sm space-y-4">
+      {/* Content card */}
+      <div className="absolute left-4 sm:left-8 md:left-16 bottom-8 sm:bottom-12 md:bottom-20 right-4 sm:right-auto max-w-xs sm:max-w-sm space-y-3 sm:space-y-4">
         <div className="flex items-center gap-2">
           <img
             src="/design/Home Page/Section 4 - Experiences/experiences icon.svg"
@@ -84,14 +84,14 @@ function ExperiencePanel({ exp, index, total, scrollYProgress }: PanelProps) {
           />
           <span className="text-xs tracking-[0.3em] uppercase text-cream/70">Experiences</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-light text-cream">{exp.title}</h2>
-        <p className="text-sm text-cream/70 leading-relaxed">{exp.description}</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-cream">{exp.title}</h2>
+        <p className="text-xs sm:text-sm text-cream/70 leading-relaxed">{exp.description}</p>
         <a
           href="#faq"
           className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-cream/80 hover:text-cream transition-colors"
         >
           Explore More
-          <span className="block w-8 h-px bg-cream/60" />
+          <span className="block w-6 sm:w-8 h-px bg-cream/60" />
         </a>
       </div>
     </motion.div>

@@ -11,14 +11,14 @@ interface FaqProps {
 
 export default function Faq({ faqs, openId, onToggle }: FaqProps) {
   return (
-    <section id="faq" className="bg-cream py-20 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
+    <section id="faq" className="bg-cream py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12">
         {/* Left */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-3 sm:space-y-4">
           <span className="text-xs tracking-[0.3em] uppercase text-sage font-medium">
             Frequently Asked Questions
           </span>
-          <h2 className="text-3xl md:text-4xl font-light text-forest leading-snug">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-forest leading-snug">
             Thoughtful answers
             <br />
             to considered questions
@@ -39,7 +39,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
                   onClick={() => onToggle(faq.id)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${faq.id}`}
-                  className="w-full flex items-start justify-between gap-4 py-5 text-left"
+                  className="w-full flex items-start justify-between gap-4 py-4 sm:py-5 text-left"
                 >
                   <span className="text-sm md:text-base font-light text-forest leading-snug">
                     {faq.question}
@@ -73,7 +73,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-5 text-sm text-forest/60 leading-relaxed whitespace-pre-line">
+                      <p className="pb-4 sm:pb-5 text-sm text-forest/60 leading-relaxed whitespace-pre-line">
                         {faq.answer}
                       </p>
                     </motion.div>

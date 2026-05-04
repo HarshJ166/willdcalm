@@ -44,7 +44,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   return (
     <section id="the-stay" className="bg-cream">
       <div className="flex flex-col lg:flex-row">
-        {/* Sticky image panel */}
+        {/* Sticky image panel — desktop only */}
         <div className="hidden lg:block sticky top-0 h-screen w-1/2 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.img
@@ -61,13 +61,13 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
         </div>
 
         {/* Scroll list */}
-        <div className="lg:w-1/2 py-20">
+        <div className="lg:w-1/2 py-10 sm:py-14 md:py-20">
           {rooms.map((room, i) => (
             <button
               key={room.id}
               ref={(el) => { itemRefs.current[i] = el; }}
               onClick={() => onRoomChange(i)}
-              className={`w-full text-left px-8 md:px-16 py-10 border-b border-sage/10 transition-colors duration-300 ${
+              className={`w-full text-left px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 md:py-10 border-b border-sage/10 transition-colors duration-300 ${
                 activeIndex === i ? 'bg-sage/5' : 'hover:bg-sage/5'
               }`}
             >
@@ -87,7 +87,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                 0{i + 1}
               </span>
               <h3
-                className={`text-xl md:text-2xl font-light mb-3 transition-colors ${
+                className={`text-lg sm:text-xl md:text-2xl font-light mb-3 transition-colors ${
                   activeIndex === i ? 'text-forest' : 'text-forest/50'
                 }`}
               >
