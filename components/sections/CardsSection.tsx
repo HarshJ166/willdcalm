@@ -14,9 +14,11 @@ interface CardsSectionProps {
 export default function CardsSection({ rooms, activeIndex, onRoomChange }: CardsSectionProps) {
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const rafRef = useRef<number | null>(null);
-  const [visitedIndexes, setVisitedIndexes] = useState<Set<number>>(() => new Set([0]));
+  const [visitedIndexes, setVisitedIndexes] = useState<Set<number>>(() => new Set<number>());
   const detailTriggerIndex = rooms.findIndex((room) => room.id === 'gathering-grove');
   const shouldShowDetails = detailTriggerIndex >= 0 && activeIndex >= detailTriggerIndex;
+  const mobileWindowStart = Math.max(0, Math.min(activeIndex - 2, rooms.length - 3));
+  const mobileWindowRooms = rooms.slice(mobileWindowStart, mobileWindowStart + 3);
 
   useEffect(() => {
     setVisitedIndexes((prev) => {
@@ -63,22 +65,52 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
 
   return (
     <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[56.25rem] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
-      <div className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-8 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
-        <div className="md:sticky md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem] md:overflow-hidden md:rounded-xl">
-          <div className="relative aspect-[394/451] w-full overflow-hidden rounded-xl md:h-full md:aspect-auto">
+      <div className="mx-auto grid w-full max-w-[90rem] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
+        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem]">
+
+          {/* Mobile: 3 stacked images window — only show slots that have been visited */}
+          <div className="flex flex-col gap-1 md:hidden">
+            {mobileWindowRooms.map((room, offset) => {
+              const roomIndex = mobileWindowStart + offset;
+              const isActive = roomIndex === activeIndex;
+              const isVisited = visitedIndexes.has(roomIndex);
+              return (
+                <div
+                  key={room.id}
+                  className={`relative aspect-square w-full overflow-hidden rounded-lg transition-opacity duration-500 ${
+                    !isVisited ? 'opacity-0' : isActive ? 'opacity-100' : 'opacity-35'
+                  }`}
+                >
+                  {isVisited && (
+                    <Image
+                      src={room.image}
+                      alt={room.name}
+                      fill
+                      sizes="(max-width: 48em) 45vw"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop: single crossfade image */}
+          <div className="relative hidden h-full w-full overflow-hidden rounded-xl md:block">
             {rooms.map((room, index) => (
               <Image
                 key={room.id}
                 src={room.image}
                 alt={room.name}
                 fill
-                sizes="(max-width: 48em) 100vw, 394px"
-                className={`object-cover transition-opacity duration-100 ${
+                sizes="394px"
+                className={`object-cover transition-opacity duration-500 ${
                   index === activeIndex ? 'opacity-100' : 'pointer-events-none opacity-0'
                 }`}
               />
             ))}
           </div>
+
         </div>
 
         <div className="min-w-0">
@@ -92,7 +124,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                   ref={(element) => {
                     itemRefs.current[index] = element;
                   }}
-                  className={`flex min-h-[4.25rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(1rem,5vw,1.25rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
+                  className={`flex min-h-[3rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(0.75rem,3.5vw,0.9rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
                     isActive
                       ? 'font-[200] text-[#697a61] opacity-100'
                       : isVisited

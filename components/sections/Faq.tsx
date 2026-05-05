@@ -11,7 +11,7 @@ interface FaqProps {
 
 export default function Faq({ faqs, openId, onToggle }: FaqProps) {
   return (
-    <section id="faq" className="relative w-full bg-[#fcfaf4] px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.5rem,7vw,3.75rem)] md:grid md:min-h-[50rem] md:grid-cols-[32.875rem_40.75rem] md:justify-center md:gap-x-[4.875rem] md:px-[7.375rem] md:pb-[4.75rem] md:pt-[9.375rem]">
+    <section id="faq" className="relative w-full bg-[#fcfaf4] px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.5rem,7vw,3.75rem)] md:px-[var(--wc-page-gutter)] md:py-[clamp(3.75rem,8vw,5rem)] lg:grid lg:min-h-[50rem] lg:grid-cols-[32.875rem_40.75rem] lg:justify-center lg:gap-x-[4.875rem] lg:px-[7.375rem] lg:pb-[4.75rem] lg:pt-[9.375rem]">
       <div className="max-w-[32.875rem]">
         <span className="block font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.14em] text-[#697a61] md:text-[1.25rem] md:normal-case md:tracking-normal">
           FREQUENTLY ASKED QUESTIONS
@@ -26,7 +26,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
         </p>
       </div>
 
-      <div className="mt-8 border-t border-t-[rgba(101,120,94,0.14)] md:mt-0 md:border-t-0">
+      <div className="mt-8 border-t border-t-[rgba(101,120,94,0.14)] lg:mt-0 lg:border-t-0">
         {faqs.map((faq) => {
           const isOpen = openId === faq.id;
           return (

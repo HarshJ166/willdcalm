@@ -124,7 +124,7 @@ export default function Home() {
       <Accommodation
         roomCount={30}
         courtyardCount={15}
-        heading="WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay."
+        heading={<span style={{ fontWeight: 100 }}>WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.</span>}
         body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
         badgeText="ACCOMODATION"
       />
@@ -151,8 +151,8 @@ export default function Home() {
         blocks={[
           {
             heading: 'Celebrate Your Wedding with Timeless Grace and Elegance',
-            body: 'From intimate ceremonies to grand wedding celebrations, every moment is thoughtfully curated with refined details, bespoke arrangements, and seamless hospitality, set against a serene backdrop for truly unforgettable memories.',
-            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/Weddings.webp',
+            body: 'Elevate executive retreats and bespoke destination weddings in a refined setting designed for professional focus and elegant celebrations.',
+            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_photo-an-outdoor-wedding-_2855361114.webp',
             imageAlt: 'WildCalm wedding venue',
             ctaHref: '#faq',
             ctaLabel: 'More About Us',
@@ -160,7 +160,7 @@ export default function Home() {
           {
             heading: 'Corporate Retreats in a Serene and Elegant Destination Setting',
             body: 'Host meaningful gatherings where refined spaces, natural surroundings, and seamless hospitality come together to create truly memorable and effortlessly elevated experiences, thoughtfully designed with attention to every detail.',
-            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/Corporate Retreat.webp',
+            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_2855367418.webp',
             imageAlt: 'WildCalm corporate retreat',
             ctaHref: '#faq',
             ctaLabel: 'More About Us',
@@ -177,7 +177,7 @@ export default function Home() {
 
       <GettingHere
         transport={transport}
-        mapSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.2!2d70.5073!3d21.0823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959054e84de8db1%3A0x0!2sSasan+Talala+Road%2C+opp+Mansadevi+Temple%2C+near+Woods%2C+Sasan+Gir%2C+Gujarat+362150!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin"
+        mapSrc="https://www.google.com/maps?q=Wild+Calm,+Sasan+Gir,+Sasan+Talala+Road+opp+Mansadevi+Temple,+near+Woods,+Sasan+Gir,+Sasan+sasan,+Gujarat+362150&output=embed"
       />
 
       <Faq

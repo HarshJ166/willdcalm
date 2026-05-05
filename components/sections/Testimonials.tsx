@@ -60,16 +60,16 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
       className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] md:min-h-[64.8125rem] md:px-[var(--wc-page-gutter)] md:pt-[5.125rem]"
     >
       {/* Desktop header */}
-      <span className="hidden md:block w-[19.0625rem] font-[Pilcrow_Rounded] text-[1.25rem] font-[400] leading-[3.3125rem] text-[#f5f1e8]">
+      <span className="hidden lg:block w-[19.0625rem] font-[Pilcrow_Rounded] text-[1.25rem] font-[400] leading-[3.3125rem] text-[#f5f1e8]">
         TESTIMONIALS
       </span>
-      <h2 className="mt-[2.875rem] mb-[3.6875rem] hidden w-full max-w-[71.75rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8] md:block">
+      <h2 className="mt-[2.875rem] mb-[3.6875rem] hidden w-full max-w-[71.75rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8] lg:block">
         <span className="block">Discover authentic guest experiences that reflect the refined</span>
         <span className="block">hospitality and distinctive character of Wild Calm, creating lasting impressions</span>
       </h2>
 
-      {/* Mobile header */}
-      <div className="md:hidden">
+      {/* Mobile/Tablet header */}
+      <div className="lg:hidden">
         <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[300] uppercase text-[#f5f1e8]">TESTIMONIALS</span>
         <p className="mt-3 font-poppins text-[1.75rem] font-[100] leading-[2.375rem] text-[#f5f1e8]">
           WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.
@@ -77,7 +77,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
       </div>
 
       {/* Desktop grid */}
-      <div className="hidden w-full items-start gap-[2rem] md:flex">
+      <div className="hidden w-full items-start gap-[2rem] lg:flex">
         {/* Left: tall video */}
         <TestimonialVideoCard
           id={tallVideo.id}
@@ -135,8 +135,8 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </div>
       </div>
 
-      {/* Mobile: Figma layout — arch images alternating with quotes */}
-      <div className="flex flex-col md:hidden">
+      {/* Mobile/Tablet: Figma layout — arch images alternating with quotes */}
+      <div className="flex flex-col lg:hidden">
         {/* Video 1: Anurita */}
         <div className="relative mt-[4.8125rem] h-[23.375rem] w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
           <video

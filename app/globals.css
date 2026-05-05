@@ -264,3 +264,52 @@
     @apply font-sans;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Tablet overrides  (768px – 1023px)
+   Ensures layouts designed for desktop don't
+   overflow on mid-size viewports.
+───────────────────────────────────────────── */
+@media (min-width: 48rem) and (max-width: 63.9375rem) {
+  :root {
+    /* Reduce nav-rail so gutters are tablet-friendly */
+    --wc-nav-rail-inset: 4rem;
+    /* Scale down section gutter for tablet */
+    --wc-page-gutter: clamp(1.5rem, 5vw, 4rem);
+    /* Slightly smaller heading sizes on tablet */
+    --text-xl: clamp(1.5rem, 2.8vw, 2.5rem);
+    --text-2xl: clamp(2rem, 3.8vw, 3.25rem);
+  }
+
+  /* Testimonials: stacked mobile layout on tablet – boost card heights slightly */
+  #testimonials .flex.flex-col > div[class*="h-[23.375rem]"] {
+    height: clamp(20rem, 40vw, 26rem);
+  }
+
+  /* CardsSection: ensure image card isn't too small */
+  #the-stay .md\:sticky {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  /* GettingHere: ensure transport grid items don't overflow */
+  #getting-here .md\:grid-cols-2 {
+    gap: 1rem;
+  }
+
+  /* Ensure all sections have proper horizontal padding */
+  #accommodation,
+  #testimonials,
+  #getting-here,
+  #events,
+  #faq,
+  #plan {
+    padding-left: var(--wc-mobile-nav-pad-x);
+    padding-right: var(--wc-mobile-nav-pad-x);
+  }
+
+  #accommodation {
+    padding-left: var(--wc-page-gutter);
+    padding-right: var(--wc-page-gutter);
+  }
+}

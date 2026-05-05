@@ -12,10 +12,10 @@ interface CTAProps {
 
 export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: CTAProps) {
   return (
-    <section id="plan" className="relative w-full overflow-hidden bg-[#556b4d] md:h-[38.75rem]">
+    <section id="plan" className="relative w-full overflow-hidden bg-[#556b4d] lg:h-[38.75rem]">
 
       {/* Background lion image — desktop only, fills full section */}
-      <div className="absolute inset-0 hidden md:block">
+      <div className="absolute inset-0 hidden lg:block">
         <Image
           src={imageSrc}
           alt="Lion at Sasan Gir"
@@ -27,7 +27,7 @@ export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: 
       </div>
 
       {/* Gradient: solid sage-green on right, fades to transparent towards left — desktop only */}
-      <div className="absolute inset-0 hidden md:block" style={{ background: 'linear-gradient(to left, rgb(85,107,77) 8%, rgba(85,107,77,0.96) 18%, rgba(85,107,77,0.72) 40%, rgba(85,107,77,0) 72%)' }} />
+      <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to left, rgb(85,107,77) 8%, rgba(85,107,77,0.96) 18%, rgba(85,107,77,0.72) 40%, rgba(85,107,77,0) 72%)' }} />
 
       {/* Desktop: text panel — right half */}
       <motion.div
@@ -35,7 +35,7 @@ export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '0px' }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-[3] hidden md:absolute md:flex md:top-1/2 md:left-[49%] md:-translate-y-1/2 md:w-[36.6875rem] md:flex-col"
+        className="relative z-[3] hidden lg:absolute lg:flex lg:top-1/2 lg:left-[49%] lg:-translate-y-1/2 lg:w-[36.6875rem] lg:flex-col"
       >
         <blockquote className="font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8]">
           {quote}
@@ -51,8 +51,8 @@ export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: 
         </a>
       </motion.div>
 
-      {/* Mobile: text on top, image below */}
-      <div className="flex flex-col md:hidden">
+      {/* Mobile/Tablet: text on top, image below */}
+      <div className="flex flex-col lg:hidden">
         <div className="bg-[#65785E] px-[var(--wc-mobile-nav-pad-x)] pb-12 pt-[3.875rem]">
           <blockquote className="w-full font-poppins text-[clamp(1.375rem,6vw,1.75rem)] font-[100] leading-[clamp(1.875rem,8vw,2.375rem)] text-[#f5f1e8]">
             {quote}

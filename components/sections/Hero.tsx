@@ -58,18 +58,20 @@ export default function Hero({
         />
       </motion.div>
 
-      {/* Mobile video card — Figma 298×373 @ 360px canvas; responsive: width=viewport−insets, height=aspect-ratio capped at 48dvh */}
-      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[4.5625rem] z-[2] aspect-[298/373] max-h-[48dvh] w-[calc(100%-3.875rem)] overflow-hidden md:hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="h-full w-full object-cover object-[54%_50%] grayscale"
-        >
-          <source src={videoSrcMobile} type="video/mp4" />
-        </video>
-      </div>
+      {/* Mobile video — FULL WIDTH (Figma match) */}
+<div className="absolute left-0 top-[12dvh] z-[2] w-full md:hidden">
+  <div className="mx-[var(--wc-mobile-nav-pad-x)] overflow-hidden">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-[52dvh] object-cover object-[54%_50%] grayscale"
+    >
+      <source src={videoSrcMobile} type="video/mp4" />
+    </video>
+  </div>
+</div>
 
       {/* Top bar */}
       <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] md:h-[6.511375rem] md:px-[var(--wc-page-gutter)]">
@@ -118,7 +120,7 @@ export default function Hero({
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat md:top-[43.45%]" />
 
-      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[62.36dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
+      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[65dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -155,7 +157,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[76dvh] z-[3] w-[calc(100%-3.875rem)] max-w-[18.3125rem] font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
+        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[78.25dvh] z-[3] w-[19.3125rem] max-w-[17.5rem] font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
       >
         {subheadingMobile}
       </motion.p>
