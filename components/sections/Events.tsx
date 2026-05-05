@@ -27,7 +27,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
         <span className="mb-[clamp(1.5rem,5vw,2.25rem)] font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.14em] text-[#697a61]">
           {label}
         </span>
-        <h2 className="m-0 max-w-[19rem] font-poppins text-[clamp(1.5rem,7.5vw,1.75rem)] font-[200] leading-[clamp(2rem,10vw,2.375rem)] text-[#697a61]">
+        <h2 className="m-0 w-full font-poppins text-[clamp(1.5rem,7.5vw,1.75rem)] font-[200] leading-[clamp(2rem,10vw,2.375rem)] text-[#697a61]">
           {sectionHeading}
         </h2>
         <div className="mt-[clamp(2rem,6vw,3rem)] space-y-[clamp(0.875rem,3vw,1.125rem)]">
@@ -37,7 +37,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
             </div>
           ))}
         </div>
-        <p className="mb-[clamp(1rem,3vw,1.25rem)] mt-[clamp(1.5rem,5vw,2rem)] max-w-[18.75rem] font-poppins text-[0.75rem] font-[200] leading-[1rem] text-[#697a61]">
+        <p className="mb-[clamp(1rem,3vw,1.25rem)] mt-[clamp(1.5rem,5vw,2rem)] w-full font-poppins text-[clamp(0.75rem,3.5vw,0.875rem)] font-[200] leading-[clamp(1rem,4.5vw,1.25rem)] text-[#697a61]">
           {firstBlock.body}
         </p>
         <a href={firstBlock.ctaHref ?? '#faq'} className="inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.875rem] tracking-[0.06em] text-[#65785e]">
@@ -46,7 +46,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
         </a>
       </div>
 
-      <div className="relative hidden md:block">
+      <div className="relative hidden min-h-[85.25rem] md:block">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -55,13 +55,10 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
           className="flex h-[42.625rem] items-center justify-center"
         >
           <div className="w-full max-w-[45.9375rem] text-center">
-            <span className="mb-7 block font-poppins text-[0.75rem] uppercase tracking-[0.32em] text-[rgba(59,77,56,0.45)]">
-              {label}
-            </span>
-            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.0125rem] text-[#697a61]">
+            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#697a61]">
               {firstBlock.heading}
             </h2>
-            <p className="mx-auto mb-[2.1875rem] max-w-[22.725rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
+            <p className="mx-auto mb-[2.125rem] max-w-[30.625rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
               {firstBlock.body}
             </p>
             <a href={firstBlock.ctaHref ?? '#faq'} className="inline-flex flex-col font-[Pilcrow_Rounded] text-[1.25rem] uppercase text-[#65785e]">
@@ -79,10 +76,10 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
           className="flex h-[42.625rem] items-center justify-center"
         >
           <div className="w-full max-w-[45.9375rem] text-center">
-            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.0125rem] text-[#697a61]">
+            <h2 className="mb-[1.875rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#697a61]">
               {secondBlock.heading}
             </h2>
-            <p className="mx-auto mb-[2.1875rem] max-w-[22.725rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
+            <p className="mx-auto mb-[2.125rem] max-w-[30.625rem] font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[rgba(105,122,97,0.72)]">
               {secondBlock.body}
             </p>
             <a href={secondBlock.ctaHref ?? '#faq'} className="inline-flex flex-col font-[Pilcrow_Rounded] text-[1.25rem] uppercase text-[#65785e]">

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Room } from '@/data/homeData';
 
@@ -14,8 +14,25 @@ interface CardsSectionProps {
 export default function CardsSection({ rooms, activeIndex, onRoomChange }: CardsSectionProps) {
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const rafRef = useRef<number | null>(null);
+  const [visitedIndexes, setVisitedIndexes] = useState<Set<number>>(() => new Set([0]));
   const detailTriggerIndex = rooms.findIndex((room) => room.id === 'gathering-grove');
   const shouldShowDetails = detailTriggerIndex >= 0 && activeIndex >= detailTriggerIndex;
+
+  useEffect(() => {
+    setVisitedIndexes((prev) => {
+      if (prev.has(activeIndex)) return prev;
+      const next = new Set(prev);
+      next.add(activeIndex);
+      return next;
+    });
+  }, [activeIndex]);
+
+  useEffect(() => {
+    rooms.forEach((room) => {
+      const img = new window.Image();
+      img.src = room.image;
+    });
+  }, [rooms]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -45,35 +62,37 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   }, [onRoomChange]);
 
   return (
-    <section id="the-stay" className="w-full bg-[#f5f3ed] px-5 pb-14 pt-10 md:px-0 md:pb-[12rem] md:pt-[10rem]">
+    <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[56.25rem] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
       <div className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-8 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
         <div className="md:sticky md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem] md:overflow-hidden md:rounded-xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={rooms[activeIndex]?.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: [0.33, 1, 0.32, 1] }}
-              className="relative aspect-[394/451] w-full overflow-hidden rounded-xl md:h-full md:aspect-auto"
-            >
-              <Image src={rooms[activeIndex]?.image ?? ''} alt={rooms[activeIndex]?.name ?? ''} fill sizes="(max-width: 48em) 100vw, 394px" className="object-cover" />
-            </motion.div>
-          </AnimatePresence>
+          <div className="relative aspect-[394/451] w-full overflow-hidden rounded-xl md:h-full md:aspect-auto">
+            {rooms.map((room, index) => (
+              <Image
+                key={room.id}
+                src={room.image}
+                alt={room.name}
+                fill
+                sizes="(max-width: 48em) 100vw, 394px"
+                className={`object-cover transition-opacity duration-100 ${
+                  index === activeIndex ? 'opacity-100' : 'pointer-events-none opacity-0'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="min-w-0">
           <ul className="flex flex-col">
             {rooms.map((room, index) => {
               const isActive = index === activeIndex;
-              const isVisited = index < activeIndex;
+              const isVisited = !isActive && visitedIndexes.has(index);
               return (
                 <li
                   key={room.id}
                   ref={(element) => {
                     itemRefs.current[index] = element;
                   }}
-                  className={`flex min-h-[4.25rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[1.25rem] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
+                  className={`flex min-h-[4.25rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(1rem,5vw,1.25rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
                     isActive
                       ? 'font-[200] text-[#697a61] opacity-100'
                       : isVisited

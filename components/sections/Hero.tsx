@@ -28,7 +28,7 @@ export default function Hero({
   const headingWords = heading.split(' ');
 
   return (
-    <section id="home" className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden bg-[#5a6b53] bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center md:fixed md:inset-x-0 md:top-0 md:z-0 md:overflow-visible">
+    <section id="home" className="fixed inset-x-0 top-0 z-0 h-[100dvh] w-full overflow-hidden bg-[#5a6b53] bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center">
       {/* Desktop video wrapper — lion positioned separately on section */}
       <div className="absolute left-0 top-[15rem] z-[2] hidden h-[37.25rem] w-[44.625rem] overflow-hidden md:block">
         <video
@@ -47,7 +47,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute left-[42.3125rem] top-[90dvh] z-[4] hidden h-[64.12px] w-[101.45px] md:block"
+        className="absolute left-[42.3125rem] top-[91dvh] z-[4] hidden h-[64.12px] w-[101.45px] md:block"
       >
         <Image
           src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
@@ -58,15 +58,18 @@ export default function Hero({
         />
       </motion.div>
 
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[4.5625rem] z-[2] h-[32rem] w-[calc(100%-3.875rem)] object-cover object-[54%_50%] grayscale md:hidden"
-      >
-        <source src={videoSrcMobile} type="video/mp4" />
-      </video>
+      {/* Mobile video card — Figma 298×373 @ 360px canvas; responsive: width=viewport−insets, height=aspect-ratio capped at 48dvh */}
+      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[4.5625rem] z-[2] aspect-[298/373] max-h-[48dvh] w-[calc(100%-3.875rem)] overflow-hidden md:hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover object-[54%_50%] grayscale"
+        >
+          <source src={videoSrcMobile} type="video/mp4" />
+        </video>
+      </div>
 
       {/* Top bar */}
       <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] md:h-[6.511375rem] md:px-[var(--wc-page-gutter)]">
@@ -113,9 +116,9 @@ export default function Hero({
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[43.45%] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat md:top-[43.45%]" />
 
-      <div className="absolute left-[calc(47%-7.6875rem)] top-[38.034375rem] z-[3] w-[min(30.172125rem,calc(100vw-2rem))] -translate-y-1/2 px-0 md:top-[49dvh] md:w-[30.172125rem]">
+      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[62.36dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -123,7 +126,7 @@ export default function Hero({
             hidden: {},
             visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
           }}
-          className="font-poppins text-[1.75rem] font-[200] leading-[2rem] text-[var(--text-cream)] md:text-[3.5rem] md:leading-[4.1875rem]"
+          className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] md:font-[200] md:text-[3.5rem] md:leading-[4.1875rem]"
         >
           {headingWords.map((word) => (
             <motion.span
@@ -144,7 +147,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[calc(50%+5.25rem)] top-[62dvh] z-[3] hidden w-[35.4375rem] font-poppins text-[1.5rem] font-[100] leading-[2.75rem] text-[var(--text-cream)] md:block"
+        className="absolute left-[calc(50%+5.25rem)] top-[62dvh] z-[3] hidden w-[30.4375rem] font-poppins text-[1.5rem] font-[200] leading-[2.75rem] text-[var(--text-cream)] md:block"
       >
         {subheadingDesktop}
       </motion.p>
@@ -152,7 +155,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[calc(4.5625rem+32rem+6rem)] z-[3] w-[calc(100%-3.875rem)] font-poppins text-[1rem] font-[100] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
+        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[76dvh] z-[3] w-[calc(100%-3.875rem)] max-w-[18.3125rem] font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
       >
         {subheadingMobile}
       </motion.p>
@@ -162,7 +165,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[calc(4.5625rem+32rem-2.875rem)] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
+        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[54.16dvh] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
       >
         <Image
           src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"

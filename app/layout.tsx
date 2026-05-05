@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const poppins = localFont({
   src: [
+    { path: "../public/fonts/Poppins-Thin.ttf", weight: "100", style: "normal" },
+    { path: "../public/fonts/Poppins-ExtraLight.ttf", weight: "200", style: "normal" },
     { path: "../public/fonts/Poppins-Light.ttf", weight: "300", style: "normal" },
     { path: "../public/fonts/Poppins-Regular.ttf", weight: "400", style: "normal" },
     { path: "../public/fonts/Poppins-Medium.ttf", weight: "500", style: "normal" },
@@ -25,6 +28,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  minimumScale: 1,
 };
 
 export default function RootLayout({
@@ -33,9 +37,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
+    <html lang="en" className={`${poppins.variable} h-full w-full antialiased bg-[#5f7058]`}>
       <body className="min-h-full flex flex-col overflow-x-clip bg-[var(--sage-hero)] text-[var(--text-cream)] font-poppins">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

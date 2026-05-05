@@ -165,7 +165,7 @@
   --sage-hero: #5f7058;
   --wc-cta-mobile-panel: #748464;
   --wc-footer-mobile-outer-bg: rgba(101, 120, 94, 0.95);
-  --wc-footer-mobile-bg: #53684f;
+  --wc-footer-mobile-bg: #65785e;
   --wc-footer-mobile-pad-x: 2rem;
   --sage-intro: #65785e;
   --sage-accom: #909d88;
@@ -256,8 +256,9 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  html, body {
+    @apply text-foreground;
+    background-color: #5f7058;
   }
   html {
     @apply font-sans;
