@@ -95,7 +95,8 @@ function ExperiencePanel({ exp, index, isActive, panelRef }: PanelProps) {
       >
           <div className="relative w-full border border-white/30 bg-[rgba(245,241,232,0.35)] px-8 pb-5 pt-14 backdrop-blur-[20px] md:mb-[clamp(2rem,4vw,6.5rem)] md:h-auto md:min-h-[28.125rem] md:w-[min(40.4375rem,90%)] md:rounded-[1.5625rem] md:px-[clamp(2rem,4vw,3.875rem)] md:pb-11 md:pt-[3.25rem] lg:h-[28.125rem] lg:w-[40.4375rem] lg:mb-[6.5rem] lg:px-[3.875rem]">
           <div className="absolute right-8 top-4 flex items-center gap-2 font-[Pilcrow_Rounded] text-[0.875rem] font-[400] tracking-[0.06em] uppercase text-[#f5f1e8] md:right-[3.8125rem] md:top-[2.5625rem] md:text-[1.25rem] md:font-[400] md:tracking-normal md:text-[#f5f1e8]">
-            <Image src="/design/Home Page/Section 4 - Experiences/experiences icon.svg" alt="" width={24} height={19} className="h-[0.8125rem] w-[0.8125rem] md:h-[1.1875rem] md:w-[1.5rem]" />
+            <Image src="/design/Home Page/Section 4 - Experiences/experiences icon.svg" alt="" width={24} height={19} className="h-[0.8125rem] w-[0.8125rem] md:h-[1.187
+            5rem] md:w-[1.5rem]" />
             <span>EXPERIENCES</span>
           </div>
           <h2 className="mt-0 max-w-[33rem] font-poppins text-[1.25rem] font-[200] leading-[1.875rem] text-[#f5f1e8] md:mt-[4.15rem] md:text-[2.125rem] md:font-[300] md:leading-[1.875rem]">

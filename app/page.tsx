@@ -121,13 +121,17 @@ export default function Home() {
         body="Wildlife Sasan Gir Forest Gir National Park WildCalm Retreat Nature Safari Asiatic Lion Forest Gujarat India."
       />
 
-      <Accommodation
-        roomCount={30}
-        courtyardCount={15}
-        heading={<span style={{ fontWeight: 100 }}>WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.</span>}
-        body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
-        badgeText="ACCOMODATION"
-      />
+<Accommodation
+  roomCount={30}
+  courtyardCount={15}
+  heading={
+    <span className="font-thin">
+      WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.
+    </span>
+  }
+  body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
+  badgeText="ACCOMODATION"
+/>
 
       <CardsSection
         rooms={accommodationRooms}

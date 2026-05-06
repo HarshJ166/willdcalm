@@ -108,8 +108,8 @@ export default function Navbar({
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-auto md:h-auto md:max-h-[min(var(--wc-nav-overlay-desktop-panel-max-h),90dvh)] h-[80vh] max-h-[80dvh]"
-            style={{ maxHeight: '80dvh' }}
+            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden"
+            // style={{ maxHeight: '80dvh' }}
           >
             <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[7.375rem]">
               <button
@@ -134,7 +134,7 @@ export default function Navbar({
                 BOOK NOW
               </a>
             </div>
-            <div className="relative min-h-0 flex-1 bg-[#f6f2e9] md:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
+            <div className="flex h-full flex-col justify-between bg-[#f6f2e9] md:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
               {/* Mobile menu content — 80:20 split */}
               <div className="relative flex h-full flex-row md:hidden">
                 {/* Left 80%: nav and copyright */}
@@ -158,7 +158,7 @@ export default function Navbar({
                             hidden: { opacity: 0, y: 14 },
                             visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
                           }}
-                          className={`py-[0.2rem] text-left font-[Pilcrow_Rounded] text-[1rem] font-normal uppercase tracking-[0.04em] border-b border-[#d6d3c7] w-[98%] last:border-b-0 transition-colors ${
+                          className={`py-[0.2rem] text-left font-[Pilcrow_Rounded] text-[1.25rem] font-normal uppercase tracking-[0.04em] border-b border-[#d6d3c7] w-[98%] last:border-b-0 transition-colors ${
                             isActive ? 'text-[#65785e]' : 'text-[rgba(101,120,94,0.4)]'
                           }`}
                         >
@@ -188,7 +188,7 @@ export default function Navbar({
               {/* Desktop menu content */}
               <div className="hidden md:grid min-h-0 flex-1 grid-cols-[minmax(0,836fr)_minmax(0,604fr)] bg-[var(--wc-nav-overlay-menu-panel-bg)]">
                 {/* Left column — nav links + copyright */}
-                <div className="z-10 flex min-h-0 flex-col justify-between pl-[clamp(1.5rem,8.40278vw,7.5625rem)] pr-8 pb-8 pt-[clamp(1.25rem,1.875vw,1.6875rem)]">
+                <div className="z-10 flex min-h-0 flex-col justify-between pl-[clamp(1.5rem,8.40278vw,7.5625rem)] pr-8 pb-8 pt-[clamp(1rem,1.875vw,1.6875rem)]">
                   <nav className="flex flex-col gap-[1.375rem]">
                     {menuLinks.map((link) => {
                       const isActive =
@@ -199,7 +199,7 @@ export default function Navbar({
                           key={link.href}
                           href={link.href}
                           onClick={onMenuClose}
-                          className={`font-[Pilcrow_Rounded] text-[1.5rem] font-normal uppercase leading-none tracking-[0.03em] transition-colors duration-150 ${
+                          className={`font-[Pilcrow_Rounded] text-[1.35rem] font-normal uppercase leading-none tracking-[0.03em] transition-colors duration-150 ${
                             isActive ? 'text-[#65785e]' : 'text-[rgba(101,120,94,0.4)]'
                           }`}
                         >

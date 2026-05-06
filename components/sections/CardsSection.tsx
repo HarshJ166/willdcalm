@@ -14,7 +14,7 @@ interface CardsSectionProps {
 export default function CardsSection({ rooms, activeIndex, onRoomChange }: CardsSectionProps) {
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const rafRef = useRef<number | null>(null);
-  const [visitedIndexes, setVisitedIndexes] = useState<Set<number>>(() => new Set<number>());
+  const [visitedIndexes, setVisitedIndexes] = useState<Set<number>>(() => new Set([0]));
   const detailTriggerIndex = rooms.findIndex((room) => room.id === 'gathering-grove');
   const shouldShowDetails = detailTriggerIndex >= 0 && activeIndex >= detailTriggerIndex;
   const mobileWindowStart = Math.max(0, Math.min(activeIndex - 2, rooms.length - 3));
@@ -68,28 +68,25 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
       <div className="mx-auto grid w-full max-w-[90rem] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
         <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem]">
 
-          {/* Mobile: 3 stacked images window — only show slots that have been visited */}
+          {/* Mobile: 3 stacked images window */}
           <div className="flex flex-col gap-1 md:hidden">
             {mobileWindowRooms.map((room, offset) => {
               const roomIndex = mobileWindowStart + offset;
               const isActive = roomIndex === activeIndex;
-              const isVisited = visitedIndexes.has(roomIndex);
               return (
                 <div
                   key={room.id}
                   className={`relative aspect-square w-full overflow-hidden rounded-lg transition-opacity duration-500 ${
-                    !isVisited ? 'opacity-0' : isActive ? 'opacity-100' : 'opacity-35'
+                    isActive ? 'opacity-100' : 'opacity-35'
                   }`}
                 >
-                  {isVisited && (
-                    <Image
-                      src={room.image}
-                      alt={room.name}
-                      fill
-                      sizes="(max-width: 48em) 45vw"
-                      className="object-cover"
-                    />
-                  )}
+                  <Image
+                    src={room.image}
+                    alt={room.name}
+                    fill
+                    sizes="(max-width: 48em) 45vw"
+                    className="object-cover"
+                  />
                 </div>
               );
             })}
@@ -148,11 +145,9 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                 transition={{ duration: 0.4, ease: [0.33, 1, 0.32, 1] }}
                 className="mt-7 max-w-[40.875rem]"
               >
-                <p className="font-poppins text-[0.75rem] font-[200] leading-[1.6] text-[rgba(105,122,97,0.86)] md:text-[1.25rem] md:leading-[1.22]">
+                <p className="font-poppins text-[0.75rem] max-w-[28rem] font-[200] leading-[1.6] text-[rgba(105,122,97,0.86)] md:text-[1.25rem] md:leading-[1.22]">
                   A refined collection of rooms and private
-                  <br />
                   pool villas, crafted for elevated comfort,
-                  <br />
                   privacy, and immersive nature.
                 </p>
                 <a href="#faq" className="mt-5 inline-block border-b border-b-[rgba(101,120,94,0.55)] font-[Pilcrow_Rounded] text-[0.875rem] uppercase text-[#65785e] md:text-[1.25rem]">

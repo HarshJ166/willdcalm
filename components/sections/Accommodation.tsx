@@ -45,11 +45,11 @@ function AnimatedStat({ target, suffix = '', label }: StatProps) {
 interface AccommodationProps {
   roomCount: number;
   courtyardCount: number;
-  heading: string;
   body: string;
   badgeText: string;
   imageSrc?: string;
   emblemSrc?: string;
+  heading: React.ReactNode;
 }
 
 export default function Accommodation({

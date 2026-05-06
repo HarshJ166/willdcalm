@@ -105,8 +105,8 @@ export const experiences: Experience[] = [
     id: 'gir-safari',
     title: 'Gir Safari',
     description: 'Experience the thrill of a jeep safari through Gir National Park, where rare Asiatic lions and diverse wildlife bring the forest to life in an unforgettable encounter.',
-    image: '/design/Home Page/Section 4 - Experiences/Desktop/Gir Safari-converted-from-jpg.webp',
-    mobileImage: '/design/Home Page/Section 4 - Experiences/Mobile Vesion/Gir Safari.webp',
+    image: '/design/Home Page/Section 4 - Experiences/Desktop/Gir Safari-converted-from-jpg-v2.webp',
+    mobileImage: '/design/Home Page/Section 4 - Experiences/Mobile Vesion/Gir Safari-v2.webp',
   },
   {
     id: 'nature-trails',
