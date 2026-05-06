@@ -22,12 +22,14 @@ export const metadata: Metadata = {
   icons: {
     icon: "/design/Fevicon.svg",
     shortcut: "/design/Fevicon.svg",
+    apple: "/apple-touch-icon.png", // mobile fix
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -36,10 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full w-full antialiased bg-[#5f7058]`}>
-      <body className="min-h-full flex flex-col overflow-x-clip bg-[var(--sage-hero)] text-[var(--text-cream)] font-poppins">
-        <SmoothScroll>{children}</SmoothScroll>
-      </body>
-    </html>
+<html lang="en" className={`${poppins.variable} h-full w-full antialiased bg-[#5f7058]`}>
+  <body className="min-h-full flex flex-col overflow-x-clip bg-[var(--sage-hero)] text-[var(--text-cream)] font-poppins">
+    
+    <div className="mx-auto w-full max-w-[1440px]">
+      <SmoothScroll>{children}</SmoothScroll>
+    </div>
+
+  </body>
+</html>
   );
 }
