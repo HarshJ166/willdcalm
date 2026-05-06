@@ -41,9 +41,7 @@ export default function RootLayout({
 <html lang="en" className={`${poppins.variable} h-full w-full antialiased bg-[#5f7058]`}>
   <body className="min-h-full flex flex-col overflow-x-clip bg-[var(--sage-hero)] text-[var(--text-cream)] font-poppins">
     
-    <div className="mx-auto w-full max-w-[1440px]">
       <SmoothScroll>{children}</SmoothScroll>
-    </div>
 
   </body>
 </html>

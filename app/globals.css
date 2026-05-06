@@ -259,6 +259,8 @@
   html, body {
     @apply text-foreground;
     background-color: #5f7058;
+    width: 100%;
+    overflow-x: hidden;
   }
   html {
     @apply font-sans;
