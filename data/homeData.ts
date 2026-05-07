@@ -64,7 +64,7 @@ export const menuLinks: NavLink[] = [
 export const accommodationRooms: Room[] = [
   {
     id: 'calm-signature',
-    name: 'The Calm Signature',
+    name: 'The WildCalm Signature',
     description: 'A premium signature suite offering an unrivalled blend of luxury and serenity. Floor-to-ceiling views of the forest canopy, curated furnishings, and personalised butler service define the most exclusive stay at WildCalm.',
     image: '/design/Home Page/Section 3 - Accomodation/Stay_The  Wild Calm Signature-converted-from-jpg.webp',
   },
@@ -78,7 +78,7 @@ export const accommodationRooms: Room[] = [
     id: 'gathering-grove',
     name: 'The Gathering Grove',
     description: 'Designed for intimate gatherings, the Gathering Grove accommodates families or small groups within a connected yet private setting.',
-    image: '/design/Home Page/Section 3 - Accomodation/Stay_The Gathering Groove-converted-from-jpg.webp',
+    image: '/design/Home Page/Section 3 - Accomodation/Stay_The Gathering Groove.webp',
   },
   {
     id: 'wild-cub',
@@ -90,13 +90,13 @@ export const accommodationRooms: Room[] = [
     id: 'wild-nest',
     name: 'Wild Nest & Calm Nest',
     description: 'Elevated treetop nests offering panoramic forest vistas. Accessible via wooden walkways, these rooms bring guests closest to the canopy.',
-    image: '/design/Home Page/Section 3 - Accomodation/Stay_Wild Nest & Calm Nest-converted-from-jpg.webp',
+    image: '/design/Home Page/Section 3 - Accomodation/Stay_Wild Nest & Calm Nest.webp',
   },
   {
     id: 'courtyard-rooms',
     name: 'Courtyard Rooms',
     description: "Classic courtyard-facing rooms with traditional yet refined interiors. Each opens onto a shared green courtyard, providing a sense of community within the resort's tranquil landscape.",
-    image: '/design/Home Page/Section 3 - Accomodation/Stay_The Courtyard Rooms-converted-from-jpg.webp',
+    image: '/design/Home Page/Section 3 - Accomodation/Stay_The Courtyard Rooms.webp',
   },
 ];
 
@@ -105,8 +105,8 @@ export const experiences: Experience[] = [
     id: 'gir-safari',
     title: 'Gir Safari',
     description: 'Experience the thrill of a jeep safari through Gir National Park, where rare Asiatic lions and diverse wildlife bring the forest to life in an unforgettable encounter.',
-    image: '/design/Home Page/Section 4 - Experiences/Desktop/Gir Safari-converted-from-jpg.webp',
-    mobileImage: '/design/Home Page/Section 4 - Experiences/Mobile Vesion/Gir Safari.webp',
+    image: '/design/Home Page/Section 4 - Experiences/Desktop/Gir Safari-converted-from-jpg-v2.webp',
+    mobileImage: '/design/Home Page/Section 4 - Experiences/Mobile Vesion/Gir Safari-v2.webp',
   },
   {
     id: 'nature-trails',

@@ -98,7 +98,6 @@ export default function Navbar({
           >
             BOOK NOW
           </a>
-
         </div>
       </motion.nav>
 
@@ -109,9 +108,10 @@ export default function Navbar({
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 z-[4000] flex h-[var(--wc-nav-overlay-mobile-height-fallback)] max-h-[var(--wc-nav-overlay-mobile-height-fallback)] flex-col overflow-hidden bg-transparent md:h-auto md:max-h-[min(var(--wc-nav-overlay-desktop-panel-max-h),90dvh)]"
+            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden"
+            // style={{ maxHeight: '80dvh' }}
           >
-            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[7.375rem]">
+            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[7.375rem]">
               <button
                 onClick={onMenuClose}
                 className="justify-self-start text-[rgba(101,120,94,0.78)] transition-colors duration-200 hover:text-[rgba(86,98,82,0.95)]"
@@ -134,48 +134,97 @@ export default function Navbar({
                 BOOK NOW
               </a>
             </div>
-            <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,80fr)_minmax(0,20fr)] bg-[var(--wc-nav-overlay-mobile-fill)] md:grid-cols-[minmax(0,836fr)_minmax(0,604fr)] md:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
-              <div className="z-10 flex min-h-0 flex-col justify-between px-[var(--wc-nav-overlay-menu-pad-x)] pb-7 pt-[clamp(0.75rem,1.875vw,1.6875rem)] md:pl-[clamp(1.5rem,8.40278vw,7.5625rem)]">
-                <motion.nav
-                  initial="hidden"
-                  animate="visible"
-                  variants={{ visible: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } }, hidden: {} }}
-                  className="flex flex-col"
-                >
-                  {menuLinks.map((link) => {
-                    const isActive =
-                      activeHash === link.href || (link.href === '#the-stay' && activeHash === '#accommodation');
-                    return (
-                      <motion.a
-                        key={link.href}
-                        href={link.href}
-                        onClick={onMenuClose}
-                        variants={{
-                          hidden: { opacity: 0, y: 14 },
-                          visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-                        }}
-                        className={`border-b border-b-[rgba(101,120,94,0.18)] py-[0.6875rem] font-[Pilcrow_Rounded] text-[clamp(1.0625rem,3.4vw,1.5rem)] uppercase leading-[1.15] transition-colors ${
-                          isActive ? 'text-[#65785e]' : 'text-[rgba(101,120,94,0.4)]'
-                        }`}
-                      >
-                        {link.label.toUpperCase()}
-                      </motion.a>
-                    );
-                  })}
-                </motion.nav>
-                <p className="mt-6 font-poppins text-[clamp(0.875rem,2.6vw,1.125rem)] font-light leading-[1.45] text-[rgba(101,120,94,0.58)]">
-                  <span>&#169;</span> 2026 All Rights Reserved
-                </p>
+            <div className="flex h-full flex-col justify-between bg-[#f6f2e9] md:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
+              {/* Mobile menu content — 80:20 split */}
+              <div className="relative flex h-full flex-row md:hidden">
+                {/* Left 80%: nav and copyright */}
+                <div className="flex flex-col justify-between w-[80%] px-6 pb-6 pt-4">
+                  <motion.nav
+                    initial="hidden"
+                    animate="visible"
+                    variants={{ visible: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } }, hidden: {} }}
+                    className="flex flex-col"
+                  >
+                    {menuLinks.map((link) => {
+                      const isActive =
+                        activeHash === link.href ||
+                        (link.href === '#the-stay' && activeHash === '#accommodation');
+                      return (
+                        <motion.a
+                          key={link.href}
+                          href={link.href}
+                          onClick={onMenuClose}
+                          variants={{
+                            hidden: { opacity: 0, y: 14 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+                          }}
+                          className={`py-[0.2rem] text-left font-[Pilcrow_Rounded] text-[1.25rem] font-normal uppercase tracking-[0.04em] border-b border-[#d6d3c7] w-[98%] last:border-b-0 transition-colors ${
+                            isActive ? 'text-[#65785e]' : 'text-[rgba(101,120,94,0.4)]'
+                          }`}
+                        >
+                          {link.label}
+                        </motion.a>
+                      );
+                    })}
+                  </motion.nav>
+                  <div className="relative z-10 mt-6 mb-2">
+                    <span className="font-[Pilcrow_Rounded] text-[0.8125rem] tracking-[0.04em] text-[rgba(101,120,94,0.6)]">
+                      © 2026 All Rights Reserved
+                    </span>
+                  </div>
+                </div>
+                {/* Right 20%: empty, but lion art can overlap */}
+                <div className="relative w-[20%] flex items-end">
+                  <div className="pointer-events-none select-none absolute bottom-[1.5rem] right-[-30%]" style={{ width: '197.96px', height: '121px' }}>
+                    <img
+                      src="/design/Menu/Lion%20line%20art-dark%20.svg"
+                      alt=""
+                      className="object-contain"
+                      style={{ width: '197.96px', height: '121px' }}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="relative overflow-hidden">
-                <div className="absolute bottom-0 left-0 right-[-32%] top-auto h-[min(36vmin,12.5rem)] md:bottom-0 md:left-[17.55%] md:right-[-16.56%] md:top-[5.65%] md:h-auto">
-                  <Image
-                    src="/design/Menu/Lion%20line%20art-dark%20.svg"
-                    alt=""
-                    fill
-                    sizes="(max-width: 48em) 22vw, 40vw"
-                    className="object-contain object-[96%_100%] opacity-50 md:object-[56%_48%] md:opacity-100"
-                  />
+              {/* Desktop menu content */}
+              <div className="hidden md:grid min-h-0 flex-1 grid-cols-[minmax(0,836fr)_minmax(0,604fr)] bg-[var(--wc-nav-overlay-menu-panel-bg)]">
+                {/* Left column — nav links + copyright */}
+                <div className="z-10 flex min-h-0 flex-col justify-between pl-[clamp(1.5rem,8.40278vw,7.5625rem)] pr-8 pb-8 pt-[clamp(1rem,1.875vw,1.6875rem)]">
+                  <nav className="flex flex-col gap-[1.375rem]">
+                    {menuLinks.map((link) => {
+                      const isActive =
+                        activeHash === link.href ||
+                        (link.href === '#the-stay' && activeHash === '#accommodation');
+                      return (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          onClick={onMenuClose}
+                          className={`font-[Pilcrow_Rounded] text-[1.35rem] font-normal uppercase leading-none tracking-[0.03em] transition-colors duration-150 ${
+                            isActive ? 'text-[#65785e]' : 'text-[rgba(101,120,94,0.4)]'
+                          }`}
+                        >
+                          {link.label}
+                        </a>
+                      );
+                    })}
+                  </nav>
+                  <div className="flex items-center gap-[0.375rem]">
+                    <span className="font-[Pilcrow_Rounded] text-[1.125rem] font-normal text-[rgba(101,120,94,0.55)] mt-8">
+                      © 2026 All Rights Reserved
+                    </span>
+                  </div>
+                </div>
+                {/* Right column — lion art */}
+                <div className="relative overflow-hidden">
+                  <div className="absolute inset-[5.65%_-16.56%_20.7%_17.55%]">
+                    <Image
+                      src="/design/Menu/Lion%20line%20art-dark%20.svg"
+                      alt=""
+                      fill
+                      sizes="40vw"
+                      className="object-contain object-[56%_48%]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

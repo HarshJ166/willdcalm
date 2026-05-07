@@ -12,38 +12,66 @@ interface CTAProps {
 
 export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: CTAProps) {
   return (
-    <section id="plan" className="relative w-full overflow-hidden bg-[#f5f1e8] md:h-[38.75rem]">
-      <div className="absolute inset-0 hidden md:block">
-        <Image src={imageSrc} alt="Lion at Sasan Gir" fill sizes="100vw" className="object-cover object-[22%_center] brightness-95 contrast-90 saturate-[0.86]" />
-      </div>
-      <div className="absolute inset-0 hidden bg-gradient-to-r from-[rgba(74,92,63,0.03)] via-[rgba(74,92,63,0.28)] to-[rgba(74,92,63,0.64)] md:block" />
-      <div className="absolute inset-0 hidden bg-[radial-gradient(45%_52%_at_52%_56%,rgba(198,210,190,0.16)_0%,rgba(198,210,190,0.08)_38%,rgba(198,210,190,0)_72%)] md:block" />
+    <section id="plan" className="relative w-full overflow-hidden bg-[#556b4d] lg:h-[38.75rem]">
 
-      <div className="relative z-[3] flex flex-col md:absolute md:left-[60%] md:top-1/2 md:w-[min(40%,36.6875rem)] md:-translate-y-1/2">
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[var(--wc-cta-mobile-panel)] px-[var(--wc-mobile-nav-pad-x)] pb-12 pt-[3.875rem] md:bg-transparent md:px-0 md:pb-0 md:pt-0"
-        >
-          <blockquote className="max-w-[19.4375rem] font-poppins text-[1.75rem] font-[200] leading-[2.375rem] text-[#f5f1e8] md:max-w-none md:text-[clamp(3.25rem,5vw,4.875rem)] md:leading-[1.18]">
+      {/* Background lion image — desktop only, fills full section */}
+      <div className="absolute inset-0 hidden lg:block">
+        <Image
+          src={imageSrc}
+          alt="Lion at Sasan Gir"
+          fill
+          sizes="100vw"
+          className="object-cover object-[18%_center]"
+          priority={false}
+        />
+      </div>
+
+      {/* Gradient: solid sage-green on right, fades to transparent towards left — desktop only */}
+      <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to left, rgb(85,107,77) 8%, rgba(85,107,77,0.96) 18%, rgba(85,107,77,0.72) 40%, rgba(85,107,77,0) 72%)' }} />
+
+      {/* Desktop: text panel — right half */}
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '0px' }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-[3] hidden lg:absolute lg:flex lg:top-1/2 lg:left-[49%] lg:-translate-y-1/2 lg:w-[36.6875rem] lg:flex-col"
+      >
+        <blockquote className="font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8]">
+          {quote}
+        </blockquote>
+        {quoteAuthor && (
+          <cite className="mt-2 block font-poppins text-[0.875rem] font-[300] uppercase not-italic tracking-[0.08em] text-[rgba(245,241,232,0.78)]">
+            {quoteAuthor}
+          </cite>
+        )}
+        <a href={ctaHref} className="mt-[3.25rem] inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[1.25rem] uppercase leading-[1.875rem] text-[#f5f1e8]">
+          PLAN YOUR STAY
+          <span className="h-px w-full bg-[#f5f1e8] opacity-80" />
+        </a>
+      </motion.div>
+
+      {/* Mobile/Tablet: text on top, image below */}
+      <div className="flex flex-col lg:hidden">
+        <div className="bg-[#65785E] px-[var(--wc-mobile-nav-pad-x)] pb-12 pt-[3.875rem]">
+          <blockquote className="w-full font-poppins text-[clamp(1.375rem,6vw,1.75rem)] font-[100] leading-[clamp(1.875rem,8vw,2.375rem)] text-[#f5f1e8]">
             {quote}
           </blockquote>
-          {quoteAuthor ? (
-            <cite className="mt-2 block font-poppins text-[0.875rem] font-[300] uppercase not-italic tracking-[0.08em] text-[rgba(245,241,232,0.78)] md:text-[1rem]">
+          {quoteAuthor && (
+            <cite className="mt-2 block font-poppins text-[0.875rem] font-[200] uppercase not-italic tracking-[0.08em] text-[rgba(245,241,232,0.78)]">
               {quoteAuthor}
             </cite>
-          ) : null}
-          <a href={ctaHref} className="mt-[3.25rem] inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.875rem] tracking-[0.06em] text-[#f5f1e8] md:mt-12 md:text-[1.25rem] md:tracking-normal">
+          )}
+          <a href={ctaHref} className="mt-[3.25rem] inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.875rem] tracking-[0.06em] text-[#f5f1e8]">
             PLAN YOUR STAY
             <span className="h-px w-full bg-[#f5f1e8] opacity-80" />
           </a>
-        </motion.div>
-        <div className="relative h-[22rem] w-screen max-w-[100vw] md:hidden">
+        </div>
+        <div className="relative aspect-[390/352] w-full overflow-hidden">
           <Image src={imageSrc} alt="Lion at Sasan Gir" fill sizes="100vw" className="object-cover object-[20%_center]" />
         </div>
       </div>
+
     </section>
   );
 }

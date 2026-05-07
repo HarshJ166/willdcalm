@@ -28,9 +28,9 @@ import CTA from '@/components/sections/CTA';
 import Footer from '@/components/sections/Footer';
 
 const TESTIMONIAL_VIDEOS = [
-  { id: 'anurita', src: '/design/Home Page/Section 8 - Testimonials/Anurita Jha.mp4', author: 'Anurita Jha' },
-  { id: 'khushi', src: '/design/Home Page/Section 8 - Testimonials/Khushi Jain.mp4', author: 'Khushi Jain' },
-  { id: 'aparna', src: '/design/Home Page/Section 8 - Testimonials/Aparna Dixit.mp4', author: 'Aparna Dixit' },
+  { id: 'anurita', src: '/design/Home%20Page/Section%208%20-%20Testimonials/Anurita%20Jha.mp4', author: 'Anurita Jha' },
+  { id: 'khushi', src: '/design/Home%20Page/Section%208%20-%20Testimonials/Khushi%20Jain.mp4', author: 'Khushi Jain' },
+  { id: 'aparna', src: '/design/Home%20Page/Section%208%20-%20Testimonials/Aparna%20Dixit.mp4', author: 'Aparna Dixit' },
 ] as const;
 
 const TESTIMONIAL_QUOTES = [
@@ -43,35 +43,41 @@ const FOOTER_COL1: typeof navLinks = [
   { label: 'The Stay', href: '#the-stay' },
   { label: 'Experiences', href: '#experiences' },
   { label: 'Amenities', href: '#amenities' },
+  { label: 'Sustainabilty', href: '#sustainability' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Rates', href: '#rates' },
 ];
 
 const FOOTER_COL2: typeof navLinks = [
-  { label: 'Sustainability', href: '#sustainability' },
-  { label: 'Events', href: '#events' },
-  { label: 'Rates', href: '#rates' },
-  { label: 'Contact', href: '#faq' },
+  { label: 'Careers', href: '#careers' },
+  { label: 'Contact Us', href: '#faq' },
+  { label: 'Media Kit', href: '#media' },
+  { label: 'News & Insights', href: '#news' },
+  { label: 'Terms & Conditions', href: '#terms' },
+  { label: 'Privacy Policy', href: '#privacy' },
 ];
 
 const FOOTER_SOCIALS = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/wildcalm.in',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-      </svg>
-    ),
+    href: 'https://www.instagram.com/wildcalmsasangir',
+    iconSrc: '/design/Footer/Instagram.svg',
   },
   {
     label: 'Facebook',
-    href: 'https://www.facebook.com/wildcalm',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-      </svg>
-    ),
+    href: 'https://www.facebook.com/wildcalmsasangir',
+    iconSrc: '/design/Footer/facebook.svg',
+  },
+  {
+    label: 'Pinterest',
+    href: 'https://www.pinterest.com/wildcalm',
+    iconSrc: '/design/Footer/pinterest.svg',
+  },
+  {
+    label: 'X (Twitter)',
+    href: 'https://www.x.com/wildcalm',
+    iconSrc: '/design/Footer/twitter.svg',
+    iconSize: 23,
   },
 ];
 
@@ -100,28 +106,32 @@ export default function Home() {
         onMenuOpen={() => setMenuOpen(true)}
         heading="Where The West Wild Stays"
         subheadingDesktop="Wild Calm retreat near Sasan Gir offers a refined nature experience, surrounded by forest and countryside. It blends peaceful stays with immersive moments & quiet luxury escapes in serene surroundings."
-        subheadingMobile="Sasan Gir · Gujarat"
+        subheadingMobile="Wild Calm retreat near Sasan Gir offers a refined nature escape, blending peaceful stays with immersive moments and quiet luxury in serene forest surroundings."
         videoSrcDesktop="/design/Home Page/Section 1 - Banner/Desktop/Banner Video.mp4"
         videoSrcMobile="/design/Home%20Page/Section%201%20-%20Banner/Mobile%20Version/front%20banner%20video_phone%20version.mp4"
       />
 
-      {/* Spacer so scrollable content sits below the fixed desktop hero */}
-      <div className="hidden md:block md:h-[100dvh]" aria-hidden="true" />
+      {/* Spacer so scrollable content sits below the fixed hero */}
+      <div className="h-[100dvh]" aria-hidden="true" />
 
       <About
         imageSrc="/design/Home Page/Section 2 - Lion/Sasan Gir_Lion-converted-from-png.webp"
-        location="Sasan Gir · Gujarat · India"
+        location="Sasangir  .  Gujarat  .  India"
         heading="Asiatic Lion at Sasan Gir"
         body="Wildlife Sasan Gir Forest Gir National Park WildCalm Retreat Nature Safari Asiatic Lion Forest Gujarat India."
       />
 
-      <Accommodation
-        roomCount={30}
-        courtyardCount={15}
-        heading="WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay."
-        body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
-        badgeText="ACCOMODATION"
-      />
+<Accommodation
+  roomCount={30}
+  courtyardCount={15}
+  heading={
+    <span className="font-thin">
+      WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.
+    </span>
+  }
+  body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
+  badgeText="ACCOMODATION"
+/>
 
       <CardsSection
         rooms={accommodationRooms}
@@ -135,8 +145,8 @@ export default function Home() {
 
       <HorizontalScroll
         amenities={amenities}
-        label="Amenities"
-        heading="Crafted for comfort"
+        label="AMENITIES"
+        heading={`Refined Premium\nLifestyle Amenities\nDesigned for a\nSeamless and\nRelaxing Stay`}
       />
 
       <Events
@@ -145,8 +155,8 @@ export default function Home() {
         blocks={[
           {
             heading: 'Celebrate Your Wedding with Timeless Grace and Elegance',
-            body: 'From intimate ceremonies to grand wedding celebrations, every moment is thoughtfully curated with refined details, bespoke arrangements, and seamless hospitality, set against a serene backdrop for truly unforgettable memories.',
-            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/Weddings.webp',
+            body: 'Elevate executive retreats and bespoke destination weddings in a refined setting designed for professional focus and elegant celebrations.',
+            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_photo-an-outdoor-wedding-_2855361114.webp',
             imageAlt: 'WildCalm wedding venue',
             ctaHref: '#faq',
             ctaLabel: 'More About Us',
@@ -154,7 +164,7 @@ export default function Home() {
           {
             heading: 'Corporate Retreats in a Serene and Elegant Destination Setting',
             body: 'Host meaningful gatherings where refined spaces, natural surroundings, and seamless hospitality come together to create truly memorable and effortlessly elevated experiences, thoughtfully designed with attention to every detail.',
-            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/Corporate Retreat.webp',
+            imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_2855367418.webp',
             imageAlt: 'WildCalm corporate retreat',
             ctaHref: '#faq',
             ctaLabel: 'More About Us',
@@ -171,7 +181,7 @@ export default function Home() {
 
       <GettingHere
         transport={transport}
-        mapSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5!2d70.5!3d21.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA2JzAwLjAiTiA3MMKwMzAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+        mapSrc="https://www.google.com/maps?q=Wild+Calm,+Sasan+Gir,+Sasan+Talala+Road+opp+Mansadevi+Temple,+near+Woods,+Sasan+Gir,+Sasan+sasan,+Gujarat+362150&output=embed"
       />
 
       <Faq
@@ -182,7 +192,7 @@ export default function Home() {
 
       <CTA
         quote="Raw wilderness and refined luxury meet in a state of intentional stillness."
-        imageSrc="/design/Home Page/Section 10 - CTA/CTA.webp"
+        imageSrc="/design/Home Page/Section 10 - CTA/Desktop/Lion.webp"
         ctaHref="#faq"
       />
 
@@ -190,8 +200,8 @@ export default function Home() {
         col1Links={FOOTER_COL1}
         col2Links={FOOTER_COL2}
         contact={{
-          address: 'Near Sasan Gir National Park, Sasan Gir, Gujarat 362135',
-          phone: '+91 9918-01-9918',
+          address: 'Survey No: 59/P1, Borvav\nSasan Talala Road  Sasan Gir\nGujarat - 362150',
+          phone: '9918019918  |  9213005439',
           email: 'sasan.stay@wildcalm.in',
         }}
         socials={FOOTER_SOCIALS}

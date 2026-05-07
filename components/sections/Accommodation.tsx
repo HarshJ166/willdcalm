@@ -31,11 +31,11 @@ function AnimatedStat({ target, suffix = '', label }: StatProps) {
     <>
       <span
         ref={ref}
-        className="min-w-[4rem] font-poppins text-[3rem] font-[200] leading-[1] text-[var(--text-cream)] tabular-nums md:min-w-[7rem] md:text-[5rem]"
+        className="min-w-[4rem] font-poppins text-[3rem] font-[200] leading-none text-[var(--text-cream)] tabular-nums md:min-w-[7rem] md:text-[5rem]"
       >
         0{suffix}
       </span>
-      <span className="text-right font-poppins text-[0.625rem] font-[400] uppercase tracking-[0.22em] text-[var(--text-cream-60)] md:text-[0.75rem]">
+      <span className="text-right font-[Pilcrow_Rounded] text-[0.875rem] font-[400] uppercase tracking-[0.08em] text-[#F5F1E8] md:text-[1rem]">
         {label}
       </span>
     </>
@@ -45,11 +45,11 @@ function AnimatedStat({ target, suffix = '', label }: StatProps) {
 interface AccommodationProps {
   roomCount: number;
   courtyardCount: number;
-  heading: string;
   body: string;
   badgeText: string;
   imageSrc?: string;
   emblemSrc?: string;
+  heading: React.ReactNode;
 }
 
 export default function Accommodation({
@@ -63,27 +63,27 @@ export default function Accommodation({
   return (
     <section
       id="accommodation"
-      className="relative w-full overflow-visible bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center px-[var(--wc-mobile-nav-pad-x)] py-[3.8125rem] md:px-[var(--wc-page-gutter)] md:py-0"
+      className="relative w-full overflow-hidden bg-[#546950] bg-['#546950')] bg-cover bg-center px-[var(--wc-mobile-nav-pad-x)] py-[3.8125rem] md:px-[var(--wc-page-gutter)] md:py-0"
     >
-      <div className="grid w-full max-w-[90rem] grid-cols-1 gap-8 md:min-h-[50rem] md:grid-cols-[minmax(0,37rem)_minmax(0,1fr)] md:gap-[2rem]">
+        <div className="grid w-full max-w-[90rem] grid-cols-1 gap-8 md:min-h-[44rem] md:grid-cols-[50%_50%] md:gap-[clamp(1rem,2vw,3.25rem)] lg:min-h-[52rem] lg:gap-[clamp(1.5rem,3vw,3.25rem)]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          className="flex flex-col pb-8 md:pb-[2.75rem] md:pr-7 md:pt-[4.25rem]"
+          className="flex flex-col pb-8 md:pb-[clamp(4.5rem,6vw,5.75rem)] md:pt-[clamp(4.5rem,6vw,5.75rem)]"
         >
-          <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[100] uppercase tracking-[0.12em] text-[rgba(245,241,232,0.55)] md:text-[1.25rem] md:tracking-[0.14em]">
+          <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[400] uppercase tracking-[0.12em] text-[var(--text-cream)] md:text-[1.25rem] md:tracking-[0.14em]">
             {badgeText}
           </span>
-          <p className="mt-10 font-poppins text-[1.1rem] font-[100] leading-[1.5] text-[var(--text-cream)] md:mt-[2.5rem] md:text-[1.35rem] md:leading-[1.36] md:mb-auto">
+          <p className="mt-[2.5rem] font-poppins text-[1.75rem] font-[200] leading-[2.375rem] text-[var(--text-cream)] md:mt-[2.5rem] md:mb-auto md:max-w-[56rem] md:text-[2.375rem] md:leading-[3.3125rem] md:font-[200]">
             {heading}
           </p>
-          <div className="mt-8 w-full max-w-[18.3125rem] md:mt-[3.25rem] md:max-w-[37.375rem]">
-            <div className="flex items-baseline justify-between border-b border-b-[rgba(245,241,232,0.25)] py-[1.35rem]">
+          <div className="mt-[clamp(2rem,8dvh,4rem)] w-full md:mt-[2rem] md:max-w-[37.375rem]">
+            <div className="flex items-baseline justify-between border-b border-b-[var(--text-cream-60)] py-[1.35rem]">
               <AnimatedStat target={roomCount} suffix="+" label="EXPERIENTIAL ROOMS" />
             </div>
-            <div className="flex items-baseline justify-between border-b border-b-[rgba(245,241,232,0.25)] py-[1.35rem]">
+            <div className="flex items-baseline justify-between border-b border-b-[var(--text-cream-60)] py-[1.35rem]">
               <AnimatedStat target={courtyardCount} suffix="+" label="COURTYARD ROOMS" />
             </div>
           </div>
@@ -94,17 +94,17 @@ export default function Accommodation({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative mx-auto mb-0 w-full max-w-[18.5rem] pb-[4.5rem] md:mx-0 md:mb-0 md:max-w-none md:self-start md:px-[3.25rem] md:pb-[2.5rem] md:pt-[5.85rem]"
+          className="relative mx-auto mb-0 w-full pb-[4.5rem] md:mx-0 md:mb-0 md:flex md:max-w-none md:items-end md:pl-[1.5rem] md:pr-[clamp(1.5rem,3vw,4.75rem)] md:pb-[clamp(2rem,3vw,3.5rem)] md:pt-[clamp(2rem,3vw,3.5rem)] lg:pl-[2.25rem] lg:pr-[clamp(3rem,5vw,4.75rem)] lg:pb-[clamp(2.5rem,4vw,3.5rem)] lg:pt-[clamp(2.5rem,4vw,3.5rem)]"
         >
-          <div className="relative ml-auto w-full max-w-[32.375rem]">
-            <div className="relative h-[21.8125rem] w-full overflow-hidden rounded-[50%_50%_0_0/42%_42%_0_0] md:h-[36.1875rem]">
-              <Image src={imageSrc} alt="WildCalm accommodation room" fill sizes="(max-width: 48em) 296px, 518px" className="object-cover object-[50%_42%] md:object-center" />
+            <div className="relative mx-auto w-full md:max-w-full lg:max-w-[32.375rem]">
+            <div className="relative aspect-[296/349] w-full overflow-hidden rounded-[50%_50%_0_0/42%_42%_0_0] md:aspect-auto md:h-[36.1875rem] md:rounded-[50%_50%_0_0/35%_35%_0_0]">
+              <Image src={imageSrc} alt="WildCalm accommodation room" fill sizes="(max-width: 48em) 296px, 518px" className="object-cover object-[50%_42%] md:object-top" />
             </div>
             <motion.div
               aria-hidden="true"
               animate={{ rotate: 360 }}
               transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-              className="pointer-events-none absolute bottom-[-7.0625rem] right-[-2.6875rem] z-[3] w-[10.1875rem] md:bottom-[-4.9375rem] md:right-[-6.75rem] md:w-[18.125rem]"
+              className="pointer-events-none absolute bottom-[-4.125rem] right-[-2.6875rem] z-[3] w-[10.1875rem] md:bottom-[-2.09375rem] md:right-[-3.3125rem] md:w-[11.25rem]"
             >
               <Image src={emblemSrc} alt="" width={290} height={271} className="h-auto w-full" />
             </motion.div>
