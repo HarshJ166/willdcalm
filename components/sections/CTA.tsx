@@ -12,7 +12,7 @@ interface CTAProps {
 
 export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: CTAProps) {
   return (
-    <section id="plan" className="relative w-full overflow-hidden bg-[#556b4d] lg:h-[38.75rem]">
+    <section id="plan" className="relative w-full overflow-hidden bg-[#556b4d] lg:min-h-[clamp(38rem,55vh,48rem)]">
 
       {/* Background lion image — desktop only, fills full section */}
       <div className="absolute inset-0 hidden lg:block">
@@ -35,9 +35,9 @@ export default function CTA({ quote, quoteAuthor, imageSrc, ctaHref = '#faq' }: 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '0px' }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-[3] hidden lg:absolute lg:flex lg:top-1/2 lg:left-[49%] lg:-translate-y-1/2 lg:w-[36.6875rem] lg:flex-col"
+        className="relative z-[3] hidden lg:absolute lg:flex lg:top-1/2 lg:left-1/2 lg:w-[var(--wc-cta-panel-w)] lg:flex-col lg:-translate-y-1/2 lg:translate-x-[clamp(0.5rem,5vw,6rem)]"
       >
-        <blockquote className="font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8]">
+        <blockquote className="font-poppins font-[200] text-[#f5f1e8] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
           {quote}
         </blockquote>
         {quoteAuthor && (

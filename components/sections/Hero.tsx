@@ -30,7 +30,7 @@ export default function Hero({
   return (
     <section id="home" className="fixed inset-x-0 top-0 z-0 h-[100dvh] w-full overflow-hidden bg-[#5a6b53] bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center">
       {/* Desktop video wrapper — lion positioned separately on section */}
-      <div className="absolute left-0 top-[15rem] z-[2] hidden h-[37.25rem] w-[44.625rem] overflow-hidden md:block">
+      <div className="absolute left-[var(--wc-shell-margin-inline)] top-[max(14rem,var(--wc-hero-video-top))] z-[2] hidden h-[var(--wc-hero-video-h)] w-[var(--wc-hero-video-w)] overflow-hidden md:block">
         <video
           autoPlay
           muted
@@ -47,7 +47,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute left-[42.3125rem] top-[91dvh] z-[4] hidden h-[64.12px] w-[101.45px] md:block"
+        className="absolute top-[91dvh] z-[4] hidden md:left-[calc(var(--wc-shell-margin-inline)+var(--wc-hero-lion-shift))] md:block md:h-[var(--wc-hero-lion-h)] md:w-[var(--wc-hero-lion-w)]"
       >
         <Image
           src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
@@ -77,7 +77,7 @@ export default function Hero({
       <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] md:h-[6.511375rem] md:px-[var(--wc-page-gutter)]">
         <button
           onClick={onMenuOpen}
-          className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] md:text-[1.25rem]"
+          className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] md:text-[var(--wc-pilcrow-nav)]"
           aria-label="Open menu"
         >
           <span className="inline-flex items-center" aria-hidden="true">
@@ -89,21 +89,21 @@ export default function Hero({
           </span>
           Menu
         </button>
-        <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] md:text-[2.625rem]">
+        <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] md:text-[var(--wc-argufy-hero)]">
           WildCalm
         </span>
         <a
           href="https://bookings.wildcalm.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] md:text-[1.25rem]"
+          className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] md:text-[var(--wc-pilcrow-nav)]"
         >
           Book Now
         </a>
       </div>
 
       {/* Bottom nav links — desktop only */}
-      <div className="absolute left-0 right-0 top-[6.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center gap-[5.125rem] border-y border-y-[rgba(245,241,232,0.24)] md:flex">
+      <div className="absolute left-0 right-0 top-[6.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center border-y border-y-[rgba(245,241,232,0.24)] md:flex md:gap-[var(--wc-nav-pill-gap)]">
         {navLinks.map((link, i) => (
           <motion.a
             key={link.href}
@@ -111,7 +111,7 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: i * 0.1 }}
-            className="font-[Pilcrow_Rounded] text-[1.125rem] uppercase text-[var(--text-cream)] underline decoration-transparent decoration-[0.0625rem] underline-offset-[0.22em] transition-colors duration-200 hover:decoration-[rgba(245,241,232,0.95)]"
+            className="font-[Pilcrow_Rounded] uppercase text-[var(--text-cream)] underline decoration-transparent decoration-[0.0625rem] underline-offset-[0.22em] transition-colors duration-200 hover:decoration-[rgba(245,241,232,0.95)] md:text-[var(--wc-nav-anchor)]"
           >
             {link.label.toUpperCase()}
           </motion.a>
@@ -120,7 +120,7 @@ export default function Hero({
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat md:top-[43.45%]" />
 
-      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[65dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
+      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[65dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[var(--wc-shell-margin-inline)] md:top-[49dvh] md:w-[var(--wc-hero-title-w)] md:-translate-y-1/2 md:translate-x-0">
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -128,7 +128,7 @@ export default function Hero({
             hidden: {},
             visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
           }}
-          className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] md:font-[200] md:text-[3.5rem] md:leading-[4.1875rem]"
+          className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] md:font-[200] md:text-[var(--wc-hero-h1-size)] md:leading-[var(--wc-hero-h1-leading)]"
         >
           {headingWords.map((word) => (
             <motion.span
@@ -149,7 +149,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[calc(50%+5.25rem)] top-[62dvh] z-[3] hidden w-[30.4375rem] font-poppins text-[1.5rem] font-[200] leading-[2.75rem] text-[var(--text-cream)] md:block"
+        className="absolute left-[calc(50%+clamp(3rem,4.5vw,6.5rem))] top-[50dvh] z-[3] hidden w-[var(--wc-hero-lead-w)] font-poppins font-[200] text-[var(--text-cream)] md:block md:text-[var(--wc-hero-lead-size)] md:leading-[var(--wc-hero-lead-leading)]"
       >
         {subheadingDesktop}
       </motion.p>

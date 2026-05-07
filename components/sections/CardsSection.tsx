@@ -64,9 +64,9 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   }, [onRoomChange]);
 
   return (
-    <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[56.25rem] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
-      <div className="mx-auto grid w-full max-w-[90rem] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
-        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem]">
+    <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[clamp(54rem,min(72vh,64rem),64rem)] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
+      <div className="mx-auto grid w-full max-w-[var(--wc-shell-max)] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,28vw)_minmax(0,1fr)] md:gap-[clamp(2rem,3.5vw,4rem)] md:px-[var(--wc-inner-px-tight)]">
+        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[clamp(24rem,min(50vh,38vw),34rem)] md:w-[clamp(21rem,min(30vw,34rem),28rem)]">
 
           {/* Mobile: 3 stacked images window */}
           <div className="flex flex-col gap-1 md:hidden">

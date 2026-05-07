@@ -111,7 +111,7 @@ export default function Navbar({
             className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden"
             // style={{ maxHeight: '80dvh' }}
           >
-            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[7.375rem]">
+            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[var(--wc-shell-pad-inline)]">
               <button
                 onClick={onMenuClose}
                 className="justify-self-start text-[rgba(101,120,94,0.78)] transition-colors duration-200 hover:text-[rgba(86,98,82,0.95)]"

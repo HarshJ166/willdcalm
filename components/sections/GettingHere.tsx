@@ -17,7 +17,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
   return (
     <section
       id="getting-here"
-      className="relative flex w-full flex-col bg-[#f5f1e8] px-[var(--wc-mobile-nav-pad-x)] pt-[clamp(3.75rem,11vw,4.5rem)] pb-[clamp(3rem,9vw,4rem)] md:h-auto md:flex-row md:items-start md:gap-[clamp(2rem,5vw,8rem)] md:px-[var(--wc-page-gutter)] md:py-[5.5625rem] lg:h-[50rem] lg:gap-32"
+      className="relative flex w-full flex-col bg-[#f5f1e8] px-[var(--wc-mobile-nav-pad-x)] pt-[clamp(3.75rem,11vw,4.5rem)] pb-[clamp(3rem,9vw,4rem)] md:h-auto md:flex-row md:items-start md:gap-[clamp(2rem,5vw,var(--wc-section-gap-fluid))] md:px-[var(--wc-page-gutter)] md:py-[5.5625rem] lg:h-[50rem] lg:gap-[var(--wc-section-gap-fluid)]"
     >
       {/* Left column */}
       <div className="w-full md:w-[30.6875rem] md:flex-[0_0_30.6875rem]">
@@ -172,7 +172,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
       </div>
 
       {/* Map */}
-      <div className="mt-[clamp(0.5rem,2vw,0.75rem)] w-full max-w-[18.5rem] self-center md:ml-auto md:mt-[1.3125rem] md:max-w-full md:flex-1 md:self-start lg:max-w-[36.5rem] lg:flex-none">
+      <div className="mt-[clamp(0.5rem,2vw,0.75rem)] w-full max-w-[18.5rem] self-center md:ml-auto md:mt-[1.3125rem] md:max-w-full md:flex-1 md:self-start lg:flex-none lg:max-w-[min(41rem,calc(var(--wc-shell-max)*0.46))]">
         <div className="relative aspect-[296/336] w-full overflow-hidden rounded-[0.25rem] md:aspect-[584/580] md:rounded-none">
           <iframe
             src={mapSrc}

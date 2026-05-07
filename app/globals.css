@@ -149,7 +149,73 @@
   --wc-page-x: var(--wc-page-gutter);
   --wc-mobile-x: var(--wc-mobile-nav-pad-x);
   --wc-section-y: var(--space-lg);
-  --wc-container: min(100%, var(--max-width));
+  /** Content shell: grows with viewport, caps on ultra-wide (no duplicated px breakpoints in TSX) */
+  --wc-shell-max: min(var(--max-width), 94vw);
+  /** Half of leftover margin when viewport is wider than shell (align hero / full-bleed art) */
+  --wc-shell-margin-inline: max(0px, calc((100vw - var(--wc-shell-max)) / 2));
+  --wc-shell-pad-inline: max(var(--wc-page-gutter), var(--wc-shell-margin-inline));
+  --wc-section-gap-fluid: clamp(2rem, 2.4vw + 0.75rem, 5rem);
+
+  /** Hero & display type (fluid) */
+  --wc-hero-h1-size: clamp(3rem, 2.85vw + 1.65rem, 5rem);
+  --wc-hero-h1-leading: clamp(3.5rem, 3.05vw + 2rem, 5.625rem);
+  --wc-hero-lead-size: clamp(1.375rem, 0.82vw + 1.06rem, 1.9375rem);
+  --wc-hero-lead-leading: clamp(2.2rem, 1.42vw + 1.42rem, 3.125rem);
+  --wc-hero-video-w: clamp(38rem, 24vw + 16rem, 64rem);
+  --wc-hero-video-h: clamp(30rem, 11vh + 18rem, 48rem);
+  --wc-hero-video-top: clamp(8.5rem, 7vh + 4rem, 11.75rem);
+  /** Lion mark — scales with viewport */
+  --wc-hero-lion-w: clamp(6rem, 4.5vw + 4rem, 8rem);
+  --wc-hero-lion-h: clamp(4rem, 3vw + 3rem, 5.25rem);
+  /** Offset from shell margin toward center (pairs with fluid video width) */
+  --wc-hero-lion-shift: clamp(26rem, 34vw + 8rem, 54rem);
+
+  /** Section headings + UI density */
+  --wc-section-eyebrow: clamp(0.9375rem, 0.65vw + 0.82rem, 1.3125rem);
+  --wc-section-h2-leading: clamp(2.875rem, 2vw + 1.42rem, 4rem);
+  --wc-nav-pill-gap: clamp(3.125rem, 4vw + 1rem, 9rem);
+  --wc-stat-num: clamp(3.25rem, 2.85vw + 2rem, 6rem);
+  --wc-argufy-hero: clamp(2.625rem, 2.25vw + 1rem, 3.375rem);
+  /** Nav row (hero + compact bar) */
+  --wc-pilcrow-nav: clamp(1rem, 0.55vw + 0.82rem, 1.375rem);
+  --wc-nav-anchor: clamp(1.0625rem, 0.62vw + 0.85rem, 1.375rem);
+  --wc-hero-title-w: clamp(28rem, 26vw + 10rem, 44rem);
+  --wc-hero-lead-w: clamp(29rem, 26vw + 11rem, 44rem);
+
+  /** Testimonials / media columns */
+  --wc-testimonial-media-tall-w: clamp(26rem, 18vw + 10rem, 36rem);
+  --wc-testimonial-media-tall-h: clamp(32rem, 32vh + 10rem, 48rem);
+  --wc-testimonial-media-short-w: clamp(22rem, 14vw + 9rem, 30rem);
+  --wc-testimonial-media-short-h: clamp(17.75rem, 22vh + 7rem, 28rem);
+
+  /** Experiences panel */
+  --wc-exp-panel-w: clamp(36rem, 28vw + 12rem, 46rem);
+
+  /** Accommodation focal image column */
+  --wc-accom-image-max: clamp(30rem, 22vw + 14rem, 46rem);
+  --wc-accom-image-h: clamp(32rem, 12vh + 22rem, 48rem);
+
+  /** Accommodation / editorial */
+  --wc-prose-wide: clamp(36rem, 36vw + 14rem, 72rem);
+
+  /** Testimonials columns (fluid) */
+  --wc-testimonial-col-stack: clamp(21rem, 14vw + 9.5rem, 30rem);
+  --wc-testimonial-col-side: clamp(18rem, 11vw + 9rem, 26rem);
+  --wc-testimonial-flex-gap: clamp(2rem, 2.75vw + 1rem, 5rem);
+
+  /** Cards / amenities inner padding + card size */
+  --wc-inner-px-tight: clamp(3.25rem, 3.8vw + 1.5rem, 8rem);
+  --wc-amenity-card-w: clamp(22rem, 18vw + 12rem, 36rem);
+  --wc-amenity-card-h: clamp(26rem, 24vh + 12rem, 36rem);
+
+  /** CTA text column */
+  --wc-cta-panel-w: clamp(34rem, 26vw + 12rem, 44rem);
+
+  /** About kinetic type (desktop) */
+  --wc-about-kinetic-size: clamp(1.75rem, 1.45vw + 1.1rem, 2.75rem);
+  --wc-about-kinetic-leading: clamp(2.5rem, 2.1vw + 1.85rem, 4.25rem);
+
+  --wc-container: min(100%, var(--wc-shell-max));
   --wc-nav-h: 6.511375rem;
   --wc-mobile-nav-h: var(--wc-mobile-nav-bar-h);
   --wc-h1: var(--text-2xl);
@@ -215,6 +281,25 @@
 @supports not (height: 1dvh) {
   :root {
     --dvh-fallback: 1vh;
+  }
+}
+
+/* 2xl → 4K: progressively wider shell + rail (single source; components use var(--wc-shell-max)) */
+@media (min-width: 96rem) {
+  :root {
+    --wc-shell-max: min(112rem, 94vw);
+  }
+}
+@media (min-width: 120rem) {
+  :root {
+    --wc-shell-max: min(130rem, 93vw);
+    --wc-nav-rail-inset: clamp(5.75rem, 5.8vw, 10.5rem);
+  }
+}
+@media (min-width: 160rem) {
+  :root {
+    --wc-shell-max: min(148rem, 92vw);
+    --wc-nav-rail-inset: clamp(6.25rem, 6.2vw, 11.25rem);
   }
 }
 

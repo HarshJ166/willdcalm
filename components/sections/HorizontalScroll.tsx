@@ -243,12 +243,15 @@ export default function HorizontalScroll({
       </div>
 
       {/* ── DESKTOP LAYOUT – sticky horizontal scroll ── */}
-      <div ref={stickyRef} className="sticky top-0 hidden h-[800px] items-start justify-start gap-[var(--amn-gap,1rem)] overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] md:flex md:px-[7.5rem]">
-        <div ref={leftRef} className="w-[22rem] shrink-0">
-          <span className="mb-6 block font-[Pilcrow_Rounded] text-[1.25rem] uppercase leading-[1.25] text-[#697a61]">
+      <div
+        ref={stickyRef}
+        className="sticky top-0 hidden h-[clamp(760px,min(850px,88dvh),900px)] items-start justify-start gap-[var(--amn-gap,1rem)] overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] md:flex md:px-[var(--wc-inner-px-tight)]"
+      >
+        <div ref={leftRef} className="w-[min(24rem,min(42vw,28rem))] shrink-0">
+          <span className="mb-6 block font-[Pilcrow_Rounded] text-[var(--wc-section-eyebrow)] uppercase leading-[1.25] text-[#697a61] lg:text-[1.25rem]">
             {label}
           </span>
-          <h2 className="w-[25.625rem] max-w-full font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#697a61]">
+          <h2 className="max-w-full font-poppins font-[200] text-[var(--wc-section-h2)] leading-[var(--wc-section-h2-leading)] text-[#697a61] md:max-w-[min(34rem,calc(var(--wc-shell-max)*0.36))]">
             {heading.split('\n').map((line, index, arr) => (
               <span key={`${line}-${index}`}>
                 {line}
@@ -258,19 +261,19 @@ export default function HorizontalScroll({
           </h2>
         </div>
         <div ref={rightRef} className="flex-1 overflow-visible">
-          <div ref={trackRef} className="flex flex-row gap-[4.75rem] will-change-transform">
+          <div ref={trackRef} className="flex flex-row gap-[var(--wc-section-gap-fluid)] will-change-transform">
             {amenities.map((amenity) => (
               <div
                 key={amenity.id}
                 data-amenity-card
-                className="w-[28.9375rem] shrink-0"
+                className="w-[var(--wc-amenity-card-w)] shrink-0"
               >
-                <div className="relative mb-5 h-[29.875rem] max-h-[min(29.875rem,calc(100vh-14rem))] overflow-hidden rounded-[1.25rem]">
+                <div className="relative mb-5 h-[var(--wc-amenity-card-h)] max-h-[min(38rem,calc(100vh-11rem))] overflow-hidden rounded-[1.25rem]">
                   <Image
                     src={amenity.image}
                     alt={amenity.title}
                     fill
-                    sizes="(max-width: 1280px) 50vw, 520px"
+                    sizes="(max-width: 1280px) 50vw, 620px"
                     className={`object-cover transition-transform duration-500 ${getObjectPositionClass(amenity.imagePosition)}`}
                     style={{ transform: 'translateY(var(--amn-img-shift, 0px))' }}
                   />

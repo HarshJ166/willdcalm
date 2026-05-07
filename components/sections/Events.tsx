@@ -45,20 +45,20 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
       </div>
 
       {/* DESKTOP — asymmetric floating layout */}
-      <div className="relative hidden py-[6rem] md:block" style={{ minHeight: '52rem' }}>
+      <div className="relative hidden min-h-[clamp(52rem,min(72vh,64rem),64rem)] py-[clamp(4rem,9dvh,7rem)] md:block">
 
         {/* LEFT FLOATING IMAGE — starts near top of section */}
-        <div className="absolute left-[7%] top-[2rem] z-[2] h-[22.5rem] w-[18rem] overflow-hidden rounded-[1.25rem]">
+        <div className="absolute left-[clamp(4%,8vw,14%)] top-[clamp(1.5rem,4vh,3rem)] z-[2] overflow-hidden rounded-[1.25rem] md:h-[clamp(20rem,min(40vh,34vw),29rem)] md:w-[clamp(16rem,min(32vw,28vw),24rem)]">
           <Image src={firstBlock.imageSrc} alt={firstBlock.imageAlt} fill sizes="288px" className="object-cover" />
         </div>
 
         {/* RIGHT FLOATING IMAGE — staggered lower, aligned with block 2 area */}
-        <div className="absolute right-[8%] top-[20rem] z-[2] h-[22.5rem] w-[20rem] overflow-hidden rounded-[1.25rem]">
+        <div className="absolute right-[clamp(4%,8vw,14%)] top-[clamp(16rem,min(30vh,38vw),26rem)] z-[2] overflow-hidden rounded-[1.25rem] md:h-[clamp(20rem,min(40vh,34vw),29rem)] md:w-[clamp(17rem,min(34vw,30vw),26rem)]">
           <Image src={secondBlock.imageSrc} alt={secondBlock.imageAlt} fill sizes="320px" className="object-cover" />
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="relative z-[1] mx-auto flex max-w-[26rem] flex-col items-center text-center">
+        <div className="relative z-[1] mx-auto flex w-full max-w-[min(34rem,88vw)] flex-col items-center px-[var(--wc-mobile-nav-pad-x)] text-center md:max-w-[min(38rem,calc(var(--wc-shell-max)*0.52))] md:px-0">
 
           {/* BLOCK 1 */}
           <motion.div
@@ -68,10 +68,10 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
             transition={{ duration: 0.7 }}
             className="mb-[5rem]"
           >
-            <h2 className="mb-[1.5rem] font-poppins text-[2rem] font-[200] leading-[2.75rem] text-[#697a61]">
+            <h2 className="mb-[1.5rem] font-poppins font-[200] text-[clamp(1.625rem,4vw+1rem,2.25rem)] leading-[clamp(2.2rem,5vw+1.1rem,3rem)] text-[#697a61] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
               {firstBlock.heading}
             </h2>
-            <p className="mx-auto mb-[1.875rem] font-poppins text-[1rem] font-[200] leading-[1.65rem] text-[rgba(105,122,97,0.7)]">
+            <p className="mx-auto mb-[1.875rem] max-w-[min(45ch,calc(var(--wc-shell-max)*0.42))] font-poppins text-[clamp(0.9rem,2.5vw,1.0625rem)] font-[200] leading-[clamp(1.55rem,3.5vw,1.72rem)] text-[rgba(105,122,97,0.7)] lg:text-[clamp(1rem,calc(0.55vw+0.9rem),1.125rem)] lg:leading-[clamp(1.62rem,calc(0.65vw+1.1rem),1.75rem)]">
               {firstBlock.body}
             </p>
             <a href={firstBlock.ctaHref ?? '#faq'} className="inline-flex flex-col items-center font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.06em] text-[#65785e]">
@@ -87,10 +87,10 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <h2 className="mb-[1.5rem] font-poppins text-[2rem] font-[200] leading-[2.75rem] text-[#697a61]">
+            <h2 className="mb-[1.5rem] font-poppins font-[200] text-[clamp(1.625rem,4vw+1rem,2.25rem)] leading-[clamp(2.2rem,5vw+1.1rem,3rem)] text-[#697a61] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
               {secondBlock.heading}
             </h2>
-            <p className="mx-auto mb-[1.875rem] font-poppins text-[1rem] font-[200] leading-[1.65rem] text-[rgba(105,122,97,0.7)]">
+            <p className="mx-auto mb-[1.875rem] max-w-[min(45ch,calc(var(--wc-shell-max)*0.42))] font-poppins text-[clamp(0.9rem,2.5vw,1.0625rem)] font-[200] leading-[clamp(1.55rem,3.5vw,1.72rem)] text-[rgba(105,122,97,0.7)] lg:text-[clamp(1rem,calc(0.55vw+0.9rem),1.125rem)] lg:leading-[clamp(1.62rem,calc(0.65vw+1.1rem),1.75rem)]">
               {secondBlock.body}
             </p>
             <a href={secondBlock.ctaHref ?? '#faq'} className="inline-flex flex-col items-center font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.06em] text-[#65785e]">

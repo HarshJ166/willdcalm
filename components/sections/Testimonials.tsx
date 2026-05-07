@@ -57,17 +57,8 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] md:min-h-[64.8125rem] md:px-[var(--wc-page-gutter)] md:pt-[5.125rem]"
+      className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] md:min-h-[64.8125rem] md:px-[var(--wc-page-gutter)] md:pt-[5.125rem] xl:min-h-[66rem] xl:pt-[6rem] xl:pb-[6.25rem]"
     >
-      {/* Desktop header */}
-      <span className="hidden lg:block w-[19.0625rem] font-[Pilcrow_Rounded] text-[1.25rem] font-[400] leading-[3.3125rem] text-[#f5f1e8]">
-        TESTIMONIALS
-      </span>
-      <h2 className="mt-[2.875rem] mb-[3.6875rem] hidden w-full max-w-[71.75rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8] lg:block">
-        <span className="block">Discover authentic guest experiences that reflect the refined</span>
-        <span className="block">hospitality and distinctive character of Wild Calm, creating lasting impressions</span>
-      </h2>
-
       {/* Mobile/Tablet header */}
       <div className="lg:hidden">
         <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[300] uppercase text-[#f5f1e8]">TESTIMONIALS</span>
@@ -76,8 +67,17 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </p>
       </div>
 
-      {/* Desktop grid */}
-      <div className="hidden w-full items-start gap-[2rem] lg:flex">
+      {/* Desktop: shared max-width so copy + grid scale together on 4K */}
+      <div className="hidden lg:mx-auto lg:block lg:w-full lg:max-w-[var(--wc-shell-max)]">
+        <span className="block font-[Pilcrow_Rounded] font-[400] uppercase leading-normal text-[#f5f1e8] lg:text-[var(--wc-section-eyebrow)]">
+          TESTIMONIALS
+        </span>
+        <h2 className="mt-[2.875rem] mb-[3.6875rem] w-full max-w-none font-poppins font-[200] text-[#f5f1e8] lg:mt-[2.875rem] lg:mb-[3.6875rem] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
+          <span className="block">Discover authentic guest experiences that reflect the refined</span>
+          <span className="block">hospitality and distinctive character of Wild Calm, creating lasting impressions</span>
+        </h2>
+
+        <div className="flex w-full items-start gap-[var(--wc-testimonial-flex-gap)]">
         {/* Left: tall video */}
         <TestimonialVideoCard
           id={tallVideo.id}
@@ -91,7 +91,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         />
 
         {/* Center column */}
-        <div className="flex flex-none w-[23.6875rem] flex-col gap-[1.375rem]">
+        <div className="flex w-[var(--wc-testimonial-col-stack)] flex-none flex-col gap-[var(--wc-section-gap-fluid)]">
           <div className="flex h-[12.375rem] flex-col rounded-[0.8125rem] bg-[#a7b4a2] px-[1.5rem] pt-[1.875rem] pb-[1.125rem]">
             <p className="font-poppins text-[1.125rem] font-[200] leading-[1.444] text-[var(--text-cream)]">
               &ldquo;{quoteTop.text}&rdquo;
@@ -113,7 +113,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </div>
 
         {/* Right column */}
-        <div className="flex flex-none w-[19.375rem] flex-col gap-[1.375rem]">
+        <div className="flex w-[var(--wc-testimonial-col-side)] flex-none flex-col gap-[var(--wc-section-gap-fluid)]">
           <TestimonialVideoCard
             id={sideVideo.id}
             src={sideVideo.src}
@@ -132,6 +132,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
               ~ {quoteBottom.author}
             </span>
           </div>
+        </div>
         </div>
       </div>
 
@@ -252,10 +253,11 @@ interface VideoCardProps {
 
 function TestimonialVideoCard({ id, src, author, isPlaying, isTall, isMediumKhushi, isFaded, videoRef, onToggle, onEnded }: VideoCardProps) {
   const heightClass = isTall
-    ? 'h-[34.125rem] w-[27.9375rem] shrink-0'
+    ? `h-[var(--wc-testimonial-media-tall-h)] w-[var(--wc-testimonial-media-tall-w)] shrink-0`
     : isMediumKhushi
-    ? 'h-[19.8125rem] w-[23.6875rem]'
-    : 'h-[20.9375rem] w-full';
+    ? `h-[var(--wc-testimonial-media-short-h)] w-[var(--wc-testimonial-media-short-w)]`
+    : `h-[var(--wc-testimonial-media-short-h)] w-full`;
+
 
   return (
     <div className={`relative overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)] ${heightClass}`}>

@@ -89,20 +89,19 @@ function ExperiencePanel({ exp, index, isActive, panelRef }: PanelProps) {
       <div className="absolute inset-0 bg-black/45" />
 
       <div
-        className={`absolute inset-x-0 bottom-0 flex justify-end px-0 md:px-[clamp(1rem,5vw,7.5rem)] ${
+        className={`absolute inset-x-0 bottom-0 flex justify-end px-0 md:px-[var(--wc-inner-px-tight)] xl:px-[var(--wc-shell-pad-inline)] ${
           isActive ? '' : 'invisible pointer-events-none opacity-0'
         }`}
       >
-          <div className="relative w-full border border-white/30 bg-[rgba(245,241,232,0.35)] px-8 pb-5 pt-14 backdrop-blur-[20px] md:mb-[clamp(2rem,4vw,6.5rem)] md:h-auto md:min-h-[28.125rem] md:w-[min(40.4375rem,90%)] md:rounded-[1.5625rem] md:px-[clamp(2rem,4vw,3.875rem)] md:pb-11 md:pt-[3.25rem] lg:h-[28.125rem] lg:w-[40.4375rem] lg:mb-[6.5rem] lg:px-[3.875rem]">
-          <div className="absolute right-8 top-4 flex items-center gap-2 font-[Pilcrow_Rounded] text-[0.875rem] font-[400] tracking-[0.06em] uppercase text-[#f5f1e8] md:right-[3.8125rem] md:top-[2.5625rem] md:text-[1.25rem] md:font-[400] md:tracking-normal md:text-[#f5f1e8]">
-            <Image src="/design/Home Page/Section 4 - Experiences/experiences icon.svg" alt="" width={24} height={19} className="h-[0.8125rem] w-[0.8125rem] md:h-[1.187
-            5rem] md:w-[1.5rem]" />
+          <div className="relative w-full border border-white/30 bg-[rgba(245,241,232,0.35)] px-8 pb-5 pt-14 backdrop-blur-[20px] md:mb-[clamp(2rem,4vw,6.5rem)] md:w-[min(var(--wc-exp-panel-w),94%)] md:rounded-[1.5625rem] md:px-[clamp(2rem,4vw,3.875rem)] md:pb-11 md:pt-[3.25rem] lg:mb-[6.5rem] lg:aspect-auto lg:h-auto lg:min-h-0 lg:w-[var(--wc-exp-panel-w)] lg:rounded-[1.75rem] lg:px-[clamp(2rem,4vw,4.25rem)] lg:pb-12 lg:pt-14">
+          <div className="absolute right-8 top-4 flex items-center gap-2 font-[Pilcrow_Rounded] text-[0.875rem] font-[400] tracking-[0.06em] uppercase text-[#f5f1e8] md:right-[3.8125rem] md:top-[2.5625rem] md:text-[1.25rem] md:font-[400] md:tracking-normal">
+            <Image src="/design/Home Page/Section 4 - Experiences/experiences icon.svg" alt="" width={24} height={19} className="h-[0.8125rem] w-[0.8125rem] md:h-[1.1875rem] md:w-[1.5rem]" />
             <span>EXPERIENCES</span>
           </div>
-          <h2 className="mt-0 max-w-[33rem] font-poppins text-[1.25rem] font-[200] leading-[1.875rem] text-[#f5f1e8] md:mt-[4.15rem] md:text-[2.125rem] md:font-[300] md:leading-[1.875rem]">
+          <h2 className="mt-0 max-w-[min(41rem,calc(var(--wc-shell-max)*0.52))] font-poppins text-[1.25rem] font-[200] leading-[1.875rem] text-[#f5f1e8] md:mt-[4.15rem] md:font-[300] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
             {exp.title}
           </h2>
-          <p className="mb-0 mt-2 w-full max-w-[22rem] text-justify font-poppins text-[clamp(0.75rem,3.5vw,0.875rem)] font-[200] leading-[clamp(1rem,4.5vw,1.25rem)] text-[#f5f1e8] md:mt-[2.4rem] md:max-w-[33rem] md:text-justify md:text-[1.125rem] md:font-[200] md:leading-[1.875rem] md:text-[#f5f1e8]">
+          <p className="mb-0 mt-2 w-full max-w-[min(36rem,calc(var(--wc-shell-max)*0.42))] text-justify font-poppins text-[clamp(0.75rem,3.5vw,0.875rem)] font-[200] leading-[clamp(1rem,4.5vw,1.25rem)] text-[#f5f1e8] md:mt-[2.4rem] md:text-justify md:font-[200] md:text-[clamp(1rem,calc(0.9vw+0.8125rem),1.1875rem)] md:leading-[clamp(1.5625rem,calc(0.95vw+1.25rem),1.9375rem)]">
             {exp.description}
           </p>
           <a href="#faq" className="mt-3 inline-flex w-fit flex-col font-[Pilcrow_Rounded] text-[0.875rem] font-[400] tracking-[0.04em] uppercase leading-[1.875rem] text-[#f5f1e8] md:mt-6 md:text-[1.25rem] md:tracking-normal">

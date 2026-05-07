@@ -25,8 +25,8 @@ export default function Footer({ col1Links, col2Links, contact, socials }: Foote
   return (
     <footer id="footer" className="relative isolate z-20 w-full bg-[#65785e] px-0 py-0 text-[var(--text-cream)]">
       <div className="pointer-events-none absolute inset-0 z-0 bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center opacity-[0.10] mix-blend-soft-light" aria-hidden="true" />
-      <div className="relative z-[1] flex w-full flex-col bg-transparent px-[var(--wc-mobile-nav-pad-x)] pb-[2.5rem] pt-[3.5625rem] md:min-h-[37rem] md:px-[var(--wc-page-gutter)] md:pb-[var(--wc-footer-pad-bottom)] md:pt-[var(--wc-footer-pad-top)]">
-        <div className="mb-[4.625rem] grid w-full grid-cols-[3fr_2fr] gap-x-4 gap-y-0 md:mb-[6.5rem] md:flex md:gap-8">
+      <div className="relative z-[1] flex w-full max-w-[var(--wc-shell-max)] flex-col bg-transparent px-[var(--wc-mobile-nav-pad-x)] pb-[2.5rem] pt-[3.5625rem] md:mx-auto md:min-h-[37rem] md:px-[var(--wc-page-gutter)] md:pb-[var(--wc-footer-pad-bottom)] md:pt-[var(--wc-footer-pad-top)]">
+        <div className="mb-[4.625rem] grid w-full grid-cols-[3fr_2fr] gap-x-4 gap-y-0 md:mb-[6.5rem] md:flex md:gap-[var(--wc-section-gap-fluid)] xl:mb-[7.5rem]">
           <nav className="flex flex-col gap-[0.5rem] md:min-w-[7.6875rem] md:gap-4">
             {col1Links.map((link) => (
               <a key={link.href} href={link.href} className="font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.125rem] text-[#f6f2e9] md:text-[clamp(0.8125rem,1.05vw,1.1875rem)] md:leading-[1.22]">
