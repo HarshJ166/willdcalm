@@ -104,7 +104,7 @@ export default function Home() {
       <Hero
         navLinks={navLinks}
         onMenuOpen={() => setMenuOpen(true)}
-        heading="Where The West Wild Stays"
+        heading={`Where The West \n Wild Stays`}
         subheadingDesktop="Wild Calm retreat near Sasan Gir offers a refined nature experience, surrounded by forest and countryside. It blends peaceful stays with immersive moments & quiet luxury escapes in serene surroundings."
         subheadingMobile="Wild Calm retreat near Sasan Gir offers a refined nature escape, blending peaceful stays with immersive moments and quiet luxury in serene forest surroundings."
         videoSrcDesktop="/design/Home Page/Section 1 - Banner/Desktop/Banner Video.mp4"

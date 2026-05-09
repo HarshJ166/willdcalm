@@ -103,7 +103,7 @@ export default function Hero({
       </div>
 
       {/* Bottom nav links — desktop only */}
-      <div className="absolute left-0 right-0 top-[6.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center gap-[5.125rem] border-y border-y-[rgba(245,241,232,0.24)] md:flex">
+      <div className="absolute left-0 right-0 top-[7.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center gap-[5.125rem] border-y border-y-[rgba(245,241,232,0.24)] md:flex">
         {navLinks.map((link, i) => (
           <motion.a
             key={link.href}
@@ -120,7 +120,7 @@ export default function Hero({
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat md:top-[43.45%]" />
 
-      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[65dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
+      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[66dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[calc(47%-7.6875rem)] md:top-[49dvh] md:-translate-y-1/2 md:w-[30.172125rem]">
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -157,7 +157,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[78.25dvh] z-[3] w-[19.3125rem] max-w-[17.5rem] font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
+        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[77.5dvh] z-[3] w-[19.3125rem] max-w-[17.5rem] pt-2 font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
       >
         {subheadingMobile}
       </motion.p>
@@ -167,7 +167,7 @@ export default function Hero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[54.16dvh] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
+        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[59dvh] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
       >
         <Image
           src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
