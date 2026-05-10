@@ -71,8 +71,13 @@ export default function Navbar({
             : { y: '-100%', opacity: 0, pointerEvents: 'none' }
         }
         transition={{ duration: 0.26, ease: [0.2, 0.8, 0.2, 1] }}
-        className="fixed inset-x-0 top-0 z-[2000] bg-[var(--wc-nav-bar-fill)]"
+        className={`fixed inset-x-0 top-0 z-[2000] transition-all duration-500 ${
+  showCompact
+    ? 'bg-[rgba(245,241,232,0.88)] backdrop-blur-md border-b border-[rgba(255,255,255,0.08)]'
+    : 'bg-[rgba(95,112,88,0.72)] backdrop-blur-sm border-b border-[rgba(255,255,255,0.06)]'
+}`}
       >
+        <div className="mx-auto w-full max-w-[90rem]">
         <div className="relative h-[var(--wc-mobile-nav-bar-h)] md:h-[var(--wc-nav-h)]">
           <button
             type="button"
@@ -99,6 +104,7 @@ export default function Navbar({
             BOOK NOW
           </a>
         </div>
+      </div>
       </motion.nav>
 
       <AnimatePresence>
@@ -107,8 +113,8 @@ export default function Navbar({
             initial={{ y: '-100%' }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
-            transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden"
+            transition={{ duration: 0.55, ease:  [0.76, 0, 0.24, 1] }}
+            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden h-[var(--wc-nav-overlay-mobile-height)] md:h-auto"
             // style={{ maxHeight: '80dvh' }}
           >
             <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[7.375rem]">

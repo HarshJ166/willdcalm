@@ -49,6 +49,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                       width={32}
                       height={32}
                       className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                     <div className="flex items-baseline gap-[0.125rem]">
                       <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
@@ -76,6 +77,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                       width={32}
                       height={32}
                       className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                     <div className="flex items-baseline gap-[0.125rem]">
                       <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
@@ -107,6 +109,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                     width={32}
                     height={32}
                     className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                   <div className="flex items-baseline gap-[0.125rem]">
                     <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
@@ -136,6 +139,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                   width={40}
                   height={40}
                   className="h-auto w-[2.5rem] flex-shrink-0 opacity-95"
+                  style={{ width: 'auto', height: 'auto' }}
                 />
                 <div className="flex items-baseline gap-[0.125rem] text-[#65785e]">
                   <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem]">{item.distance}</span>
@@ -157,6 +161,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                   width={40}
                   height={40}
                   className="h-auto w-[2.5rem] flex-shrink-0 opacity-95"
+                  style={{ width: 'auto', height: 'auto' }}
                 />
                 <div className="flex items-baseline gap-[0.125rem] text-[#65785e]">
                   <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem]">{item.distance}</span>

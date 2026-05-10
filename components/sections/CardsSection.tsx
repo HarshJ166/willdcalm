@@ -37,6 +37,41 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   }, [rooms]);
 
   useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)');
+    let observer: IntersectionObserver | null = null;
+
+    if (media.matches) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          let bestIndex = -1;
+          let bestRatio = 0;
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const index = itemRefs.current.indexOf(entry.target as HTMLLIElement);
+            if (index < 0) return;
+            if (entry.intersectionRatio > bestRatio) {
+              bestRatio = entry.intersectionRatio;
+              bestIndex = index;
+            }
+          });
+          if (bestIndex >= 0) onRoomChange(bestIndex);
+        },
+        {
+          root: null,
+          rootMargin: '-45% 0px -45% 0px',
+          threshold: [0, 0.25, 0.5, 0.75, 1],
+        },
+      );
+
+      itemRefs.current.forEach((el) => {
+        if (el) observer?.observe(el);
+      });
+
+      return () => {
+        observer?.disconnect();
+      };
+    }
+
     const onScroll = () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
