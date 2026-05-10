@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import type { NavLink } from '@/data/homeData';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import type { NavLink } from "@/data/homeData";
 
 interface HeroProps {
   navLinks: NavLink[];
@@ -10,11 +10,22 @@ interface HeroProps {
   heading: string;
   subheadingDesktop: string;
   subheadingMobile: string;
-  videoSrcDesktop: string;
-  videoSrcMobile: string;
+  imageSrcDesktop: string;
+  imageSrcMobile: string;
 }
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+function splitHeading(heading: string) {
+  const words = heading.trim().split(/\s+/).filter(Boolean);
+  if (words.length <= 3)
+    return { line1: heading.trim(), line2: null as string | null };
+  const mid = Math.min(3, Math.max(1, words.length - 1));
+  return {
+    line1: words.slice(0, mid).join(" "),
+    line2: words.slice(mid).join(" "),
+  };
+}
 
 export default function Hero({
   navLinks,
@@ -22,88 +33,68 @@ export default function Hero({
   heading,
   subheadingDesktop,
   subheadingMobile,
-  videoSrcDesktop,
-  videoSrcMobile,
+  imageSrcDesktop,
+  imageSrcMobile,
 }: HeroProps) {
-  const headingWords = heading.split(' ');
+  const { line1, line2 } = splitHeading(heading);
+  const heroLead = subheadingDesktop || subheadingMobile;
 
   return (
-    <section id="home" className="fixed inset-x-0 top-0 z-0 h-[100dvh] w-full overflow-hidden bg-[#5a6b53] bg-[url('/design/web-noise-bg.svg')] bg-cover bg-center">
-      {/* Desktop video wrapper — lion positioned separately on section */}
-      <div className="absolute left-[var(--wc-shell-margin-inline)] top-[max(14rem,var(--wc-hero-video-top))] z-[2] hidden h-[var(--wc-hero-video-h)] w-[var(--wc-hero-video-w)] overflow-hidden md:block">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover object-[34%_50%] grayscale"
-        >
-          <source src={videoSrcDesktop} type="video/mp4" />
-        </video>
-      </div>
-
-      {/* Desktop lion — exact Figma position: left 597px / top 705px */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute top-[91dvh] z-[4] hidden md:left-[calc(var(--wc-shell-margin-inline)+var(--wc-hero-lion-shift))] md:block md:h-[var(--wc-hero-lion-h)] md:w-[var(--wc-hero-lion-w)]"
-      >
-        <Image
-          src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
-          alt=""
-          fill
-          sizes="172px"
-          className="object-contain object-left-bottom"
-        />
-      </motion.div>
-
-      {/* Mobile video — FULL WIDTH (Figma match) */}
-<div className="absolute left-0 top-[12dvh] z-[2] w-full md:hidden">
-  <div className="mx-[var(--wc-mobile-nav-pad-x)] overflow-hidden">
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="w-full h-[52dvh] object-cover object-[54%_50%] grayscale"
+    <section
+      id="home"
+      className="fixed inset-x-0 top-0 z-0 flex h-dvh w-full flex-col overflow-hidden bg-sage"
     >
-      <source src={videoSrcMobile} type="video/mp4" />
-    </video>
-  </div>
-</div>
-
-      {/* Top bar */}
-      <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] md:h-[6.511375rem] md:px-[var(--wc-page-gutter)]">
+      <div className="absolute inset-x-0 top-0 z-10 grid h-24 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-16">
         <button
+          type="button"
           onClick={onMenuOpen}
-          className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] md:text-[var(--wc-pilcrow-nav)]"
+          className="inline-flex items-center justify-self-start gap-2 font-sans text-base uppercase leading-none text-cream"
           aria-label="Open menu"
         >
           <span className="inline-flex items-center" aria-hidden="true">
             <svg width="16" height="14" viewBox="0 0 16 14" fill="none">
-              <line x1="0" y1="1" x2="16" y2="1" stroke="currentColor" strokeWidth="1.1" />
-              <line x1="0" y1="7" x2="16" y2="7" stroke="currentColor" strokeWidth="1.1" />
-              <line x1="0" y1="13" x2="16" y2="13" stroke="currentColor" strokeWidth="1.1" />
+              <line
+                x1="0"
+                y1="1"
+                x2="16"
+                y2="1"
+                stroke="currentColor"
+                strokeWidth="1.1"
+              />
+              <line
+                x1="0"
+                y1="7"
+                x2="16"
+                y2="7"
+                stroke="currentColor"
+                strokeWidth="1.1"
+              />
+              <line
+                x1="0"
+                y1="13"
+                x2="16"
+                y2="13"
+                stroke="currentColor"
+                strokeWidth="1.1"
+              />
             </svg>
           </span>
           Menu
         </button>
-        <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] md:text-[var(--wc-argufy-hero)]">
+        <span className="justify-self-center font-serif text-4xl uppercase leading-none text-cream">
           WildCalm
         </span>
         <a
           href="https://bookings.wildcalm.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] md:text-[var(--wc-pilcrow-nav)]"
+          className="justify-self-end font-sans text-base uppercase leading-none text-cream underline decoration-1 underline-offset-4"
         >
           Book Now
         </a>
       </div>
 
-      {/* Bottom nav links — desktop only */}
-      <div className="absolute left-0 right-0 top-[6.511375rem] z-[5] hidden h-[2.6875rem] items-center justify-center border-y border-y-[rgba(245,241,232,0.24)] md:flex md:gap-[var(--wc-nav-pill-gap)]">
+      <div className="absolute inset-x-0 top-24 z-10 flex h-11 items-center justify-center gap-14 border-y border-y-cream/20">
         {navLinks.map((link, i) => (
           <motion.a
             key={link.href}
@@ -111,90 +102,131 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: i * 0.1 }}
-            className="font-[Pilcrow_Rounded] uppercase text-[var(--text-cream)] underline decoration-transparent decoration-[0.0625rem] underline-offset-[0.22em] transition-colors duration-200 hover:decoration-[rgba(245,241,232,0.95)] md:text-[var(--wc-nav-anchor)]"
+            className="font-sans text-base uppercase text-cream underline decoration-transparent underline-offset-4 transition-colors duration-200 hover:decoration-cream/90"
           >
             {link.label.toUpperCase()}
           </motion.a>
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat md:top-[43.45%]" />
+      <div className="grid h-full min-h-0 flex-1 grid-cols-2 overflow-hidden pt-36">
+        <div className="relative isolate h-full min-h-0 w-full">
+          <Image
+            src={imageSrcMobile}
+            alt=""
+            fill
+            sizes="100vw"
+            priority
+            className="hidden object-cover object-center grayscale"
+          />
+          <Image
+            src={imageSrcDesktop}
+            alt=""
+            fill
+            sizes="50vw"
+            priority
+            className="object-cover object-center grayscale"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease }}
+            className="pointer-events-none absolute bottom-6 right-6 z-10 h-16 w-24"
+          >
+            <Image
+              src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
+              alt=""
+              fill
+              sizes="(max-width: 48rem) 71px, 172px"
+              className="object-contain object-bottom"
+            />
+          </motion.div>
+        </div>
 
-      <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[65dvh] z-[3] w-[calc(100%-3.875rem)] px-0 md:left-[var(--wc-shell-margin-inline)] md:top-[49dvh] md:w-[var(--wc-hero-title-w)] md:-translate-y-1/2 md:translate-x-0">
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
-          }}
-          className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] md:font-[200] md:text-[var(--wc-hero-h1-size)] md:leading-[var(--wc-hero-h1-leading)]"
-        >
-          {headingWords.map((word) => (
-            <motion.span
-              key={word}
+        <div className="relative flex h-full min-h-0 flex-col justify-center bg-sage px-20 pb-16 pt-12">
+          <svg
+            className="pointer-events-none absolute inset-0 h-full w-full text-sage-light"
+            viewBox="0 0 1200 900"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              fillOpacity={0.22}
+              d="M0 520 C220 470 380 600 600 535 S940 455 1200 510 L1200 900 L0 900Z"
+            />
+            <path
+              fill="currentColor"
+              fillOpacity={0.14}
+              d="M0 620 C280 560 460 690 720 605 S1000 520 1200 590 L1200 900 L0 900Z"
+            />
+          </svg>
+
+          <div className="relative z-10 -ml-20">
+            <motion.h1
+              initial="hidden"
+              animate="visible"
               variants={{
-                hidden: { opacity: 0, y: 24 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.06, delayChildren: 0.15 },
+                },
               }}
-              className="mr-[0.35ch] inline-block"
+              className="font-sans text-5xl font-extralight text-cream"
             >
-              {word}
-            </motion.span>
-          ))}
-        </motion.h1>
+              <span className="block overflow-hidden">
+                {line1.split(" ").map((word, i) => (
+                  <motion.span
+                    key={`l1-${word}-${i}`}
+                    variants={{
+                      hidden: { opacity: 0, y: 28 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.65, ease },
+                      },
+                    }}
+                    className="mr-[0.3ch] inline-block last:mr-0"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </span>
+              {line2 ? (
+                <span className="mt-1 block overflow-hidden">
+                  {line2.split(" ").map((word, i) => (
+                    <motion.span
+                      key={`l2-${word}-${i}`}
+                      variants={{
+                        hidden: { opacity: 0, y: 28 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.65, ease },
+                        },
+                      }}
+                      className="mr-[0.3ch] inline-block last:mr-0"
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </span>
+              ) : null}
+            </motion.h1>
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.55, ease }}
+            className="relative z-10 mt-12 ml-10 max-w-4xl font-sans text-2xl font-light text-cream"
+          >
+            <span>{heroLead}</span>
+          </motion.p>
+        </div>
       </div>
-
-      <motion.p
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[calc(50%+clamp(3rem,4.5vw,6.5rem))] top-[50dvh] z-[3] hidden w-[var(--wc-hero-lead-w)] font-poppins font-[200] text-[var(--text-cream)] md:block md:text-[var(--wc-hero-lead-size)] md:leading-[var(--wc-hero-lead-leading)]"
-      >
-        {subheadingDesktop}
-      </motion.p>
-      <motion.p
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7, ease }}
-        className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[78.25dvh] z-[3] w-[19.3125rem] max-w-[17.5rem] font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:hidden"
-      >
-        {subheadingMobile}
-      </motion.p>
-
-      {/* Mobile lion only */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease }}
-        className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[54.16dvh] z-[4] h-[2.875rem] w-[4.4375rem] md:hidden"
-      >
-        <Image
-          src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
-          alt=""
-          fill
-          sizes="(max-width: 64em) 71px, 102px"
-          className="object-contain object-left-bottom"
-        />
-      </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.8 }}
-        className="sr-only"
-      >
-        {subheadingDesktop}
-      </motion.p>
-
-      <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="hidden"
-        >
-        {subheadingMobile}
-      </motion.p>
     </section>
   );
 }

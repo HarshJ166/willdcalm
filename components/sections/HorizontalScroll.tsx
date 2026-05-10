@@ -209,17 +209,17 @@ export default function HorizontalScroll({
     <section ref={sectionRef} id="amenities" className="relative bg-[#f5f1e8]">
 
       {/* ── MOBILE LAYOUT – normal vertical scroll, card per card ── */}
-      <div className="md:hidden">
-        <div className="px-[var(--wc-mobile-nav-pad-x)] pb-8 pt-[3.5625rem]">
-          <span className="block font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.25] text-[#697a61]">
+      <div>
+        <div className=" pb-8 pt-[3.5625rem]">
+          <span className="block font-sans text-[0.875rem] uppercase text-[#697a61]">
             {label}
           </span>
-          <h2 className="mt-3 font-poppins text-[1.75rem] font-[200] leading-[2.375rem] text-[#697a61]">
+          <h2 className="mt-3 font-sans text-[1.75rem] font-[200] text-[#697a61]">
             {heading.replace(/\n/g, ' ')}
           </h2>
         </div>
 
-        <div className="flex flex-col gap-10 px-[var(--wc-mobile-nav-pad-x)] pb-12 pt-4">
+        <div className="flex flex-col gap-10 pb-12 pt-4">
           {amenities.map((amenity) => (
             <div key={amenity.id}>
               <div className="relative aspect-[327/364] w-full overflow-hidden rounded-[1.25rem]">
@@ -231,10 +231,10 @@ export default function HorizontalScroll({
                   className={`object-cover ${getObjectPositionClass(amenity.imagePosition)}`}
                 />
               </div>
-              <h3 className="mt-3 font-poppins text-[0.875rem] font-[300] leading-[1.5] text-[#697a61]">
+              <h3 className="mt-3 font-sans text-[0.875rem] font-[300] text-[#697a61]">
                 {amenity.title}
               </h3>
-              <p className="mt-1 text-justify font-poppins text-[0.75rem] font-[200] leading-[1rem] text-[#65785e]">
+              <p className="mt-1 text-justify font-sans text-[0.75rem] font-[200] text-[#65785e]">
                 {amenity.desc}
               </p>
             </div>
@@ -245,13 +245,13 @@ export default function HorizontalScroll({
       {/* ── DESKTOP LAYOUT – sticky horizontal scroll ── */}
       <div
         ref={stickyRef}
-        className="sticky top-0 hidden h-[clamp(760px,min(850px,88dvh),900px)] items-start justify-start gap-[var(--amn-gap,1rem)] overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] md:flex md:px-[var(--wc-inner-px-tight)]"
+        className="sticky top-0 hidden h-[clamp(760px,min(850px,88dvh),900px)] items-start justify-start overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] "
       >
         <div ref={leftRef} className="w-[min(24rem,min(42vw,28rem))] shrink-0">
-          <span className="mb-6 block font-[Pilcrow_Rounded] text-[var(--wc-section-eyebrow)] uppercase leading-[1.25] text-[#697a61] lg:text-[1.25rem]">
+          <span className="mb-6 block font-sans uppercase text-[#697a61] text-[1.25rem]">
             {label}
           </span>
-          <h2 className="max-w-full font-poppins font-[200] text-[var(--wc-section-h2)] leading-[var(--wc-section-h2-leading)] text-[#697a61] md:max-w-[min(34rem,calc(var(--wc-shell-max)*0.36))]">
+          <h2 className="max-w-full font-sans font-[200] text-[#697a61] ">
             {heading.split('\n').map((line, index, arr) => (
               <span key={`${line}-${index}`}>
                 {line}
@@ -261,14 +261,14 @@ export default function HorizontalScroll({
           </h2>
         </div>
         <div ref={rightRef} className="flex-1 overflow-visible">
-          <div ref={trackRef} className="flex flex-row gap-[var(--wc-section-gap-fluid)] will-change-transform">
+          <div ref={trackRef} className="flex flex-row will-change-transform">
             {amenities.map((amenity) => (
               <div
                 key={amenity.id}
                 data-amenity-card
-                className="w-[var(--wc-amenity-card-w)] shrink-0"
+                className=" shrink-0"
               >
-                <div className="relative mb-5 h-[var(--wc-amenity-card-h)] max-h-[min(38rem,calc(100vh-11rem))] overflow-hidden rounded-[1.25rem]">
+                <div className="relative mb-5 max-h-[min(38rem,calc(100vh-11rem))] overflow-hidden rounded-[1.25rem]">
                   <Image
                     src={amenity.image}
                     alt={amenity.title}
@@ -278,10 +278,10 @@ export default function HorizontalScroll({
                     style={{ transform: 'translateY(var(--amn-img-shift, 0px))' }}
                   />
                 </div>
-                <h3 className="mb-[0.375rem] font-poppins text-[1.5rem] font-[300] leading-[3.3125rem] text-[#697a61]">
+                <h3 className="mb-[0.375rem] font-sans text-[1.5rem] font-[300] text-[#697a61]">
                   {amenity.title}
                 </h3>
-                <p className="font-poppins text-[1.125rem] font-[200] leading-[1.625rem] text-[#65785e]">
+                <p className="font-sans text-[1.125rem] font-[200] text-[#65785e]">
                   {amenity.desc}
                 </p>
               </div>

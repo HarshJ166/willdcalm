@@ -41,6 +41,19 @@ export interface Transport {
   icon: string;
 }
 
+export interface SocialLink {
+  label: string;
+  href: string;
+  iconSrc: string;
+  iconSize?: number;
+}
+
+export interface FooterContact {
+  address: string;
+  phone: string;
+  email: string;
+}
+
 export const navLinks: NavLink[] = [
   { label: 'Our Story',      href: '#about' },
   { label: 'The Stay',       href: '#accommodation' },
@@ -265,3 +278,52 @@ export const transport: Transport[] = [
     icon: '/design/Home Page/Section 9 - Getting Here/Airport.svg',
   },
 ];
+
+export const footerCol1Links: NavLink[] = [
+  { label: 'Our Story', href: '#about' },
+  { label: 'The Stay', href: '#the-stay' },
+  { label: 'Experiences', href: '#experiences' },
+  { label: 'Amenities', href: '#amenities' },
+  { label: 'Sustainabilty', href: '#sustainability' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Rates', href: '#rates' },
+];
+
+export const footerCol2Links: NavLink[] = [
+  { label: 'Careers', href: '#careers' },
+  { label: 'Contact Us', href: '#faq' },
+  { label: 'Media Kit', href: '#media' },
+  { label: 'News & Insights', href: '#news' },
+  { label: 'Terms & Conditions', href: '#terms' },
+  { label: 'Privacy Policy', href: '#privacy' },
+];
+
+export const footerSocials: SocialLink[] = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/wildcalmsasangir',
+    iconSrc: '/design/Footer/Instagram.svg',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/wildcalmsasangir',
+    iconSrc: '/design/Footer/facebook.svg',
+  },
+  {
+    label: 'Pinterest',
+    href: 'https://www.pinterest.com/wildcalm',
+    iconSrc: '/design/Footer/pinterest.svg',
+  },
+  {
+    label: 'X (Twitter)',
+    href: 'https://www.x.com/wildcalm',
+    iconSrc: '/design/Footer/twitter.svg',
+    iconSize: 23,
+  },
+];
+
+export const footerContact: FooterContact = {
+  address: 'Survey No: 59/P1, Borvav\nSasan Talala Road  Sasan Gir\nGujarat - 362150',
+  phone: '9918019918  |  9213005439',
+  email: 'sasan.stay@wildcalm.in',
+};

@@ -13,14 +13,6 @@
 }
 
 @font-face {
-  font-family: "Pilcrow Rounded";
-  src: url("/fonts/PilcrowRounded-Variable.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins-Light.ttf") format("truetype");
   font-weight: 300;
@@ -41,7 +33,7 @@
   src: url("/fonts/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; 
 }
 
 @theme inline {
@@ -50,9 +42,11 @@
   --color-cream: #f5f1e8;
   --color-forest: #2c3a27;
   --font-poppins: var(--font-poppins);
+  --font-argufy: var(--font-argufy);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-argufy);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -94,156 +88,7 @@
 }
 
 :root {
-  --max-width: 90rem;
-  --max-w: 90rem;
-  --wc-nav-rail-inset: 7.375rem;
-  --wc-gutter: clamp(1rem, 4.2vw, 7.375rem);
-  --wc-gutter-sm: clamp(1rem, 5vw, 1.5rem);
-  --wc-page-gutter: clamp(1rem, 8.15vw, var(--wc-nav-rail-inset));
-  --wc-nav-bar-fill: rgba(245, 241, 232, 0.85);
-  --wc-nav-overlay-cream: #f5f1e8;
-  --wc-nav-overlay-menu-panel-bg: #d6d8cf;
-  --wc-nav-overlay-desktop-panel-max-h: 48rem;
-  --wc-nav-overlay-lion-offset-top: clamp(2rem, 12.6389vw, 11.375rem);
-  --wc-nav-overlay-lion-offset-top-mobile: clamp(1rem, 10vw, 7rem);
-  --wc-nav-overlay-mobile-fill: #e8e6de;
-  --wc-nav-overlay-mobile-link-muted: rgba(101, 120, 94, 0.4);
-  --wc-nav-overlay-mobile-link-active: #65785e;
-  --wc-nav-overlay-mobile-topbar-ink: #65785e;
-  --wc-nav-overlay-menu-pad-x: 1.5rem;
-  --wc-nav-overlay-sage: rgb(101, 120, 94);
-  --wc-mobile-nav-bar-h: 5rem;
-  --wc-mobile-nav-pad-x: 1.9375rem;
-  --wc-nav-overlay-mobile-height: 80dvh;
-  --wc-nav-overlay-mobile-height-fallback: 80vh;
-  --wc-exp-panel-scrim-fill: rgba(0, 0, 0, 0.45);
-  --wc-exp-panel-scrim-blur: 2px;
-  --wc-exp-glass-fill: rgba(245, 241, 232, 0.35);
-  --wc-exp-glass-border: #ffffff;
-  --wc-exp-glass-blur: 20px;
-  --wc-exp-glass-blur-mobile: 20px;
-  --wc-exp-glass-text: #f5f1e8;
-  --wc-exp-glass-text-muted: #f4f0e8;
-  --wc-footer-pad-top: clamp(3rem, 5.5vw, 6.8125rem);
-  --wc-footer-pad-bottom: clamp(1.25rem, 2vw, 2rem);
-  --wc-footer-logo-width: clamp(10.5rem, 22vw, 20.5rem);
-  --space-2xs: clamp(0.375rem, 0.6vw, 0.625rem);
-  --space-xs: clamp(0.625rem, 0.9vw, 0.875rem);
-  --space-sm: clamp(0.875rem, 1.2vw, 1.25rem);
-  --space-md: clamp(1.25rem, 1.8vw, 1.875rem);
-  --space-lg: clamp(1.875rem, 2.8vw, 3.25rem);
-  --space-xl: clamp(2.625rem, 4.2vw, 6rem);
-  --text-xs: clamp(0.6875rem, 0.75vw, 0.8125rem);
-  --text-sm: clamp(0.75rem, 0.9vw, 0.9375rem);
-  --text-md: clamp(0.875rem, 1.15vw, 1.125rem);
-  --text-lg: clamp(1.25rem, 2vw, 2rem);
-  --text-xl: clamp(1.75rem, 3vw, 3.125rem);
-  --text-2xl: clamp(2.25rem, 4.3vw, 4rem);
-  --wc-section-inline: var(--wc-page-gutter);
-  --motion-fast: 220ms;
-  --motion-snappy: 280ms;
-  --motion-medium: 380ms;
-  --motion-slow: 700ms;
-  --easing-clean: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --easing-premium: cubic-bezier(0.22, 1, 0.36, 1);
-  --wc-page-x: var(--wc-page-gutter);
-  --wc-mobile-x: var(--wc-mobile-nav-pad-x);
-  --wc-section-y: var(--space-lg);
-  /** Content shell: grows with viewport, caps on ultra-wide (no duplicated px breakpoints in TSX) */
-  --wc-shell-max: min(var(--max-width), 94vw);
-  /** Half of leftover margin when viewport is wider than shell (align hero / full-bleed art) */
-  --wc-shell-margin-inline: max(0px, calc((100vw - var(--wc-shell-max)) / 2));
-  --wc-shell-pad-inline: max(var(--wc-page-gutter), var(--wc-shell-margin-inline));
-  --wc-section-gap-fluid: clamp(2rem, 2.4vw + 0.75rem, 5rem);
-
-  /** Hero & display type (fluid) */
-  --wc-hero-h1-size: clamp(3rem, 2.85vw + 1.65rem, 5rem);
-  --wc-hero-h1-leading: clamp(3.5rem, 3.05vw + 2rem, 5.625rem);
-  --wc-hero-lead-size: clamp(1.375rem, 0.82vw + 1.06rem, 1.9375rem);
-  --wc-hero-lead-leading: clamp(2.2rem, 1.42vw + 1.42rem, 3.125rem);
-  --wc-hero-video-w: clamp(38rem, 24vw + 16rem, 64rem);
-  --wc-hero-video-h: clamp(30rem, 11vh + 18rem, 48rem);
-  --wc-hero-video-top: clamp(8.5rem, 7vh + 4rem, 11.75rem);
-  /** Lion mark — scales with viewport */
-  --wc-hero-lion-w: clamp(6rem, 4.5vw + 4rem, 8rem);
-  --wc-hero-lion-h: clamp(4rem, 3vw + 3rem, 5.25rem);
-  /** Offset from shell margin toward center (pairs with fluid video width) */
-  --wc-hero-lion-shift: clamp(26rem, 34vw + 8rem, 54rem);
-
-  /** Section headings + UI density */
-  --wc-section-eyebrow: clamp(0.9375rem, 0.65vw + 0.82rem, 1.3125rem);
-  --wc-section-h2-leading: clamp(2.875rem, 2vw + 1.42rem, 4rem);
-  --wc-nav-pill-gap: clamp(3.125rem, 4vw + 1rem, 9rem);
-  --wc-stat-num: clamp(3.25rem, 2.85vw + 2rem, 6rem);
-  --wc-argufy-hero: clamp(2.625rem, 2.25vw + 1rem, 3.375rem);
-  /** Nav row (hero + compact bar) */
-  --wc-pilcrow-nav: clamp(1rem, 0.55vw + 0.82rem, 1.375rem);
-  --wc-nav-anchor: clamp(1.0625rem, 0.62vw + 0.85rem, 1.375rem);
-  --wc-hero-title-w: clamp(28rem, 26vw + 10rem, 44rem);
-  --wc-hero-lead-w: clamp(29rem, 26vw + 11rem, 44rem);
-
-  /** Testimonials / media columns */
-  --wc-testimonial-media-tall-w: clamp(26rem, 18vw + 10rem, 36rem);
-  --wc-testimonial-media-tall-h: clamp(32rem, 32vh + 10rem, 48rem);
-  --wc-testimonial-media-short-w: clamp(22rem, 14vw + 9rem, 30rem);
-  --wc-testimonial-media-short-h: clamp(17.75rem, 22vh + 7rem, 28rem);
-
-  /** Experiences panel */
-  --wc-exp-panel-w: clamp(36rem, 28vw + 12rem, 46rem);
-
-  /** Accommodation focal image column */
-  --wc-accom-image-max: clamp(30rem, 22vw + 14rem, 46rem);
-  --wc-accom-image-h: clamp(32rem, 12vh + 22rem, 48rem);
-
-  /** Accommodation / editorial */
-  --wc-prose-wide: clamp(36rem, 36vw + 14rem, 72rem);
-
-  /** Testimonials columns (fluid) */
-  --wc-testimonial-col-stack: clamp(21rem, 14vw + 9.5rem, 30rem);
-  --wc-testimonial-col-side: clamp(18rem, 11vw + 9rem, 26rem);
-  --wc-testimonial-flex-gap: clamp(2rem, 2.75vw + 1rem, 5rem);
-
-  /** Cards / amenities inner padding + card size */
-  --wc-inner-px-tight: clamp(3.25rem, 3.8vw + 1.5rem, 8rem);
-  --wc-amenity-card-w: clamp(22rem, 18vw + 12rem, 36rem);
-  --wc-amenity-card-h: clamp(26rem, 24vh + 12rem, 36rem);
-
-  /** CTA text column */
-  --wc-cta-panel-w: clamp(34rem, 26vw + 12rem, 44rem);
-
-  /** About kinetic type (desktop) */
-  --wc-about-kinetic-size: clamp(1.75rem, 1.45vw + 1.1rem, 2.75rem);
-  --wc-about-kinetic-leading: clamp(2.5rem, 2.1vw + 1.85rem, 4.25rem);
-
-  --wc-container: min(100%, var(--wc-shell-max));
-  --wc-nav-h: 6.511375rem;
-  --wc-mobile-nav-h: var(--wc-mobile-nav-bar-h);
-  --wc-h1: var(--text-2xl);
-  --wc-h2: var(--text-xl);
-  --wc-h3: var(--text-lg);
-  --wc-body-lg: var(--text-md);
-  --wc-body: var(--text-sm);
-  --wc-body-sm: var(--text-xs);
-  --wc-rail: clamp(1rem, 4.5vw, 7.5rem);
-  --wc-rail-mobile: clamp(1rem, 4.8vw, 1.5rem);
-  --cream: #f5f1e8;
-  --cream-muted: #ddd4c2;
-  --sage-hero: #5f7058;
-  --wc-cta-mobile-panel: #748464;
-  --wc-footer-mobile-outer-bg: rgba(101, 120, 94, 0.95);
-  --wc-footer-mobile-bg: #65785e;
-  --wc-footer-mobile-pad-x: 2rem;
-  --sage-intro: #65785e;
-  --sage-accom: #909d88;
-  --sage-mid: #65785e;
-  --sage-dark: #3b4d38;
-  --sage-darkest: #2d3e2a;
-  --text-cream: #f5f1e8;
-  --text-cream-60: rgba(245, 241, 232, 0.6);
-  --text-cream-40: rgba(245, 241, 232, 0.4);
-  --text-cream-14: rgba(245, 241, 232, 0.14);
   --font-argufy: "Argufy", serif;
-  --font-pilcrow: "Pilcrow Rounded", system-ui;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -276,31 +121,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
-
-@supports not (height: 1dvh) {
-  :root {
-    --dvh-fallback: 1vh;
-  }
-}
-
-/* 2xl → 4K: progressively wider shell + rail (single source; components use var(--wc-shell-max)) */
-@media (min-width: 96rem) {
-  :root {
-    --wc-shell-max: min(112rem, 94vw);
-  }
-}
-@media (min-width: 120rem) {
-  :root {
-    --wc-shell-max: min(130rem, 93vw);
-    --wc-nav-rail-inset: clamp(5.75rem, 5.8vw, 10.5rem);
-  }
-}
-@media (min-width: 160rem) {
-  :root {
-    --wc-shell-max: min(148rem, 92vw);
-    --wc-nav-rail-inset: clamp(6.25rem, 6.2vw, 11.25rem);
-  }
 }
 
 .dark {
@@ -347,54 +167,5 @@
   }
   html {
     @apply font-sans;
-  }
-}
-
-/* ─────────────────────────────────────────────
-   Tablet overrides  (768px – 1023px)
-   Ensures layouts designed for desktop don't
-   overflow on mid-size viewports.
-───────────────────────────────────────────── */
-@media (min-width: 48rem) and (max-width: 63.9375rem) {
-  :root {
-    /* Reduce nav-rail so gutters are tablet-friendly */
-    --wc-nav-rail-inset: 4rem;
-    /* Scale down section gutter for tablet */
-    --wc-page-gutter: clamp(1.5rem, 5vw, 4rem);
-    /* Slightly smaller heading sizes on tablet */
-    --text-xl: clamp(1.5rem, 2.8vw, 2.5rem);
-    --text-2xl: clamp(2rem, 3.8vw, 3.25rem);
-  }
-
-  /* Testimonials: stacked mobile layout on tablet – boost card heights slightly */
-  #testimonials .flex.flex-col > div[class*="h-[23.375rem]"] {
-    height: clamp(20rem, 40vw, 26rem);
-  }
-
-  /* CardsSection: ensure image card isn't too small */
-  #the-stay .md\:sticky {
-    width: 100%;
-    max-width: 20rem;
-  }
-
-  /* GettingHere: ensure transport grid items don't overflow */
-  #getting-here .md\:grid-cols-2 {
-    gap: 1rem;
-  }
-
-  /* Ensure all sections have proper horizontal padding */
-  #accommodation,
-  #testimonials,
-  #getting-here,
-  #events,
-  #faq,
-  #plan {
-    padding-left: var(--wc-mobile-nav-pad-x);
-    padding-right: var(--wc-mobile-nav-pad-x);
-  }
-
-  #accommodation {
-    padding-left: var(--wc-page-gutter);
-    padding-right: var(--wc-page-gutter);
   }
 }

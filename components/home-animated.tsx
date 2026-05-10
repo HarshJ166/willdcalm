@@ -41,7 +41,7 @@ export function HomeAnimated() {
     >
       <motion.div className="text-center" variants={item}>
         <p className="text-sm font-medium text-muted-foreground">Next.js · Tailwind CSS v4 · shadcn/ui · Framer Motion</p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight">Wildcalm</h1>
+        <h1 className="mt-2 text-4xl font-semibold ">Wildcalm</h1>
         <p className="mt-3 text-muted-foreground">
           Your app is wired with Tailwind, shadcn, and motion. Extend from here.
         </p>
@@ -57,12 +57,12 @@ export function HomeAnimated() {
               <code className="rounded bg-muted px-1.5 py-0.5 text-sm">npx shadcn@latest add</code>.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-3 sm:flex-row">
+          <CardContent className="flex flex-col gap-3 ">
             <Link
               href="https://ui.shadcn.com/docs/installation/next"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(buttonVariants(), "w-full sm:w-auto")}
+              className={cn(buttonVariants(), "w-full")}
             >
               shadcn/ui docs
             </Link>
@@ -70,7 +70,7 @@ export function HomeAnimated() {
               href="https://tailwindcss.com/docs/installation/framework-guides/nextjs"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
+              className={cn(buttonVariants({ variant: "outline" }), "w-full")}
             >
               Tailwind + Next.js
             </Link>

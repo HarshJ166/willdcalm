@@ -57,27 +57,27 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] md:min-h-[64.8125rem] md:px-[var(--wc-page-gutter)] md:pt-[5.125rem] xl:min-h-[66rem] xl:pt-[6rem] xl:pb-[6.25rem]"
+      className="relative w-full bg-[#5f7058] pt-[3.875rem] pb-[5.8125rem] "
     >
       {/* Mobile/Tablet header */}
-      <div className="lg:hidden">
-        <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[300] uppercase text-[#f5f1e8]">TESTIMONIALS</span>
-        <p className="mt-3 font-poppins text-[1.75rem] font-[100] leading-[2.375rem] text-[#f5f1e8]">
+      <div className="hidden">
+        <span className="block font-sans text-[0.875rem] font-[300] uppercase text-[#f5f1e8]">TESTIMONIALS</span>
+        <p className="mt-3 font-sans text-[1.75rem] font-[100] text-[#f5f1e8]">
           WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.
         </p>
       </div>
 
       {/* Desktop: shared max-width so copy + grid scale together on 4K */}
-      <div className="hidden lg:mx-auto lg:block lg:w-full lg:max-w-[var(--wc-shell-max)]">
-        <span className="block font-[Pilcrow_Rounded] font-[400] uppercase leading-normal text-[#f5f1e8] lg:text-[var(--wc-section-eyebrow)]">
+      <div className="hidden mx-auto block w-full ">
+        <span className="block font-sans font-[400] uppercase leading-normal text-[#f5f1e8] ">
           TESTIMONIALS
         </span>
-        <h2 className="mt-[2.875rem] mb-[3.6875rem] w-full max-w-none font-poppins font-[200] text-[#f5f1e8] lg:mt-[2.875rem] lg:mb-[3.6875rem] lg:text-[var(--wc-section-h2)] lg:leading-[var(--wc-section-h2-leading)]">
+        <h2 className="mt-[2.875rem] mb-[3.6875rem] w-full max-w-none font-sans font-[200] text-[#f5f1e8] mt-[2.875rem] mb-[3.6875rem] ">
           <span className="block">Discover authentic guest experiences that reflect the refined</span>
           <span className="block">hospitality and distinctive character of Wild Calm, creating lasting impressions</span>
         </h2>
 
-        <div className="flex w-full items-start gap-[var(--wc-testimonial-flex-gap)]">
+        <div className="flex w-full items-start ">
         {/* Left: tall video */}
         <TestimonialVideoCard
           id={tallVideo.id}
@@ -91,12 +91,12 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         />
 
         {/* Center column */}
-        <div className="flex w-[var(--wc-testimonial-col-stack)] flex-none flex-col gap-[var(--wc-section-gap-fluid)]">
+        <div className="flex flex-none flex-col ">
           <div className="flex h-[12.375rem] flex-col rounded-[0.8125rem] bg-[#a7b4a2] px-[1.5rem] pt-[1.875rem] pb-[1.125rem]">
-            <p className="font-poppins text-[1.125rem] font-[200] leading-[1.444] text-[var(--text-cream)]">
+            <p className="font-sans text-[1.125rem] font-[200] ">
               &ldquo;{quoteTop.text}&rdquo;
             </p>
-            <span className="mt-auto block text-right font-poppins text-[1.125rem] font-[200] leading-[1] text-[#f5f1e8]">
+            <span className="mt-auto block text-right font-sans text-[1.125rem] font-[200] text-[#f5f1e8]">
               ~ {quoteTop.author}
             </span>
           </div>
@@ -113,7 +113,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </div>
 
         {/* Right column */}
-        <div className="flex w-[var(--wc-testimonial-col-side)] flex-none flex-col gap-[var(--wc-section-gap-fluid)]">
+        <div className="flex flex-none flex-col ">
           <TestimonialVideoCard
             id={sideVideo.id}
             src={sideVideo.src}
@@ -125,10 +125,10 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
             onEnded={() => onVideoToggle('')}
           />
           <div className="flex h-[11.125rem] flex-col rounded-[0.8125rem] bg-[#909d88] px-[1.5rem] pt-[1.875rem] pb-[1.125rem]">
-            <p className="font-poppins text-[1.125rem] font-[200] leading-[1.444] text-[var(--text-cream)]">
+            <p className="font-sans text-[1.125rem] font-[200] ">
               &ldquo;{quoteBottom.text}&rdquo;
             </p>
-            <span className="mt-auto block text-right font-poppins text-[1.125rem] font-[200] leading-[1] text-[#f5f1e8]">
+            <span className="mt-auto block text-right font-sans text-[1.125rem] font-[200] text-[#f5f1e8]">
               ~ {quoteBottom.author}
             </span>
           </div>
@@ -137,7 +137,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
       </div>
 
       {/* Mobile/Tablet: Figma layout — arch images alternating with quotes */}
-      <div className="flex flex-col lg:hidden">
+      <div className="flex flex-col hidden">
         {/* Video 1: Anurita */}
         <div className="relative mt-[4.8125rem] h-[23.375rem] w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
           <video
@@ -168,8 +168,8 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
 
         {/* Quote 1: Khushi — 135px card */}
         <div className="mt-[1.125rem] flex h-[8.4375rem] flex-col rounded-[0.8125rem] bg-[#909d88] px-[1.375rem] py-[1.125rem]">
-          <p className="font-poppins text-[0.75rem] font-[200] leading-[1rem] text-[#f5f1e8]">{quoteTop.text}</p>
-          <span className="mt-auto text-right font-poppins text-[0.625rem] font-[200] leading-[1rem] text-[#f5f1e8]">~ {quoteTop.author}</span>
+          <p className="font-sans text-[0.75rem] font-[200] text-[#f5f1e8]">{quoteTop.text}</p>
+          <span className="mt-auto text-right font-sans text-[0.625rem] font-[200] text-[#f5f1e8]">~ {quoteTop.author}</span>
         </div>
 
         {/* Video 2: Khushi */}
@@ -202,8 +202,8 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
 
         {/* Quote 2: Aparna — 114px card */}
         <div className="mt-[1.125rem] flex h-[7.125rem] flex-col rounded-[0.8125rem] bg-[#909d88] px-[1.375rem] py-[1.125rem]">
-          <p className="font-poppins text-[0.75rem] font-[200] leading-[1rem] text-[#f5f1e8]">{quoteBottom.text}</p>
-          <span className="mt-auto text-right font-poppins text-[0.625rem] font-[200] leading-[1rem] text-[#f5f1e8]">~ {quoteBottom.author}</span>
+          <p className="font-sans text-[0.75rem] font-[200] text-[#f5f1e8]">{quoteBottom.text}</p>
+          <span className="mt-auto text-right font-sans text-[0.625rem] font-[200] text-[#f5f1e8]">~ {quoteBottom.author}</span>
         </div>
 
         {/* Video 3: Aparna */}
@@ -253,10 +253,10 @@ interface VideoCardProps {
 
 function TestimonialVideoCard({ id, src, author, isPlaying, isTall, isMediumKhushi, isFaded, videoRef, onToggle, onEnded }: VideoCardProps) {
   const heightClass = isTall
-    ? `h-[var(--wc-testimonial-media-tall-h)] w-[var(--wc-testimonial-media-tall-w)] shrink-0`
+    ? 'h-[48rem] w-[36rem] shrink-0'
     : isMediumKhushi
-    ? `h-[var(--wc-testimonial-media-short-h)] w-[var(--wc-testimonial-media-short-w)]`
-    : `h-[var(--wc-testimonial-media-short-h)] w-full`;
+    ? 'h-[28rem] w-[30rem]'
+    : 'h-[28rem] w-full';
 
 
   return (

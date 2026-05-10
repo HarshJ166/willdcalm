@@ -64,12 +64,12 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   }, [onRoomChange]);
 
   return (
-    <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[clamp(54rem,min(72vh,64rem),64rem)] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
-      <div className="mx-auto grid w-full max-w-[var(--wc-shell-max)] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,28vw)_minmax(0,1fr)] md:gap-[clamp(2rem,3.5vw,4rem)] md:px-[var(--wc-inner-px-tight)]">
-        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[clamp(24rem,min(50vh,38vw),34rem)] md:w-[clamp(21rem,min(30vw,34rem),28rem)]">
+    <section id="the-stay" className="relative w-full bg-[#f5f3ed] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] ">
+      <div className="mx-auto grid w-full grid-cols-2 items-start gap-4 ">
+        <div className="sticky top-[4.5rem] self-start ">
 
           {/* Mobile: 3 stacked images window */}
-          <div className="flex flex-col gap-1 md:hidden">
+          <div className="flex flex-col gap-1 ">
             {mobileWindowRooms.map((room, offset) => {
               const roomIndex = mobileWindowStart + offset;
               const isActive = roomIndex === activeIndex;
@@ -93,7 +93,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
           </div>
 
           {/* Desktop: single crossfade image */}
-          <div className="relative hidden h-full w-full overflow-hidden rounded-xl md:block">
+          <div className="relative hidden h-full w-full overflow-hidden rounded-xl ">
             {rooms.map((room, index) => (
               <Image
                 key={room.id}
@@ -121,7 +121,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                   ref={(element) => {
                     itemRefs.current[index] = element;
                   }}
-                  className={`flex min-h-[3rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(0.75rem,3.5vw,0.9rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
+                  className={`flex min-h-[3rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-sans text-[clamp(0.75rem,3.5vw,0.9rem)] transition-[opacity,color] duration-300 ${
                     isActive
                       ? 'font-[200] text-[#697a61] opacity-100'
                       : isVisited
@@ -145,12 +145,12 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                 transition={{ duration: 0.4, ease: [0.33, 1, 0.32, 1] }}
                 className="mt-7 max-w-[40.875rem]"
               >
-                <p className="font-poppins text-[0.75rem] max-w-[28rem] font-[200] leading-[1.6] text-[rgba(105,122,97,0.86)] md:text-[1.25rem] md:leading-[1.22]">
+                <p className="font-sans text-[0.75rem] max-w-[28rem] font-[200] text-[rgba(105,122,97,0.86)] ">
                   A refined collection of rooms and private
                   pool villas, crafted for elevated comfort,
                   privacy, and immersive nature.
                 </p>
-                <a href="#faq" className="mt-5 inline-block border-b border-b-[rgba(101,120,94,0.55)] font-[Pilcrow_Rounded] text-[0.875rem] uppercase text-[#65785e] md:text-[1.25rem]">
+                <a href="#faq" className="mt-5 inline-block border-b border-b-[rgba(101,120,94,0.55)] font-sans text-[0.875rem] uppercase text-[#65785e] ">
                   EXPLORE MORE
                 </a>
               </motion.div>

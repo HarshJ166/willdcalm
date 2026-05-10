@@ -31,11 +31,11 @@ function AnimatedStat({ target, suffix = '', label }: StatProps) {
     <>
       <span
         ref={ref}
-        className="min-w-[4rem] font-poppins text-[3rem] font-[200] leading-none text-[var(--text-cream)] tabular-nums md:min-w-[7rem] md:text-[var(--wc-stat-num)]"
+        className="min-w-[4rem] font-sans text-[3rem] font-[200] leading-none tabular-nums "
       >
         0{suffix}
       </span>
-      <span className="text-right font-[Pilcrow_Rounded] text-[0.875rem] font-[400] uppercase tracking-[0.08em] text-[#F5F1E8] md:text-[1rem]">
+      <span className="text-right font-sans text-[0.875rem] font-[400] uppercase text-[#F5F1E8] ">
         {label}
       </span>
     </>
@@ -63,27 +63,27 @@ export default function Accommodation({
   return (
     <section
       id="accommodation"
-      className="relative w-full overflow-hidden bg-[#546950] bg-['#546950')] bg-cover bg-center px-[var(--wc-mobile-nav-pad-x)] py-[3.8125rem] md:px-[var(--wc-page-gutter)] md:py-0"
+      className="relative w-full overflow-hidden bg-[#546950] bg-['#546950')] bg-cover bg-center py-[3.8125rem] "
     >
-        <div className="mx-auto grid w-full max-w-[var(--wc-shell-max)] grid-cols-1 gap-[var(--wc-section-gap-fluid)] md:min-h-[44rem] md:grid-cols-[50%_50%] md:gap-[clamp(1rem,2vw,3.25rem)] lg:min-h-[52rem] lg:gap-[clamp(1.5rem,3vw,3.25rem)] xl:min-h-[56rem] xl:gap-[clamp(2rem,3.5vw,5rem)]">
+        <div className="mx-auto grid w-full grid-cols-1 min-h-[52rem] gap-[clamp(1.5rem,3vw,3.25rem)] ">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          className="flex flex-col pb-8 md:pb-[clamp(4.5rem,6vw,5.75rem)] md:pt-[clamp(4.5rem,6vw,5.75rem)]"
+          className="flex flex-col pb-8 "
         >
-          <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[400] uppercase tracking-[0.12em] text-[var(--text-cream)] md:text-[1.25rem] md:tracking-[0.14em]">
+          <span className="block font-sans text-[0.875rem] font-[400] uppercase ">
             {badgeText}
           </span>
-          <p className="mt-[2.5rem] font-poppins text-[1.75rem] font-[200] leading-[2.375rem] text-[var(--text-cream)] md:mt-[2.5rem] md:mb-auto md:max-w-[var(--wc-prose-wide)] md:font-[200] md:text-[var(--wc-section-h2)] md:leading-[var(--wc-section-h2-leading)]">
+          <p className="mt-[2.5rem] font-sans text-[1.75rem] font-[200] ">
             {heading}
           </p>
-          <div className="mt-[clamp(2rem,8dvh,4rem)] w-full md:mt-[2rem] md:max-w-[37.375rem]">
-            <div className="flex items-baseline justify-between border-b border-b-[var(--text-cream-60)] py-[1.35rem]">
+          <div className="mt-[clamp(2rem,8dvh,4rem)] w-full ">
+            <div className="flex items-baseline justify-between border-b py-[1.35rem]">
               <AnimatedStat target={roomCount} suffix="+" label="EXPERIENTIAL ROOMS" />
             </div>
-            <div className="flex items-baseline justify-between border-b border-b-[var(--text-cream-60)] py-[1.35rem]">
+            <div className="flex items-baseline justify-between border-b py-[1.35rem]">
               <AnimatedStat target={courtyardCount} suffix="+" label="COURTYARD ROOMS" />
             </div>
           </div>
@@ -94,17 +94,17 @@ export default function Accommodation({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative mx-auto mb-0 w-full pb-[4.5rem] md:mx-0 md:mb-0 md:flex md:max-w-none md:items-end md:pl-[1.5rem] md:pr-[clamp(1.5rem,3vw,4.75rem)] md:pb-[clamp(2rem,3vw,3.5rem)] md:pt-[clamp(2rem,3vw,3.5rem)] lg:pl-[2.25rem] lg:pr-[clamp(3rem,5vw,4.75rem)] lg:pb-[clamp(2.5rem,4vw,3.5rem)] lg:pt-[clamp(2.5rem,4vw,3.5rem)]"
+          className="relative mx-auto mb-0 w-full pb-[4.5rem] pl-[2.25rem] pr-[clamp(3rem,5vw,4.75rem)] pb-[clamp(2.5rem,4vw,3.5rem)] pt-[clamp(2.5rem,4vw,3.5rem)]"
         >
-            <div className="relative mx-auto w-full max-w-[var(--wc-accom-image-max)] md:max-w-full">
-            <div className="relative aspect-[296/349] w-full overflow-hidden rounded-[50%_50%_0_0/42%_42%_0_0] md:aspect-auto md:h-[var(--wc-accom-image-h)] md:rounded-[50%_50%_0_0/35%_35%_0_0]">
-              <Image src={imageSrc} alt="WildCalm accommodation room" fill sizes="(max-width: 48em) 296px, 518px" className="object-cover object-[50%_42%] md:object-top" />
+            <div className="relative mx-auto w-full ">
+            <div className="relative aspect-[296/349] w-full overflow-hidden rounded-[50%_50%_0_0/42%_42%_0_0] ">
+              <Image src={imageSrc} alt="WildCalm accommodation room" fill sizes="(max-width: 48em) 296px, 518px" className="object-cover object-[50%_42%] " />
             </div>
             <motion.div
               aria-hidden="true"
               animate={{ rotate: 360 }}
               transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-              className="pointer-events-none absolute bottom-[-4.125rem] right-[-2.6875rem] z-[3] w-[10.1875rem] md:bottom-[-2.09375rem] md:right-[-3.3125rem] md:w-[11.25rem]"
+              className="pointer-events-none absolute bottom-[-4.125rem] right-[-2.6875rem] z-[3] w-[10.1875rem] "
             >
               <Image src={emblemSrc} alt="" width={290} height={271} className="h-auto w-full" />
             </motion.div>

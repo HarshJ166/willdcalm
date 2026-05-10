@@ -13,7 +13,7 @@ export default function About({ imageSrc, location, heading, body }: AboutProps)
     <section
       id="about"
       aria-labelledby="wc-about-heading"
-      className="relative z-[1] h-[41.125rem] w-full overflow-hidden bg-[var(--sage-intro)] font-poppins text-[var(--cream)] md:h-auto md:min-h-[clamp(36rem,min(92dvh,58rem),58rem)]"
+      className="relative z-[1] h-[41.125rem] w-full overflow-hidden font-sans "
     >
       <h2 id="wc-about-heading" className="sr-only">
         About
@@ -26,14 +26,14 @@ export default function About({ imageSrc, location, heading, body }: AboutProps)
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute left-[1.25rem] right-[1.25rem] top-[2.5rem] z-[1] md:inset-auto md:bottom-[clamp(12.5rem,22vh,18.5rem)] md:left-0 md:right-0 md:top-[clamp(3.25rem,6.5vh,5.5rem)] md:flex md:items-center md:justify-center md:px-[clamp(1.75rem,4vw,4.875rem)] xl:px-[clamp(3rem,6vw,7.5rem)]"
+        className="absolute left-[1.25rem] right-[1.25rem] top-[2.5rem] z-[1] "
       >
         {/* Mobile text */}
-        <p className="m-0 w-full text-justify font-poppins text-[1.5rem] font-[100] leading-[2rem] text-[#F5F1E8] [text-align-last:left] [word-spacing:0.2em] md:hidden">
+        <p className="m-0 w-full text-justify font-sans text-[1.5rem] font-[100] text-[#F5F1E8] [text-align-last:left] [word-spacing:0.2em] ">
           Wildlife Sasan Gir Forest Gir National Park Nature Safari Asiatic Lion Forest Gujarat India Wild Calm Nature Retreat Luxury Stay Wilderness Forest Stay Landscape Experience Calm Lion Nature Wild Wildlife Sasan Gir Gir Forest National Park Nature Safari Asiatic Lion{'              '}Gujarat India
         </p>
         {/* Web/Tablet text */}
-        <p className="hidden m-0 w-full max-w-[var(--wc-shell-max)] text-justify font-poppins font-[100] text-[#F5F1E8] [text-align-last:left] [word-spacing:0.2em] md:block md:text-[var(--wc-about-kinetic-size)] md:leading-[var(--wc-about-kinetic-leading)]">
+        <p className="hidden m-0 w-full text-justify font-sans font-[100] text-[#F5F1E8] [text-align-last:left] [word-spacing:0.2em] ">
           Wildlife Sasan Gir Forest Gir National Park WildCalm Retreat
 Nature Safari Asiatic Lion Forest Gujarat India WildCalm Nature Retreat Luxury Stay Wilderness Forest Stay Landscape Experience  Lion Wilderness Wildlife Sasan Gir Stay Resort Landscape Nature CalmGir Forest National Park Nature Safari Asiatic Lion Gujarat India Wilderness Landscape Retreat Resort Luxury Stay Experience Scenic Surroundings Calm Escape Adventure Devaliya Park Jungle Safari Asiatic Lion Gujarat India Untamed Landscape Nature Retreat Luxury
         </p>
@@ -45,7 +45,7 @@ Nature Safari Asiatic Lion Forest Gujarat India WildCalm Nature Retreat Luxury S
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute left-1/2 top-[12.5rem] z-[3] h-[22rem] w-[15.375rem] -translate-x-1/2 overflow-hidden md:top-[clamp(13rem,min(26vh,20vw),22rem)] md:h-[clamp(24rem,min(36vh,40vw),38rem)] md:w-[clamp(17.75rem,min(28vw,32rem),30rem)]"
+        className="absolute left-1/2 top-[12.5rem] z-[3] h-[22rem] w-[15.375rem] -translate-x-1/2 overflow-hidden "
       >
         {/* Mobile lion image */}
         <Image
@@ -53,7 +53,7 @@ Nature Safari Asiatic Lion Forest Gujarat India WildCalm Nature Retreat Luxury S
           alt={heading}
           width={246}
           height={322}
-          className="object-cover object-[55%_28%] md:hidden w-[246px] h-[322px]"
+          className="object-cover object-[55%_28%] w-[246px] h-[322px]"
         />
         {/* Web/Tablet lion image */}
         <Image
@@ -61,7 +61,7 @@ Nature Safari Asiatic Lion Forest Gujarat India WildCalm Nature Retreat Luxury S
           alt={heading}
           fill
           sizes="346px"
-          className="object-cover object-[55%_28%] hidden md:block"
+          className="object-cover object-[55%_28%] hidden "
         />
       </motion.div>
 
@@ -70,7 +70,7 @@ Nature Safari Asiatic Lion Forest Gujarat India WildCalm Nature Retreat Luxury S
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute bottom-[2.5rem] left-1/2 z-[4] -translate-x-1/2 whitespace-nowrap text-center font-poppins text-[0.875rem] md:text-[1.5rem] font-extralight tracking-[0.2em] md:tracking-[0.25em] text-[rgba(245,241,232,0.72)] uppercase" style={{ fontWeight: 200, fontSize: '14px', letterSpacing: '0.2em' }}
+        className="absolute bottom-[2.5rem] left-1/2 z-[4] -translate-x-1/2 whitespace-nowrap text-center font-sans text-[0.875rem] font-extralight text-[rgba(245,241,232,0.72)] uppercase" style={{ fontWeight: 200, fontSize: '14px', letterSpacing: '0.2em' }}
       >
         SASANGIR . GUJARAT . INDIA
       </motion.p>

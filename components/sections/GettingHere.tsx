@@ -17,23 +17,23 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
   return (
     <section
       id="getting-here"
-      className="relative flex w-full flex-col bg-[#f5f1e8] px-[var(--wc-mobile-nav-pad-x)] pt-[clamp(3.75rem,11vw,4.5rem)] pb-[clamp(3rem,9vw,4rem)] md:h-auto md:flex-row md:items-start md:gap-[clamp(2rem,5vw,var(--wc-section-gap-fluid))] md:px-[var(--wc-page-gutter)] md:py-[5.5625rem] lg:h-[50rem] lg:gap-[var(--wc-section-gap-fluid)]"
+      className="relative flex w-full flex-col bg-[#f5f1e8] pt-[clamp(3.75rem,11vw,4.5rem)] pb-[clamp(3rem,9vw,4rem)] h-[50rem] "
     >
       {/* Left column */}
-      <div className="w-full md:w-[30.6875rem] md:flex-[0_0_30.6875rem]">
+      <div className="w-full ">
 
         {/* Label */}
-        <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[400] uppercase tracking-[0.14em] text-[#697a61] md:text-[1.25rem] md:tracking-normal mt-[4rem] md:mt-[6rem]">
+        <span className="block font-sans text-[0.875rem] font-[400] uppercase text-[#697a61] mt-[4rem] ">
           GETTING HERE
         </span>
 
         {/* Heading */}
-        <h2 className="mt-[2.5rem] max-w-[19.375rem] font-poppins text-[1.75rem] font-[200] leading-[2.375rem] text-[#697a61] md:mt-[0.75rem] md:max-w-[28.875rem] md:text-[2.375rem] md:leading-[3.3125rem]">
+        <h2 className="mt-[2.5rem] max-w-[19.375rem] font-sans text-[1.75rem] font-[200] text-[#697a61] ">
           Located 6.5 km from Gir National Park, WildCalm offers refined wilderness with seamless regional access
         </h2>
 
         {/* ── Mobile: flat vertical list ── */}
-        <ul className="mt-[4.5rem] w-full max-w-[18.5rem] list-none p-0 md:hidden">
+        <ul className="mt-[4.5rem] w-full max-w-[18.5rem] list-none p-0 ">
           {transport.map((item, idx) => {
             // Veraval Railway Station (first item): less top padding
             if (idx === 0) {
@@ -51,15 +51,15 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                       className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
                     />
                     <div className="flex items-baseline gap-[0.125rem]">
-                      <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                      <span className="font-sans text-[3rem] font-[200] text-[#65785e]">
                         {item.distance}
                       </span>
-                      <span className="font-poppins text-[2rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                      <span className="font-sans text-[2rem] font-[200] text-[#65785e]">
                         {item.unit}
                       </span>
                     </div>
                   </div>
-                  <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] font-poppins text-[0.875rem] font-[200] uppercase leading-[1.25rem] tracking-[0.02em] text-[#65785e]">
+                  <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] font-sans text-[0.875rem] font-[200] uppercase text-[#65785e]">
                     {item.name}
                   </p>
                 </li>
@@ -78,15 +78,15 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                       className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
                     />
                     <div className="flex items-baseline gap-[0.125rem]">
-                      <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                      <span className="font-sans text-[3rem] font-[200] text-[#65785e]">
                         {item.distance}
                       </span>
-                      <span className="font-poppins text-[2rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                      <span className="font-sans text-[2rem] font-[200] text-[#65785e]">
                         {item.unit}
                       </span>
                     </div>
                   </div>
-                  <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] mb-0 font-poppins text-[0.875rem] font-[200] uppercase leading-[1.25rem] tracking-[0.02em] text-[#65785e]">
+                  <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] mb-0 font-sans text-[0.875rem] font-[200] uppercase text-[#65785e]">
                     {item.name}
                   </p>
                   <div className="h-px w-full bg-[rgba(101,120,94,0.22)] mt-[1.25rem]" />
@@ -109,15 +109,15 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                     className="h-auto w-[clamp(1.75rem,8vw,2rem)] flex-shrink-0 opacity-95"
                   />
                   <div className="flex items-baseline gap-[0.125rem]">
-                    <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                    <span className="font-sans text-[3rem] font-[200] text-[#65785e]">
                       {item.distance}
                     </span>
-                    <span className="font-poppins text-[2rem] font-[200] leading-[1.875rem] text-[#65785e]">
+                    <span className="font-sans text-[2rem] font-[200] text-[#65785e]">
                       {item.unit}
                     </span>
                   </div>
                 </div>
-                <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] font-poppins text-[0.875rem] font-[200] uppercase leading-[1.25rem] tracking-[0.02em] text-[#65785e]">
+                <p className="mt-[clamp(0.35rem,1.5vw,0.5rem)] font-sans text-[0.875rem] font-[200] uppercase text-[#65785e]">
                   {item.name}
                 </p>
               </li>
@@ -126,7 +126,7 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
         </ul>
 
         {/* ── Desktop: 2-column grid ── */}
-        <div className="mt-[2.625rem] hidden md:grid md:grid-cols-2 md:gap-x-[2.35rem]">
+        <div className="mt-[2.625rem] hidden ">
           {row1.map((item) => (
             <div key={item.name} className="py-3">
               <div className="flex items-center gap-[0.875rem]">
@@ -138,18 +138,18 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                   className="h-auto w-[2.5rem] flex-shrink-0 opacity-95"
                 />
                 <div className="flex items-baseline gap-[0.125rem] text-[#65785e]">
-                  <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem]">{item.distance}</span>
-                  <span className="font-poppins text-[2rem] font-[200] leading-[1.875rem]">{item.unit}</span>
+                  <span className="font-sans text-[3rem] font-[200] ">{item.distance}</span>
+                  <span className="font-sans text-[2rem] font-[200] ">{item.unit}</span>
                 </div>
               </div>
-              <span className="mt-[0.3125rem] block font-poppins text-[0.875rem] font-[200] uppercase leading-[1.25rem] tracking-[0.02em] text-[#65785e]">
+              <span className="mt-[0.3125rem] block font-sans text-[0.875rem] font-[200] uppercase text-[#65785e]">
                 {item.name}
               </span>
             </div>
           ))}
           <div className="col-span-2 h-px bg-[rgba(101,120,94,0.18)]" />
           {row2.map((item) => (
-            <div key={item.name} className="py-8 md:py-8">
+            <div key={item.name} className="py-8 ">
               <div className="flex items-center gap-[0.875rem]">
                 <Image
                   src={item.icon}
@@ -159,11 +159,11 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
                   className="h-auto w-[2.5rem] flex-shrink-0 opacity-95"
                 />
                 <div className="flex items-baseline gap-[0.125rem] text-[#65785e]">
-                  <span className="font-poppins text-[3rem] font-[200] leading-[1.875rem]">{item.distance}</span>
-                  <span className="font-poppins text-[2rem] font-[200] leading-[1.875rem]">{item.unit}</span>
+                  <span className="font-sans text-[3rem] font-[200] ">{item.distance}</span>
+                  <span className="font-sans text-[2rem] font-[200] ">{item.unit}</span>
                 </div>
               </div>
-              <span className="mt-[0.3125rem] block font-poppins text-[0.875rem] font-[200] uppercase leading-[1.25rem] tracking-[0.02em] text-[#65785e]">
+              <span className="mt-[0.3125rem] block font-sans text-[0.875rem] font-[200] uppercase text-[#65785e]">
                 {item.name}
               </span>
             </div>
@@ -172,8 +172,8 @@ export default function GettingHere({ transport, mapSrc }: GettingHereProps) {
       </div>
 
       {/* Map */}
-      <div className="mt-[clamp(0.5rem,2vw,0.75rem)] w-full max-w-[18.5rem] self-center md:ml-auto md:mt-[1.3125rem] md:max-w-full md:flex-1 md:self-start lg:flex-none lg:max-w-[min(41rem,calc(var(--wc-shell-max)*0.46))]">
-        <div className="relative aspect-[296/336] w-full overflow-hidden rounded-[0.25rem] md:aspect-[584/580] md:rounded-none">
+      <div className="mt-[clamp(0.5rem,2vw,0.75rem)] w-full max-w-[18.5rem] self-center flex-none ">
+        <div className="relative aspect-[296/336] w-full overflow-hidden rounded-[0.25rem] ">
           <iframe
             src={mapSrc}
             width="584"
