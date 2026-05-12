@@ -11,12 +11,12 @@ interface FaqProps {
 
 export default function Faq({ faqs, openId, onToggle }: FaqProps) {
   return (
-    <section id="faq" className="relative w-full bg-[#fcfaf4] px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.5rem,7vw,3.75rem)] md:px-[var(--wc-page-gutter)] md:py-[clamp(3.75rem,8vw,5rem)] lg:grid lg:min-h-[50rem] lg:grid-cols-[32.875rem_40.75rem] lg:justify-center lg:gap-x-[4.875rem] lg:px-[7.375rem] lg:pb-[4.75rem] lg:pt-[9.375rem]">
+    <section id="faq" className="relative w-full bg-[#fcfaf4] px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.5rem,7vw,3.75rem)] xl:px-[var(--wc-page-gutter)] xl:py-[clamp(3.75rem,8vw,5rem)] xl:grid xl:min-h-[50rem] xl:grid-cols-[32.875rem_40.75rem] xl:justify-center xl:gap-x-[4.875rem] xl:px-[7.375rem] xl:pb-[4.75rem] xl:pt-[9.375rem]">
       <div className="max-w-[32.875rem]">
-        <span className="block font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.14em] text-[#697a61] md:text-[1.25rem] md:normal-case md:tracking-normal">
+        <span className="block font-[Pilcrow_Rounded] text-[0.875rem] uppercase tracking-[0.14em] text-[#697a61] xl:text-[1.25rem] xl:normal-case xl:tracking-normal">
           FREQUENTLY ASKED QUESTIONS
         </span>
-        <h2 className="mt-[1.875rem] font-poppins text-[clamp(1.375rem,6vw,1.75rem)] font-[200] leading-[clamp(1.875rem,8vw,2.375rem)] text-[#697a61] md:text-[2.375rem] md:leading-[3.3125rem]">
+        <h2 className="mt-[1.875rem] font-poppins text-[clamp(1.375rem,6vw,1.75rem)] font-[200] leading-[clamp(1.875rem,8vw,2.375rem)] text-[#697a61] xl:text-[2.375rem] xl:leading-[3.3125rem]">
           Thoughtful answers
           <br />
           to considered questions
@@ -26,7 +26,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
         </p>
       </div>
 
-      <div className="mt-8 border-t border-t-[rgba(101,120,94,0.14)] lg:mt-0 lg:border-t-0">
+      <div className="mt-8 border-t border-t-[rgba(101,120,94,0.14)] xl:mt-0 xl:border-t-0">
         {faqs.map((faq) => {
           const isOpen = openId === faq.id;
           return (
@@ -35,7 +35,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
                 onClick={() => onToggle(faq.id)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${faq.id}`}
-                className="flex min-h-0 w-full items-center justify-between gap-4 py-4 text-left font-poppins text-[clamp(0.8rem,3.5vw,0.875rem)] font-[400] leading-[1.4] text-[#65785e] md:min-h-[4.5rem] md:py-3 md:text-[1.25rem] md:font-[300]"
+                className="flex min-h-0 w-full items-center justify-between gap-4 py-4 text-left font-poppins text-[clamp(0.8rem,3.5vw,0.875rem)] font-[400] leading-[1.4] text-[#65785e] xl:min-h-[4.5rem] xl:py-3 xl:text-[1.25rem] xl:font-[300]"
               >
                 <span className="max-w-[38.375rem]">{faq.question}</span>
                 <motion.svg
@@ -45,7 +45,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
                   fill="none"
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.18 }}
-                  className="h-auto w-5 shrink-0 md:h-2 md:w-4"
+                  className="h-auto w-5 shrink-0 xl:h-2 xl:w-4"
                 >
                   <path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </motion.svg>
@@ -54,6 +54,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
+                    role="region"
                     id={`faq-panel-${faq.id}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
@@ -61,7 +62,7 @@ export default function Faq({ faqs, openId, onToggle }: FaqProps) {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-4 font-poppins text-[clamp(0.75rem,3.5vw,0.875rem)] font-[200] leading-[clamp(1rem,4.5vw,1.25rem)] text-[#65785e] whitespace-pre-line md:max-w-[33.25rem] md:pb-[1.125rem] md:text-[1rem] md:leading-[1.625rem] md:text-[rgba(101,120,94,0.9)]">
+                    <p className="pb-4 font-poppins text-[clamp(0.75rem,3.5vw,0.875rem)] font-[200] leading-[clamp(1rem,4.5vw,1.25rem)] text-[#65785e] whitespace-pre-line xl:max-w-[33.25rem] xl:pb-[1.125rem] xl:text-[1rem] xl:leading-[1.625rem] xl:text-[rgba(101,120,94,0.9)]">
                       {faq.answer}
                     </p>
                   </motion.div>

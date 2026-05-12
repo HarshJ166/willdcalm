@@ -1,6 +1,7 @@
 export interface NavLink {
   label: string;
   href: string;
+  disabled?: boolean;
 }
 
 export interface Room {
@@ -51,7 +52,7 @@ export const navLinks: NavLink[] = [
 
 export const menuLinks: NavLink[] = [
   { label: 'Our Story',      href: '#about' },
-  { label: 'The Stay',       href: '#the-stay' },
+  { label: 'The Stay',       href: '#accommodation' },
   { label: 'Experiences',    href: '#experiences' },
   { label: 'Amenities',      href: '#amenities' },
   { label: 'Sustainability', href: '#sustainability' },

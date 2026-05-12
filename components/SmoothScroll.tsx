@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduceMotion.matches) return;
+    const desktop = window.matchMedia('(min-width: 64rem)');
+    if (reduceMotion.matches || !desktop.matches) return;
 
     const lenis = new Lenis({
       lerp: 0.072,

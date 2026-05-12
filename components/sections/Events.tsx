@@ -34,15 +34,16 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
     offset: ['start start', 'end end'],
   });
 
-  const leftImageYRaw = useTransform(firstScroll, [0, 0.85], ['220%', '140%']);
-  const rightImageYRaw = useTransform(secondScroll, [0.35, 1], ['140%', '-10%']);
+  const leftImageYRaw = useTransform(firstScroll, [0, 0.9], ['220%', '145%']);
+  // reduce final upward travel so the right image stops closer to the text
+  const rightImageYRaw = useTransform(secondScroll, [0.35, 0.7, 0.85, 1], ['120%', '95%', '90%', '90%']);
   const leftImageY = useSpring(leftImageYRaw, { stiffness: 70, damping: 26, mass: 0.7 });
-  const rightImageY = useSpring(rightImageYRaw, { stiffness: 70, damping: 26, mass: 0.7 });
+  const rightImageY = useSpring(rightImageYRaw, { stiffness: 60, damping: 32, mass: 0.9 });
 
   return (
     <section id="events" className="relative w-full bg-[#fcfaf4]">
       {/* ── MOBILE ── */}
-      <div className="flex flex-col px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.75rem,8vw,4rem)] md:hidden">
+      <div className="flex flex-col px-[var(--wc-mobile-nav-pad-x)] py-[clamp(2.75rem,8vw,4rem)] xl:hidden">
         <h2 className="m-0 w-full font-poppins text-[clamp(1.5rem,7.5vw,1.75rem)] font-[200] leading-[clamp(2rem,10vw,2.375rem)] text-[#697a61]">
           {sectionHeading}
         </h2>
@@ -75,7 +76,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
       </div>
 
       {/* ── DESKTOP — separate sticky sections (no swap) */}
-      <div className="hidden md:block">
+      <div className="relative hidden xl:block">
         {/* SECTION 1 - Wedding */}
         <div ref={firstSectionRef} className="relative h-[110vh]">
           <div className="sticky top-0 flex h-[90vh] items-center justify-center text-center">
@@ -110,7 +111,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
         </div>
 
         {/* SECTION 2 - Corporate Retreats */}
-        <div ref={secondSectionRef} className="relative h-[130vh]">
+        <div ref={secondSectionRef} className="relative h-[175vh]">
           <div className="sticky top-0 flex h-[100vh] items-center justify-center text-center">
             <div className="mx-auto flex max-w-[34rem] flex-col items-center">
                 <h2 className="max-w-[48rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#697a61]">
@@ -130,7 +131,7 @@ export default function Events({ label, sectionHeading, blocks }: EventsProps) {
           </div>
           <motion.div
             style={{ y: rightImageY }}
-            className="absolute right-[8%] top-[20rem] z-[2] h-[22.5rem] w-[20rem] overflow-hidden rounded-[1.25rem]"
+            className="absolute right-[8%] top-[25rem] z-[2] h-[22.5rem] w-[20rem] overflow-hidden rounded-[1.25rem]"
           >
             <Image
               src={secondBlock.imageSrc}

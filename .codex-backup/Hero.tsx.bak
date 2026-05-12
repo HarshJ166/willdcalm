@@ -25,9 +25,7 @@ export default function Hero({
   videoSrcDesktop,
   videoSrcMobile,
 }: HeroProps) {
-    const words = heading.split(' ');
-    const firstPart = words.slice(0, -2);
-    const lastPart = words.slice(-2).join(' ');
+  const headingWords = heading.split(' ');
 
   return (
     <section
@@ -37,7 +35,7 @@ export default function Hero({
       {/* ========================= */}
       {/* DESKTOP VIDEO — FULL BLEED */}
       {/* ========================= */}
-      <div className="absolute left-0 top-[15rem] z-[2] hidden h-[37.25rem] w-[var(--wc-hero-video-w)] overflow-hidden 2xl:block">
+      <div className="absolute left-0 top-[15rem] z-[2] hidden h-[37.25rem] w-[var(--wc-hero-video-w)] overflow-hidden lg:block">
         <video
           autoPlay
           muted
@@ -52,7 +50,7 @@ export default function Hero({
       {/* ========================= */}
       {/* MOBILE VIDEO */}
       {/* ========================= */}
-      <div className="absolute left-0 top-[12dvh] z-[2] w-full 2xl:hidden">
+      <div className="absolute left-0 top-[12dvh] z-[2] w-full lg:hidden">
         <div className="mx-[var(--wc-mobile-nav-pad-x)] overflow-hidden">
           <video
             autoPlay
@@ -69,7 +67,7 @@ export default function Hero({
       {/* ========================= */}
       {/* VECTOR BACKGROUND */}
       {/* ========================= */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat 2xl:top-[47%]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[29.43dvh] z-[1] bg-[url('/Vector.png')] bg-[length:100%_100%] bg-bottom bg-no-repeat lg:top-[47%]" />
 
       {/* ========================= */}
       {/* MAIN SHELL */}
@@ -79,12 +77,12 @@ export default function Hero({
         {/* ========================= */}
         {/* TOP BAR */}
         {/* ========================= */}
-        <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] 2xl:h-[6.511375rem] 2xl:px-[var(--wc-page-gutter)]">
+        <div className="absolute inset-x-0 top-0 z-[5] grid h-[var(--wc-mobile-nav-bar-h)] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-[var(--wc-mobile-nav-pad-x)] lg:h-[6.511375rem] lg:px-[var(--wc-page-gutter)]">
           
           {/* MENU */}
           <button
             onClick={onMenuOpen}
-            className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] 2xl:text-[1.25rem]"
+            className="inline-flex items-center gap-2 justify-self-start font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] lg:text-[1.25rem]"
             aria-label="Open menu"
           >
             <span className="inline-flex items-center" aria-hidden="true">
@@ -99,7 +97,7 @@ export default function Hero({
           </button>
 
           {/* LOGO */}
-          <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] 2xl:text-[2.625rem]">
+          <span className="justify-self-center font-[Argufy] text-[1.25rem] uppercase leading-none text-[var(--text-cream)] lg:text-[2.625rem]">
             WildCalm
           </span>
 
@@ -108,7 +106,7 @@ export default function Hero({
             href="https://bookings.wildcalm.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] 2xl:text-[1.25rem]"
+            className="justify-self-end font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[var(--text-cream)] underline decoration-[0.0625rem] underline-offset-[0.24em] lg:text-[1.25rem]"
           >
             Book Now
           </a>
@@ -117,7 +115,7 @@ export default function Hero({
         {/* ========================= */}
         {/* DESKTOP NAV LINKS */}
         {/* ========================= */}
-        <div className="absolute top-[7.511375rem] left-1/2 z-[5] hidden h-[2.6875rem] w-[100vw] -translate-x-1/2 border-y border-y-[rgba(245,241,232,0.24)] 2xl:flex items-center justify-center">
+        <div className="absolute top-[7.511375rem] left-1/2 z-[5] hidden h-[2.6875rem] w-[100vw] -translate-x-1/2 border-y border-y-[rgba(245,241,232,0.24)] lg:flex items-center justify-center">
         <div className="mx-auto flex w-full max-w-[90rem] items-center justify-center gap-[5.125rem] px-[3rem]">
           {navLinks.map((link, i) => (
             <motion.a
@@ -149,7 +147,7 @@ export default function Hero({
             delay: 0.5,
             ease,
           }}
-          className="absolute left-[calc(var(--wc-shell-pad-inline)+var(--wc-hero-lion-shift))] bottom-0 z-[4] hidden h-[var(--wc-hero-lion-h)] w-[var(--wc-hero-lion-w)] 2xl:block"
+          className="absolute left-[calc(var(--wc-shell-pad-inline)+var(--wc-hero-lion-shift))] bottom-[0rem] z-[4] hidden h-[var(--wc-hero-lion-h)] w-[var(--wc-hero-lion-w)] lg:block"
         >
           <Image
             src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"
@@ -163,7 +161,7 @@ export default function Hero({
         {/* ========================= */}
         {/* HERO TITLE */}
         {/* ========================= */}
-        <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[66dvh] z-[3] w-[calc(100%-3.875rem)] 2xl:left-[36.5rem] 2xl:top-[53dvh] 2xl:w-[var(--wc-hero-title-w)] 2xl:-translate-y-1/2">
+        <div className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[66dvh] z-[3] w-[calc(100%-3.875rem)] lg:left-[36.5rem] lg:top-[53dvh] lg:w-[var(--wc-hero-title-w)] lg:-translate-y-1/2">
           
           <motion.h1
             initial="hidden"
@@ -177,36 +175,30 @@ export default function Hero({
                 },
               },
             }}
-            className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] 2xl:text-[3.5rem] 2xl:font-[200] 2xl:leading-[4.1875rem]"
+            className="font-poppins text-[1.75rem] font-[300] leading-[2.25rem] text-[var(--text-cream)] lg:text-[3.5rem] lg:font-[200] lg:leading-[4.1875rem]"
           >
-              <>
-  {/* FIRST LINE */}
-  <span>
-    {firstPart.map((word, i) => (
-      <motion.span
-        key={word + i}
-        variants={{
-          hidden: { opacity: 0, y: 24 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
-        }}
-        className="inline-block mr-[0.35ch]"
-      >
-        {word}
-      </motion.span>
-    ))}
-  </span>
-
-  {/* SECOND LINE */}
-  <motion.span
-    variants={{
-      hidden: { opacity: 0, y: 24 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
-    }}
-    className="block 2xl:inline-block"
-  >
-    {lastPart}
-  </motion.span>
-</>
+            {headingWords.map((word) => (
+              <motion.span
+                key={word}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 24,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease,
+                    },
+                  },
+                }}
+                className="mr-[0.35ch] inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
         </div>
 
@@ -221,7 +213,7 @@ export default function Hero({
             delay: 0.7,
             ease,
           }}
-          className="absolute 2xl:left-[52rem] top-[64dvh] z-[3] hidden w-[var(--wc-hero-lead-w)] font-poppins text-[1.5rem] font-[200] leading-[2.75rem] text-[var(--text-cream)] 2xl:block"
+          className="absolute lg:left-[52rem] top-[64dvh] z-[3] hidden w-[var(--wc-hero-lead-w)] font-poppins text-[1.5rem] font-[200] leading-[2.75rem] text-[var(--text-cream)] lg:block"
         >
           {subheadingDesktop}
         </motion.p>
@@ -237,7 +229,7 @@ export default function Hero({
             delay: 0.7,
             ease,
           }}
-          className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[77.5dvh] z-[3] w-[min(40rem,calc(100%-2.5rem))] max-w-[17.5rem] pt-2 font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] md:w-[min(31rem,calc(100%-3rem))] md:max-w-[31rem] md:text-[1.2rem] md:leading-[1.7rem] lg:w-[min(36rem,calc(100%-4rem))] lg:max-w-[36rem] lg:text-[1.3rem] lg:leading-[1.8rem] xl:w-[min(40rem,calc(100%-5rem))] xl:max-w-[40rem] xl:text-[1.4rem] xl:leading-[1.9rem] 2xl:hidden"
+          className="absolute left-[var(--wc-mobile-nav-pad-x)] top-[77.5dvh] z-[3] w-[19.3125rem] max-w-[17.5rem] pt-2 font-poppins text-[1rem] font-[200] leading-[1.5rem] text-[var(--text-cream)] lg:hidden"
         >
           {subheadingMobile}
         </motion.p>
@@ -253,7 +245,7 @@ export default function Hero({
             delay: 0.5,
             ease,
           }}
-          className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[59dvh] z-[4] h-[2.875rem] w-[4.4375rem] 2xl:hidden"
+          className="absolute right-[var(--wc-mobile-nav-pad-x)] top-[59dvh] z-[4] h-[2.875rem] w-[4.4375rem] lg:hidden"
         >
           <Image
             src="/design/Home%20Page/Section%201%20-%20Banner/Lion%20Vector.svg"

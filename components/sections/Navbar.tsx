@@ -12,9 +12,7 @@ interface NavbarProps {
   onMenuOpen: () => void;
   onMenuClose: () => void;
 }
-
 export default function Navbar({
-  navLinks,
   menuLinks,
   menuOpen,
   onMenuOpen,
@@ -78,12 +76,12 @@ export default function Navbar({
 }`}
       >
         <div className="mx-auto w-full max-w-[90rem]">
-        <div className="relative h-[var(--wc-mobile-nav-bar-h)] md:h-[var(--wc-nav-h)]">
+        <div className="relative h-[var(--wc-mobile-nav-bar-h)] xl:h-[var(--wc-nav-h)]">
           <button
             type="button"
             onClick={onMenuOpen}
             aria-label="Open menu"
-            className="absolute left-[var(--wc-mobile-nav-pad-x)] top-1/2 z-10 inline-flex -translate-y-1/2 items-center gap-2 font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[#65785e] md:left-[var(--wc-page-gutter)] md:text-[1.25rem]"
+            className="absolute left-[var(--wc-mobile-nav-pad-x)] top-1/2 z-10 inline-flex -translate-y-1/2 items-center gap-2 font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[#65785e] xl:left-[var(--wc-page-gutter)] xl:text-[1.25rem]"
           >
             <svg width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true">
               <line x1="0" y1="1" x2="16" y2="1" stroke="currentColor" strokeWidth="1.1" />
@@ -92,14 +90,14 @@ export default function Navbar({
             </svg>
             <span>MENU</span>
           </button>
-          <span className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 font-[Argufy] text-[1.25rem] uppercase leading-none text-[#65785e] md:text-[2.625rem]">
+          <span className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 font-[Argufy] text-[1.25rem] uppercase leading-none text-[#65785e] xl:text-[2.625rem]">
             WILDCALM
           </span>
           <a
             href="https://bookings.wildcalm.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-[var(--wc-mobile-nav-pad-x)] top-1/2 z-10 -translate-y-1/2 font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[#65785e] underline decoration-[0.0625rem] underline-offset-[0.24em] md:right-[var(--wc-page-gutter)] md:text-[1.25rem]"
+            className="absolute right-[var(--wc-mobile-nav-pad-x)] top-1/2 z-10 -translate-y-1/2 font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-none text-[#65785e] underline decoration-[0.0625rem] underline-offset-[0.24em] xl:right-[var(--wc-page-gutter)] xl:text-[1.25rem]"
           >
             BOOK NOW
           </a>
@@ -114,10 +112,10 @@ export default function Navbar({
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.55, ease:  [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden h-[var(--wc-nav-overlay-mobile-height)] md:h-auto"
+            className="fixed inset-x-0 top-0 z-[4000] flex flex-col bg-transparent overflow-y-hidden h-[var(--wc-nav-overlay-mobile-height)] xl:h-auto"
             // style={{ maxHeight: '80dvh' }}
           >
-            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] md:h-[7.4375rem] md:bg-[var(--wc-nav-overlay-menu-panel-bg)] md:px-[var(--wc-page-gutter)] lg:px-[7.375rem]">
+            <div className="grid h-[var(--wc-mobile-nav-bar-h)] shrink-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[var(--wc-nav-overlay-mobile-fill)] px-[var(--wc-nav-overlay-menu-pad-x)] xl:h-[7.4375rem] xl:bg-[var(--wc-nav-overlay-menu-panel-bg)] xl:px-[var(--wc-page-gutter)]">
               <button
                 onClick={onMenuClose}
                 className="justify-self-start text-[rgba(101,120,94,0.78)] transition-colors duration-200 hover:text-[rgba(86,98,82,0.95)]"
@@ -128,21 +126,21 @@ export default function Navbar({
                   <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              <span className="justify-self-center font-[Argufy] text-[clamp(1.5rem,4.2vw,2.625rem)] uppercase leading-none text-[#768f6e] md:text-[2.625rem]">
+              <span className="justify-self-center font-[Argufy] text-[clamp(1.5rem,4.2vw,2.625rem)] uppercase leading-none text-[#768f6e] xl:text-[2.625rem]">
                 WILDCALM
               </span>
               <a
                 href="https://bookings.wildcalm.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="justify-self-end font-[Pilcrow_Rounded] text-[clamp(0.9375rem,2.4vw,1.25rem)] uppercase leading-none text-[#65785e] underline decoration-[rgba(122,130,120,0.9)] decoration-[0.0625rem] underline-offset-[0.25em] md:text-[1.25rem]"
+                className="justify-self-end font-[Pilcrow_Rounded] text-[clamp(0.9375rem,2.4vw,1.25rem)] uppercase leading-none text-[#65785e] underline decoration-[rgba(122,130,120,0.9)] decoration-[0.0625rem] underline-offset-[0.25em] xl:text-[1.25rem]"
               >
                 BOOK NOW
               </a>
             </div>
-            <div className="flex h-full flex-col justify-between bg-[#f6f2e9] md:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
+            <div className="flex h-full flex-col justify-between bg-[#f6f2e9] xl:bg-[var(--wc-nav-overlay-menu-panel-bg)]">
               {/* Mobile menu content — 80:20 split */}
-              <div className="relative flex h-full flex-row md:hidden">
+              <div className="relative flex h-full flex-row xl:hidden">
                 {/* Left 80%: nav and copyright */}
                 <div className="flex flex-col justify-between w-[80%] px-6 pb-6 pt-4">
                   <motion.nav
@@ -182,17 +180,18 @@ export default function Navbar({
                 {/* Right 20%: empty, but lion art can overlap */}
                 <div className="relative w-[20%] flex items-end">
                   <div className="pointer-events-none select-none absolute bottom-[1.5rem] right-[-30%]" style={{ width: '197.96px', height: '121px' }}>
-                    <img
+                    <Image
                       src="/design/Menu/Lion%20line%20art-dark%20.svg"
                       alt=""
+                      width={198}
+                      height={121}
                       className="object-contain"
-                      style={{ width: '197.96px', height: '121px' }}
                     />
                   </div>
                 </div>
               </div>
               {/* Desktop menu content */}
-              <div className="hidden md:grid min-h-0 flex-1 grid-cols-[minmax(0,836fr)_minmax(0,604fr)] bg-[var(--wc-nav-overlay-menu-panel-bg)]">
+              <div className="hidden xl:grid min-h-0 flex-1 grid-cols-[minmax(0,836fr)_minmax(0,604fr)] bg-[var(--wc-nav-overlay-menu-panel-bg)]">
                 {/* Left column — nav links + copyright */}
                 <div className="z-10 flex min-h-0 flex-col justify-between pl-[clamp(1.5rem,8.40278vw,7.5625rem)] pr-8 pb-8 pt-[clamp(1rem,1.875vw,1.6875rem)]">
                   <nav className="flex flex-col gap-[1.375rem]">

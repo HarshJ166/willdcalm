@@ -58,8 +58,8 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
         },
         {
           root: null,
-          rootMargin: '-45% 0px -45% 0px',
-          threshold: [0, 0.25, 0.5, 0.75, 1],
+          rootMargin: '-25% 0px -25% 0px',
+          threshold: [0.5, 0.75, 1],
         },
       );
 
@@ -101,7 +101,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
   return (
     <section id="the-stay" className="relative w-full bg-[#f5f3ed] px-[var(--wc-mobile-nav-pad-x)] pb-[clamp(2.5rem,8dvh,4rem)] pt-[clamp(2.5rem,8dvh,4rem)] md:min-h-[56.25rem] md:px-0 md:pb-[clamp(7rem,20vh,12rem)] md:pt-[clamp(7rem,20vh,12rem)]">
       <div className="mx-auto grid w-full max-w-[90rem] grid-cols-2 items-start gap-4 md:grid-cols-[minmax(0,26.0625rem)_minmax(0,44.5rem)] md:gap-[3.25rem] md:px-[3.25rem]">
-        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[28.1875rem] md:w-[24.625rem]">
+        <div className="sticky top-[4.5rem] self-start md:top-[calc(50vh-14.75rem)] md:h-[22rem] md:w-[20rem] xl:top-[calc(50vh-14.75rem)] xl:h-[28.1875rem] xl:w-[24.625rem]">
 
           {/* Mobile: 3 stacked images window */}
           <div className="flex flex-col gap-1 md:hidden">
@@ -156,7 +156,7 @@ export default function CardsSection({ rooms, activeIndex, onRoomChange }: Cards
                   ref={(element) => {
                     itemRefs.current[index] = element;
                   }}
-                  className={`flex min-h-[3rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(0.75rem,3.5vw,0.9rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[8.75rem] md:text-[2.375rem] md:leading-[3.3125rem] ${
+                  className={`flex min-h-[3rem] cursor-pointer items-center border-b border-b-[rgba(105,122,97,0.18)] font-poppins text-[clamp(0.75rem,3.5vw,0.9rem)] leading-[1.3] transition-[opacity,color] duration-300 md:min-h-[4.5rem] md:text-[1.35rem] md:leading-[1.6] xl:min-h-[8.75rem] xl:text-[2.375rem] xl:leading-[3.3125rem] ${
                     isActive
                       ? 'font-[200] text-[#697a61] opacity-100'
                       : isVisited

@@ -40,21 +40,21 @@ const TESTIMONIAL_QUOTES = [
 
 const FOOTER_COL1: typeof navLinks = [
   { label: 'Our Story', href: '#about' },
-  { label: 'The Stay', href: '#accommodation' },
+  { label: 'The Stay', href: '#the-stay' },
   { label: 'Experiences', href: '#experiences' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Sustainabilty', href: '#sustainability', disabled: true },
-  { label: 'Gallery', href: '#gallery', disabled: true },
-  { label: 'Rates', href: '#rates', disabled: true },
+  { label: 'Sustainabilty', href: '#sustainability' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Rates', href: '#rates' },
 ];
 
 const FOOTER_COL2: typeof navLinks = [
-  { label: 'Careers', href: '#careers', disabled: true },
+  { label: 'Careers', href: '#careers' },
   { label: 'Contact Us', href: '#faq' },
-  { label: 'Media Kit', href: '#media', disabled: true },
-  { label: 'News & Insights', href: '#news', disabled: true },
-  { label: 'Terms & Conditions', href: '#terms', disabled: true },
-  { label: 'Privacy Policy', href: '#privacy', disabled: true },
+  { label: 'Media Kit', href: '#media' },
+  { label: 'News & Insights', href: '#news' },
+  { label: 'Terms & Conditions', href: '#terms' },
+  { label: 'Privacy Policy', href: '#privacy' },
 ];
 
 const FOOTER_SOCIALS = [
@@ -94,7 +94,6 @@ export default function Home() {
   return (
     <main className="relative w-full bg-[var(--sage-hero)]">
       <Navbar
-        navLinks={navLinks}
         menuLinks={menuLinks}
         menuOpen={menuOpen}
         onMenuOpen={() => setMenuOpen(true)}
@@ -103,16 +102,13 @@ export default function Home() {
 
       <Hero
         navLinks={navLinks}
-        onMenuOpen={() => setMenuOpen(true)}
-        heading={`Where The West Wild Stays`}
+        heading={`Where The West \n Wild Stays`}
         subheadingDesktop="Wild Calm retreat near Sasan Gir offers a refined nature experience, surrounded by forest and countryside. It blends peaceful stays with immersive moments & quiet luxury escapes in serene surroundings."
         subheadingMobile="Wild Calm retreat near Sasan Gir offers a refined nature escape, blending peaceful stays with immersive moments and quiet luxury in serene forest surroundings."
         videoSrcDesktop="/design/Home Page/Section 1 - Banner/Desktop/Banner Video.mp4"
-        videoSrcMobile="/design/Home%20Page/Section%201%20-%20Banner/Mobile%20Version/front%20banner%20video_phone%20version.mp4"
+        videoSrcMobile="/design/Home Page/Section 1 - Banner/Banner Video.mp4"
       />
-
-      {/* Spacer so scrollable content sits below the fixed hero */}
-      <div className="h-[100dvh]" aria-hidden="true" />
+      <div aria-hidden="true" className="h-[100dvh]" />
 
       <About
         imageSrc="/design/Home Page/Section 2 - Lion/Sasan Gir_Lion-converted-from-png.webp"
@@ -130,7 +126,7 @@ export default function Home() {
     </span>
   }
   body="A refined collection of rooms and private pool villas, crafted for elevated comfort, privacy, and immersive nature."
-  badgeText="ACCOMMODATION"
+  badgeText="ACCOMODATION"
 />
 
       <CardsSection
@@ -158,7 +154,7 @@ export default function Home() {
             body: 'Elevate executive retreats and bespoke destination weddings in a refined setting designed for professional focus and elegant celebrations.',
             imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_photo-an-outdoor-wedding-_2855361114.webp',
             imageAlt: 'WildCalm wedding venue',
-            ctaHref: '#events',
+            ctaHref: '#faq',
             ctaLabel: 'More About Us',
           },
           {
@@ -166,7 +162,7 @@ export default function Home() {
             body: 'Host meaningful gatherings where refined spaces, natural surroundings, and seamless hospitality come together to create truly memorable and effortlessly elevated experiences, thoughtfully designed with attention to every detail.',
             imageSrc: '/design/Home Page/Section 7 - Events & Celebrations/freepik_2855367418.webp',
             imageAlt: 'WildCalm corporate retreat',
-            ctaHref: '#events',
+            ctaHref: '#faq',
             ctaLabel: 'More About Us',
           },
         ]}
@@ -193,7 +189,7 @@ export default function Home() {
       <CTA
         quote="Raw wilderness and refined luxury meet in a state of intentional stillness."
         imageSrc="/design/Home Page/Section 10 - CTA/Desktop/Lion.webp"
-        ctaHref="https://bookings.wildcalm.in"
+        ctaHref="#faq"
       />
 
       <Footer

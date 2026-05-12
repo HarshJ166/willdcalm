@@ -165,11 +165,15 @@
   --wc-hero-video-w: clamp(44rem, 48vw, 52rem);
   --wc-hero-video-h: clamp(30rem, 11vh + 18rem, 48rem);
   --wc-hero-video-top: clamp(8.5rem, 7vh + 4rem, 11.75rem);
+  --wc-hero-title-top: 49dvh;
+  --wc-hero-description-top: 60dvh;
+  --wc-hero-lion-top: 84vh;
   /** Lion mark — scales with viewport */
---wc-hero-lion-w: 101.45px;
---wc-hero-lion-h: 64.12px;
+  --wc-hero-lion-w: 101.45px;
+  --wc-hero-lion-h: 64.12px;
+  
   /** Offset from shell margin toward center (pairs with fluid video width) */
- --wc-hero-lion-shift: clamp(23rem, 26vw + 8rem, 33rem);
+  --wc-hero-lion-shift: clamp(23rem, 26vw + 8rem, 33rem);
 
   /** Section headings + UI density */
   --wc-section-eyebrow: clamp(0.9375rem, 0.65vw + 0.82rem, 1.3125rem);
@@ -303,13 +307,16 @@
     --wc-nav-rail-inset: clamp(6.25rem, 6.2vw, 11.25rem);
   }
 }
+@media (max-height: 920px) {
+  :root {
+    --wc-hero-video-top: 11rem;
+    --wc-hero-title-top: 54dvh;
+    --wc-hero-description-top: 65dvh;
+    --wc-hero-lion-top: 89dvh;
+  }
+}
 html {
   overflow-x: clip;
-  /* Keep vertical scrollbar space stable to avoid layout shifts when zooming (Ctrl+/Ctrl-) */
-  /* Fallback: force a scrollbar so viewport width doesn't change across zooms */
-  overflow-y: scroll;
-  /* Preferred: let the UA reserve gutter space when supported */
-  scrollbar-gutter: stable;
 }
 .dark {
   --background: oklch(0.145 0 0);

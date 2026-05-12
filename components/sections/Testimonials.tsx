@@ -57,19 +57,19 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] md:min-h-[64.8125rem] md:px-[var(--wc-page-gutter)] md:pt-[5.125rem]"
+      className="relative w-full bg-[#5f7058] px-[var(--wc-mobile-nav-pad-x)] pt-[3.875rem] pb-[5.8125rem] xl:min-h-[64.8125rem] xl:px-[var(--wc-page-gutter)] xl:pt-[5.125rem]"
     >
       {/* Desktop header */}
-      <span className="hidden lg:block w-[19.0625rem] font-[Pilcrow_Rounded] text-[1.25rem] font-[400] leading-[3.3125rem] text-[#f5f1e8]">
+      <span className="hidden xl:block w-[19.0625rem] font-[Pilcrow_Rounded] text-[1.25rem] font-[400] leading-[3.3125rem] text-[#f5f1e8]">
         TESTIMONIALS
       </span>
-      <h2 className="mt-[2.875rem] mb-[3.6875rem] hidden w-full max-w-[71.75rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8] lg:block">
+      <h2 className="mt-[2.875rem] mb-[3.6875rem] hidden w-full max-w-[71.75rem] font-poppins text-[2.375rem] font-[200] leading-[3.3125rem] text-[#f5f1e8] xl:block">
         <span className="block">Discover authentic guest experiences that reflect the refined</span>
         <span className="block">hospitality and distinctive character of Wild Calm, creating lasting impressions</span>
       </h2>
 
       {/* Mobile/Tablet header */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <span className="block font-[Pilcrow_Rounded] text-[0.875rem] font-[300] uppercase text-[#f5f1e8]">TESTIMONIALS</span>
         <p className="mt-3 font-poppins text-[1.75rem] font-[100] leading-[2.375rem] text-[#f5f1e8]">
           WildCalm Resort offers elegant, tranquil accommodations with premium comforts for a truly refined stay.
@@ -77,7 +77,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
       </div>
 
       {/* Desktop grid */}
-      <div className="hidden w-full items-start gap-[2rem] lg:flex">
+      <div className="hidden w-full items-start gap-[2rem] xl:flex">
         {/* Left: tall video */}
         <TestimonialVideoCard
           id={tallVideo.id}
@@ -136,7 +136,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
       </div>
 
       {/* Mobile/Tablet: Figma layout — arch images alternating with quotes */}
-      <div className="flex flex-col lg:hidden">
+      <div className="flex flex-col xl:hidden">
         {/* Video 1: Anurita */}
         <div className="relative mt-[4.8125rem] h-[23.375rem] w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
           <video
@@ -145,6 +145,7 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
             playsInline
             muted
             preload="metadata"
+            aria-label={`Testimonial video by ${tallVideo.author}`}
             onEnded={() => onVideoToggle('')}
           >
             <source src={tallVideo.src} type="video/mp4" />
@@ -172,13 +173,14 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </div>
 
         {/* Video 2: Khushi */}
-        <div className="relative mt-[1.125rem] h-[14.0625rem] w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
+        <div className="relative mt-[1.125rem] aspect-square w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
           <video
             ref={(el) => { videoRefs.current[midVideo.id] = el; }}
             className="absolute inset-0 h-full w-full object-cover object-center"
             playsInline
             muted
             preload="metadata"
+            aria-label={`Testimonial video by ${midVideo.author}`}
             onEnded={() => onVideoToggle('')}
           >
             <source src={midVideo.src} type="video/mp4" />
@@ -206,13 +208,14 @@ export default function Testimonials({ videos, quotes, playingId, onVideoToggle 
         </div>
 
         {/* Video 3: Aparna */}
-        <div className="relative mt-[1.125rem] h-[20.9375rem] w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
+        <div className="relative mt-[1.125rem] aspect-square w-full overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)]">
           <video
             ref={(el) => { videoRefs.current[sideVideo.id] = el; }}
             className="absolute inset-0 h-full w-full object-cover object-center"
             playsInline
             muted
             preload="metadata"
+            aria-label={`Testimonial video by ${sideVideo.author}`}
             onEnded={() => onVideoToggle('')}
           >
             <source src={sideVideo.src} type="video/mp4" />
@@ -254,8 +257,8 @@ function TestimonialVideoCard({ id, src, author, isPlaying, isTall, isMediumKhus
   const heightClass = isTall
     ? 'h-[34.125rem] w-[27.9375rem] shrink-0'
     : isMediumKhushi
-    ? 'h-[19.8125rem] w-[23.6875rem]'
-    : 'h-[20.9375rem] w-full';
+    ? 'aspect-square w-[23.6875rem] shrink-0'
+    : 'aspect-square w-[19.375rem] shrink-0';
 
   return (
     <div className={`relative overflow-hidden rounded-[0.8125rem] bg-[rgba(245,241,232,0.08)] ${heightClass}`}>
@@ -265,6 +268,7 @@ function TestimonialVideoCard({ id, src, author, isPlaying, isTall, isMediumKhus
         playsInline
         muted
         preload="metadata"
+        aria-label={`Testimonial video by ${author}`}
         onEnded={onEnded}
       >
         <source src={src} type="video/mp4" />

@@ -209,7 +209,7 @@ export default function HorizontalScroll({
     <section ref={sectionRef} id="amenities" className="relative bg-[#f5f1e8]">
 
       {/* ── MOBILE LAYOUT – normal vertical scroll, card per card ── */}
-      <div className="md:hidden">
+      <div className="xl:hidden">
         <div className="px-[var(--wc-mobile-nav-pad-x)] pb-8 pt-[3.5625rem]">
           <span className="block font-[Pilcrow_Rounded] text-[0.875rem] uppercase leading-[1.25] text-[#697a61]">
             {label}
@@ -243,7 +243,7 @@ export default function HorizontalScroll({
       </div>
 
       {/* ── DESKTOP LAYOUT – sticky horizontal scroll ── */}
-      <div ref={stickyRef} className="sticky top-0 hidden h-[800px] items-start justify-start gap-[var(--amn-gap,1rem)] overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] md:flex md:px-[7.5rem]">
+      <div ref={stickyRef} className="sticky top-0 hidden h-[800px] items-start justify-start gap-[var(--amn-gap,1rem)] overflow-x-hidden overflow-y-visible pb-[clamp(2rem,4dvh,4rem)] pt-[clamp(4rem,7dvh,7rem)] xl:flex xl:px-[7.5rem]">
         <div ref={leftRef} className="w-[22rem] shrink-0">
           <span className="mb-6 block font-[Pilcrow_Rounded] text-[1.25rem] uppercase leading-[1.25] text-[#697a61]">
             {label}
